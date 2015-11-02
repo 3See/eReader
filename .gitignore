@@ -27,6 +27,7 @@ test/coverage/
 migrations/
 
 *.local
+config/env/development.js
 
 # IDE files
 .idea
