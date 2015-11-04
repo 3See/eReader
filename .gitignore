@@ -8,6 +8,7 @@ lib-cov
 *.out
 *.pid
 *.gz
+config/env/development.json5
 
 pids
 logs
