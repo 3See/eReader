@@ -1,9 +1,9 @@
 {
     // This is your MYSQL Database configuration
     db: {
-        name: "",
+        name: "mean_relational",
         password: "",
-        username: "",
+        username: "root",
         host: "localhost",
         port: 3306
     },
