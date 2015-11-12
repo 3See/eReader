@@ -1,0 +1,37 @@
+<section data-ng-controller="reportController" class="content">
+  <side-bar></side-bar>
+  <h3>Report</h3>
+  <table class="table table-striped">
+  	<theader>
+  		<tr>
+  			<th>Subject ID</th>
+  			<th>Study ID</th>
+  			<th>Group ID</th>
+  			<th>Phone Number</th>
+        <th>Reader ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th ng-repeat="ingestion in ingestions">{{ingestion}}</th>
+  		</tr>
+  	</theader>
+  	<tbody>
+  		<tr ng-repeat="subject in subjects">
+  			<td>{{subject.id}}</td>
+  			<td>{{subject.study_id}}</td>
+  			<td>{{subject.group_id}}</td>
+  			<td>{{subject.phone_number}}</td>
+        <td>{{subject.reader_id}}</td>
+        <td>{{subject.start_date}}</td>
+        <td>{{subject.end_date}}</td>
+        <td>{{subject.ingestion1}}</td>
+        <td>{{subject.ingestion2}}</td>
+        <td>{{subject.ingestion3}}</td>
+        <td>{{subject.ingestion4}}</td>
+        <td>{{subject.ingestion5}}</td>
+        <td>{{subject.ingestion6}}</td>
+  		</tr>
+ <!--Sample Data-->
+  	</tbody>
+  </table>
+
+</section>

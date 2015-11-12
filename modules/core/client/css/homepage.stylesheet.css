@@ -1,0 +1,47 @@
+li.lin {
+
+	display : inline;
+}
+
+img.home_page {
+	margin-top: 15px;
+	margin-bottom: 25px;
+}
+
+img.study_page {
+  width : 80%;
+  height: 80%;
+}
+
+h1.study_page {
+  font-size: 75px;
+  text-align: center;
+  vertical-align: bottom;
+
+}
+
+.buttons li {
+	display: block;
+    list-style: none;
+    text-decoration: none;
+    text-align: center;
+    background-color: #000000;
+    margin-bottom: 5px;
+    width: 450px;
+    line-height: 40px;
+
+}
+
+
+.logoutLblPos{
+
+   position:fixed;
+   right:0;
+   top:0;
+}
+
+.buttons button {
+    width: 450px;
+    line-height: 40px;
+
+}

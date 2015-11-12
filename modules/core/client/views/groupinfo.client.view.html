@@ -1,0 +1,100 @@
+<section data-ng-controller="GroupInfoController" class="content">
+    <side-bar></side-bar>
+    <div class="well">
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <select name="Study" ng-model="current_study" class="form-control">
+                    <option value="">Current Study</option>
+                    <option ng-repeat="study in studies" value="{{study}}">{{study}}</option>
+                    <option value="">Study 1</option>
+                    <option value="">Study 2</option>
+                    <option value="">Study 3</option>
+                    <option value="">Study 4</option>
+                    <option value="">Study 5</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <select name="Group" ng-model="current_group" class="form-control">
+                    <option value="">Current Group</option>
+                    <option ng-repeat="group in groups" value="{{group}}"></option>
+                    <option value="">Group 1</option>
+                    <option value="">Group 2</option>
+                    <option value="">Group 3</option>
+                    <option value="">Group 4</option>
+                    <option value="">Group 5</option>
+                </select>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <select name="Patient" ng-model="current_patient" class="form-control">
+                    <option value="">Patients</option>
+                    <option ng-repeat="patient in patients" value="{{patient.id}}"></option>
+                    <option value="">1532</option>
+                    <option value="">6345</option>
+                    <option value="">2345</option>
+                    <option value="">6451</option>
+                    <option value="">1253</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin: 0 0 0 15px">
+        <div class="well col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:75vh; overflow-y:scroll">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <button class="btn" style="width:100%" ng-click="filterAll()">All</button>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <button class="btn" style="width:100%" ng-click="filterComplient()">Complient</button>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <button class="btn" style="width:100%" ng-click="filterNonComplient()">NonComplient</button>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <thead><tr><th>Patients</th><th>Complience</th></tr></thead>
+                <tbody>
+                    <tr ng-repeat="patient in patients"><td><button style="background:transparent">{{patient.id}}</button></td><td style="vertical-align:middle">{{patient.complience}}</td></tr>
+                    <tr><td><button class="btn" style="background:transparent"><a href="/subject-info">9842</a></button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">1568</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">4959</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">7562</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">1621</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">1624</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">6875</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">1895</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">4597</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">3541</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">6584</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">1568</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">4959</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">7562</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">1621</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">1568</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">4959</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">7562</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">1621</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">1624</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">6875</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">1895</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">4597</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">3541</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">6584</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">1568</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">4959</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">7562</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr><td><button class="btn" style="background:transparent">1621</button></td><td style="vertical-align:middle">95%</td></tr>
+                </tbody>
+            </table>
+        </div> 
+        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 col-sm-offset-1 col-xs-offset-1 col-md-offset-1 col-lg-offset-1">
+            <div class="well">
+                <h2 align="center">Overall Complience</h2>
+                <p>An interactive pie chart goes here</p>
+            </div>
+            <div class="well">
+                <h2 align="center">Compliences</h2>
+                <p>A line graph goes here</p>
+            </div>
+        </div> 
+    </div> 
+</section>
