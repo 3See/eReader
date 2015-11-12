@@ -1,6 +1,12 @@
 extends layouts/default
 
+block banner
+    div.row
+        img.img-responsive(src="public/img/eTectLoginLogo.png")
+        div
+            h1.head eTect eReader Clinical Study
+
 block content
-  section(data-ng-view)
-  script(type="text/javascript").
-    window.user = !{user};
+    section(data-ui-view)
+
+block sidebar
