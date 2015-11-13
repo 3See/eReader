@@ -1,31 +1,23 @@
-//Setting up route
-angular.module('mean').config(['$routeProvider',
-    function($routeProvider) {
-        $routeProvider.
-        when('/articles', {
-            templateUrl: 'views/articles/list.html'
-        }).
-        when('/articles/create', {
-            templateUrl: 'views/articles/create.html'
-        }).
-        when('/articles/:articleId/edit', {
-            templateUrl: 'views/articles/edit.html'
-        }).
-        when('/articles/:articleId', {
-            templateUrl: 'views/articles/view.html'
-        }).
-        when('/', {
-            templateUrl: 'views/index.html'
-        }).
-        otherwise({
-            redirectTo: '/'
-        });
-    }
-]);
+'use strict';
 
-//Setting HTML5 Location Mode
-angular.module('mean').config(['$locationProvider',
-    function($locationProvider) {
-        $locationProvider.hashPrefix("!");
-    }
-]);
+// Init the application configuration module for AngularJS application
+var ApplicationConfiguration = (function () {
+  // Init module configuration options
+  var applicationModuleName = 'mean';
+  var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'ui.utils', 'angularFileUpload'];
+
+  // Add a new vertical module
+  var registerModule = function (moduleName, dependencies) {
+    // Create angular module
+    angular.module(moduleName, dependencies || []);
+
+    // Add the module to the AngularJS configuration file
+    angular.module(applicationModuleName).requires.push(moduleName);
+  };
+
+  return {
+    applicationModuleName: applicationModuleName,
+    applicationModuleVendorDependencies: applicationModuleVendorDependencies,
+    registerModule: registerModule
+  };
+})();

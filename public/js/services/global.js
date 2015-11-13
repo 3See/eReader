@@ -1,5 +1,5 @@
-//Global service for global variables
-angular.module('mean.system').factory("Global", [
+//Global authentication service
+angular.module('mean.system').factory("Authentication", [
     function() {
         var _this = this;
         _this._data = {
