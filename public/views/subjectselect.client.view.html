@@ -1,0 +1,76 @@
+<section data-ng-controller="SubjectSelectController">
+  <side-bar></side-bar>
+  <!-- First well with information about the subject select page -->
+  <div class="row col-xs-10 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-xs-offset-1 col-md-offset-1 col-lg-offset-1">
+    <div class="well">
+      <h2>Subject Setup</h2>
+      <p>You may view an existing record/respond by selecting it from one of the drop-down lists below. The records are separated into each drop-down list according to their status for this particular data collection instrument. To create a new record/response, type a new value in the text box below and hit Tab or Enter. To quickly find a record without using the drop-downs, the text box will auto-populate with existing record names as you begin to type in it, allowing you to select it.</p>
+    </div>
+  </div>
+  <!-- First panel with the total and complete records information -->
+  <div class="row col-xs-10 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-xs-offset-1 col-md-offset-1 col-lg-offset-1">
+    <div class="panel panel-warning">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">Total Records:</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row text-left">
+          <h4 class="col-md-6">Incomplete records:</h4>
+          <p class="col-md-6">
+            <select ng-model="incompleteRecords" class="form-control"></select>
+          </p>
+        </div>
+
+        <div class="row text-left">
+          <h4 class="col-md-6">Complete records:</h4>
+          <p class="col-md-6">
+            <select ng-model="completeRecords" class="form-control"></select>
+          </p>
+        </div>
+
+        <div class="row text-left">
+          <h4 class="col-md-6">Enter a new or existing subject ID:</h4>
+          <p class="col-md-6">
+            <input type="text" ng-model="subjectID" class="form-control" />
+          </p>
+        </div>
+        <div class="row text-right">
+          <a href="#">Show Unverified Records above</a>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+  <!-- Second panel withe the search fields -->
+  <div class="row col-xs-10 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-xs-offset-1 col-md-offset-1 col-lg-offset-1">
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <h3 class="panel-title">Data Search:</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row text-left">
+          <div class="col-md-6"><h4>Choose a field to search</h4>
+            <p>(excludes multiple choice fields)</p>
+          </div>
+          <p class="col-md-6">
+            <select ng-model="chooseField" class="form-control"></select>
+          </p>
+        </div>
+
+
+        <div class="row text-left">
+          <div class="col-md-6"><h4>Search query</h4>
+            <p>Begin typing to search the project data, then click an item in the list to navigate to that record</p>
+          </div>
+          <div class="col-md-6">
+            <br />
+            <input type="text" ng-model="search" class="form-control" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
