@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.system').controller('HeaderController', ['$scope', '$state', 'Authentication', function ($scope, Authentication, $state, Menus) {
+angular.module('mean.system').controller('HeaderController', ['$scope', '$state', 'Authentication','Menus', function ($scope, Authentication, $state, Menus) {
     $scope.global = Authentication;
 
     $scope.$state = $state;
