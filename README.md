@@ -15,19 +15,19 @@
 
 ###Enrollment of a new subject into a study. 
 -The user should be able to add new users within his/her study and later place that subject in a group within that study.
-![Alt text](/readme_images/Enroll.jpg?raw=true)
+![Alt text](public/img/readme/Enroll.jpg?raw=true)
 
 ###Overview of all the groups within a study and the study's general complience information
 -Information about the groups within a study will be displayed numerically, as well as in two seperate charts.
-![Alt text](/readme_images/Study_overview.jpg?raw=true)
+![Alt text](public/img/readme/Study_overview.jpg?raw=true)
 
 ###Reports View
 -This page displays all of the subjects within a group and their basic data, along with their ingestion times over the course of the study.
-![Alt text](/readme_images/Reports.jpg?raw=true)
+![Alt text](public/img/readme/Reports.jpg?raw=true)
 
 ###Search
 -The user should be able to search through all the records they have access to to find a specific subject.
-![Alt text](/readme_images/Search.jpg?raw=true)
+![Alt text](public/img/readme/Search.jpg?raw=true)
 
 
 ###MSSQL Integration
