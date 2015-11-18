@@ -1,0 +1,9 @@
+header(data-ng-controller="HeaderController")
+    img#logo(src="img/brand/eTectLogo.png", data-ui-sref="home")
+    button#profile(style="background-image: url({{authentication.user.profileImageURL}})")
+    #menu-dropdown(collapse="!isCollapsed")
+        span.icon-bar 
+            a(data-ui-sref="settings.profile") Settings
+        span.divider
+        span.icon-bar 
+            a(href="/api/auth/signout") Sign Out
