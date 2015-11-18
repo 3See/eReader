@@ -5,7 +5,7 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
 
         // Redirect to 404 when route not found
-        $urlRouterProvider.otherwise('home');
+        $urlRouterProvider.otherwise('not-found');
 
         // Home state routing
         $stateProvider
@@ -19,6 +19,7 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             })
             .state('sign-in', {
                 url: '/signin',
+                templateUrl: 'views/index.html'
             })
             .state('enrollment', {
                 url: '/study-enrollment',
