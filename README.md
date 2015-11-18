@@ -30,8 +30,8 @@
 ![Alt text](public/img/readme/Search.jpg?raw=true)
 
 
-###MSSQL Integration
->	MongoDB is not secure enough for our purposes, so we have a new ORM to map calls to the client's SQL database. 
+###MySQL Integration
+>	Mean Stack Relational comes boxed with MySQL support with Sequelize included, we have added plugings for using sequelize-auto for model generation from the database and epilogue for easy rest endpoints for our models. MySQL server hosted by AWS.
 
 ###Side Navigation Bar
 > A sidebar directive has been added to every page after logging in for ease of access and better UI experience.
