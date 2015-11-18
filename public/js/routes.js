@@ -19,7 +19,7 @@ angular.module('mean.routes').config(['$stateProvider', '$urlRouterProvider',
             })
             .state('sign-in', {
                 url: '/authentication-signin',
-                templateUrl: 'modules/users/views/authentication/signin.client.view.html'
+                templateUrl: 'views/authentication/signin.client.view.html'
             })
             .state('enrollment', {
                 url: '/study-enrollment',
