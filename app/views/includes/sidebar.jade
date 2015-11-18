@@ -1,8 +1,8 @@
 section.sidebar(ng-controller="sidebarCtl")
-    nav
-        ul.section-tabs
-            li Current Study
-            li
-                button(class="btn btn-transparent btn-block",data-toggle="button", ui-sref="home")
-                    div.row
-                        div(class
+    nav#dashboard
+        button(ui-sref="home") Dashboard
+        button(ui-sref="subject-status") Record Status
+        button(ui-sref="subject-select") Search Records
+        button(ui-sref="enrollment") New Enrollment
+        button(ui-sref="calendar") Calendar
+        button(ui-sref="reports") Reports
