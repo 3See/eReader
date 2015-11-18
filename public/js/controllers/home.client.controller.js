@@ -7,7 +7,7 @@ angular.module('mean.system').controller('HomeController', ['$scope', 'Authentic
 
     // If auth not set goto login
     if(!Authentication.user) {
-      $state.go('sign-in');
+        $http.get('temp');
     }
 
     $scope.studies = [

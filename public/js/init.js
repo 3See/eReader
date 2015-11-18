@@ -1,10 +1,16 @@
 'use strict';
 
+angular.module('mean').config(['$locationProvider', 
+        function($locationProvider) {
+            $locationProvider.html5Mode({
+                enabled: true,
+                requireBase: false
+            });
+        }
+]);
+
+
 angular.element(document).ready(function() {
-    //Fixing facebook bug with redirect
-    if (window.location.hash === "#_=_") {
-        window.location.hash = "#!";
-    }
 
     //Then init the app
     angular.bootstrap(document, ['mean']);
