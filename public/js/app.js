@@ -1,4 +1,3 @@
-angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.router', 'mean.system', 'mean.routes']);
+angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.router', 'mean.system']);
 
-angular.module('mean.routes', ['ui.router']);
-angular.module('mean.system', []);
+angular.module('mean.system', ['ui.router']);
