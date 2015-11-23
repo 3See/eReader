@@ -1,16 +1,16 @@
 'use strict';
 
-angular.module('mean.system').controller('EnrollController', ['$scope', 'Authentication', '$state', '$http',
+angular.module('mean.system').controller('RegisterController', ['$scope', 'Authentication', '$state', '$http',
   function ($scope, Authentication, $state, $http) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
-    if(!Authentication.user) {
-    	$state.go('sign-in');
-    }
+    // if(!Authentication.user) {
+    // 	$state.go('sign-in');
+    // }
 
     $scope.submit = function () {
-      $http.post('/api/client/enrollment', $scope.credentials).success(function (response) {
+      $http.post('/subject/register', $scope.credentials).success(function (response) {
         // If successful we assign the response to the global user model
         $scope.authentication.user = response;
 
