@@ -1,7 +1,7 @@
 nav#breadcrumb(data-ng-controller="breadcrumbController")
     select.form-control(name="Study", ng-model="current_study")
         option(value="") Current Study
-        option(ng-repeat="study in studies", value="{{study}}") {{study}}
+        option(data-ng-repeat="study in studies", value="{{study}}") {{study}}
     select.form-control(name="Group", ng-model="current_group")
         option(value="") Current Group
         option(ng-repeat="group in groups", value="{{group}}") {{group}}

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.system').controller('sidebarCtrl', ['$scope', 'Authentication', '$state',
+angular.module('mean').controller('sidebarCtrl', ['$scope', 'Authentication', '$state',
   function ($scope, Authentication, $state) {
     // This provides Authentication context.
     $scope.authentication = Authentication;

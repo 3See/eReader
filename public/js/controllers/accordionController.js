@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.system').controller('AccordionCtrl', function ($scope, $state) {
+angular.module('mean').controller('AccordionCtrl', function ($scope, $state) {
   $scope.oneAtATime = true;
 
   $scope.groups = [
