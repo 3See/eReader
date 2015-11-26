@@ -61,6 +61,7 @@ button.studypage {
 
 #view-window {
     width: 80%;
+    float: right;
 }
 
 .section-tabs {
@@ -71,6 +72,11 @@ button.studypage {
 
 .smallBreak {
   padding-top: 15px;
+}
+
+/* override .row to stop it from overflowing */
+.row {
+    margin-left: 0px !important;
 }
 
 /*****************/
