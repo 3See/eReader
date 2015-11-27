@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.system').controller('GroupCtrl', function ($scope) {
+angular.module('mean').controller('GroupCtrl', function ($scope) {
   $scope.items = [
     'Group 1',
     'Group 2',

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.system').controller('reportController', ['$scope', 'Authentication', '$state',
+angular.module('mean').controller('reportController', ['$scope', 'Authentication', '$state',
   function ($scope, Authentication, $state) {
     // This provides Authentication context.
     $scope.authentication = Authentication;

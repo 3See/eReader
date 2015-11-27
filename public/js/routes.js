@@ -21,9 +21,9 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
                 url: '/signin',
                 templateUrl: 'views/index.html'
             })
-            .state('enrollment', {
-                url: '/study-enrollment',
-                templateUrl: 'views/enroll.client.view.html'
+            .state('subject-register', {
+                url: '/subject-register',
+                templateUrl: 'views/subject-register.html'
             })
             .state('subject-info', {
                 url: '/subject-info',
@@ -47,7 +47,7 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             })
             .state('subject-setup', {
                 url: '/subject-setup',
-                templateUrl: 'views/subject_setup.client.view.html'
+                templateUrl: 'views/subject-setup.html'
             })
             .state('reports', {
                 url: '/reports',

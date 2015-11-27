@@ -1,4 +1,4 @@
-angular.module('mean.system').controller('DatepickerDemoCtrl', function ($scope) {
+angular.module('mean').controller('DatepickerDemoCtrl', function ($scope) {
   /*
   $scope.today = function() {
     $scope.dt = new Date();

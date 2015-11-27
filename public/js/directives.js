@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.system').directive('groupTable', function() {
+angular.module('mean').directive('groupTable', function() {
   return { 
     restrict:'E',
     //transclude:true,              // It transcludes the contents of the directive into the template
@@ -11,7 +11,7 @@ angular.module('mean.system').directive('groupTable', function() {
   };
 });
 
-angular.module('mean.system').directive('sideBar', function() {
+angular.module('mean').directive('sideBar', function() {
   return { 
     restrict:'E',
     //transclude:true,              // It transcludes the contents of the directive into the template

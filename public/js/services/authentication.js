@@ -1,7 +1,7 @@
 'use strict';
 
 //Global authentication service
-angular.module('mean.system').factory("Authentication", [
+angular.module('mean').factory('Authentication', [
     function() {
         var _this = this;
         _this._data = {

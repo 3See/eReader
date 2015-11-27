@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mean.system').controller('StudyInfoController', ['$scope', 'Authentication', '$state',
+angular.module('mean').controller('StudyInfoController', ['$scope', 'Authentication', '$state',
   function ($scope, Authentication, $state) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
@@ -14,7 +14,7 @@ angular.module('mean.system').controller('StudyInfoController', ['$scope', 'Auth
 ]);
 
 
-angular.module('mean.system').controller('AccordionCtrl', function ($scope, $state) {
+angular.module('mean').controller('AccordionCtrl', function ($scope, $state) {
   $scope.oneAtATime = true;
 
   $scope.groups = [
