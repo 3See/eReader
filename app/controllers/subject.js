@@ -3,13 +3,17 @@
 /**
  * Module dependencies.
  */
-var sequelize = require('../models/subject');
+var db = require('../../config/sequelize');
 
-/**
- * Auth callback
- */
+var log = function(inst) {
+    console.dir( inst.get() );
+};
+
 exports.search = function(req, res, next) {
-  sequelize.query("SELECT * FROM `subject`").then(function(subjects) {
-      console.log(subjects);
-  }); 
+  var sid = '2000';
+
+  db.subject.findAll({where: {subjectID : sid}})
+      .then(function(posts) {
+          posts.forEach(log);
+      });
 };

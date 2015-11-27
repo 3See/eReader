@@ -17,7 +17,11 @@ var sequelize = new Sequelize(config.db.name, config.db.username, config.db.pass
   port: config.db.port,
   dialect: 'mysql',
   storage: config.db.storage,
-  logging: config.enableSequelizeLog === 'true' ? winston.verbose : false
+  logging: config.enableSequelizeLog === 'true' ? winston.verbose : false,
+  define: {
+      timestamps: false,
+      freezeTableName: true
+  }
 });
 
 // loop through all files in models directory ignoring hidden files and this file
