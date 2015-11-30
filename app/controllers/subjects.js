@@ -3,6 +3,7 @@
 /**
  * Module dependencies.
  */
+var _ = require('lodash');
 var db = require('../../config/sequelize');
 
 /**
@@ -47,9 +48,9 @@ exports.subject = function(req, res, next, lastName, firstName, email) {
         }
     }).then(function(subject){
         if (subject) {
-            return next(new Error('User ' + id));
+            return next(new Error('Subject ' + subject.subjectID));
         }
-        req.profile = user;
+        req.profile = subject;
         next();
     }).catch(function(err){
         next(err);
