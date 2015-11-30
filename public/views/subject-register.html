@@ -1,5 +1,5 @@
 <section data-ng-controller="RegisterController" class="content">
-  
+
     <div id="register-form">
       <form role="form">
         <!--Subject Contact-->
@@ -11,7 +11,7 @@
           <div class="row">
             <!--Title-->
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
-              <select name="Title" ng-model="title" class="form-control">
+              <select name="Title" ng-model="information.title" class="form-control">
                 <option value="">Title</option>
                 <option value=""></option>
                 <option value="Dr">Dr</option>
@@ -23,19 +23,19 @@
             </div>
             <!--First Name-->
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="First_Name" required="" type="text" placeholder="First Name" autocomplete="off" ng-model="firstname" class="form-control"/>
+              <input name="First_Name" required="" type="text" placeholder="First Name" autocomplete="off" ng-model="information.firstname" class="form-control"/>
             </div>
             <!--Middle Initial-->
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="Middle_Initial" required="" type="text" placeholder="MI" autocomplete="off" ng-model="middleinitial" class="form-control"/>
+              <input name="Middle_Initial" required="" type="text" placeholder="MI" autocomplete="off" ng-model="information.middlename" class="form-control"/>
             </div>
             <!--Last Name-->
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 ">
-              <input name="Last_Name" required="" type="text" placeholder="Last name" autocomplete="off" ng-model="lastname" class="form-control"/>
+              <input name="Last_Name" required="" type="text" placeholder="Last name" autocomplete="off" ng-model="information.lastname" class="form-control"/>
             </div>
             <!--Suffix-->
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <select name="Suffix" ng-model="suffix" class="form-control">
+              <select name="Suffix" ng-model="information.suffix" class="form-control">
               <option value="">Suffix</option>
               <option value=""></option>
               <option value="Jr">Jr</option>
@@ -45,6 +45,19 @@
               <option value="III">III</option>
               </select>
             </div>
+          </div><br>
+          <!--Gender-->
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="M" ng-model="information.gender" >
+              M
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios2" value="f" ng-model="information.gender" >
+              F
+            </label>
           </div><br>
           <!--Address-->
           <div class="row">
