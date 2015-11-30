@@ -5,10 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     employeeID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
-      references: {
-        model: 'employee',
-        key: 'employeeID'
-      }
+      primaryKey: true
     },
     addressID: {
       type: DataTypes.INTEGER(11),
