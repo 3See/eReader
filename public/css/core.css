@@ -53,6 +53,7 @@ button.studypage {
 
 #breadcrumb {
     display: inline-block;
+    width: 80%;
 }
 
 #content {

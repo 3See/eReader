@@ -6,7 +6,7 @@
     "angular-resource": "latest",
     "angular-cookies": "latest",
     "angular-mocks": "latest",
-    "bootstrap": "2.3.2",
+    "bootstrap": ">=3",
     "angular-bootstrap": "0.7.0",
     "angular-ui-utils": "0.0.4",
     "angular-ui-router": "~0.2.15"

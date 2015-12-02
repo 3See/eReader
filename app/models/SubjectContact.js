@@ -1,11 +1,11 @@
-/* jshint indent: 2 */
+'use strict';/* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('SubjectContact', {
     subjectID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     contactID: {
       type: DataTypes.INTEGER(11),
