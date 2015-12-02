@@ -1,6 +1,6 @@
-header(data-ng-controller="HeaderController")
-    img#logo(src="img/brand/eTectLogo.png", data-ui-sref="home")
-    button#profile(style="background-image: url({{authentication.user.profileImageURL}})")
+header(data-ng-controller="HeaderController" style="margin:0, 0, 0, 10; background-color:BLACK; width:100%")
+    img#logo(src="img/brand/eTectLogo.png", data-ui-sref="home" style="margin-top: 10px; margin-left:10px")
+    //button#profile(style="background-image: url({{authentication.user.profileImageURL}})")
     #menu-dropdown(collapse="!isCollapsed")
         span.icon-bar 
             a(data-ui-sref="settings.profile") Settings
