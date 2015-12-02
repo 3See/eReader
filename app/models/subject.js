@@ -6,8 +6,8 @@ var sequelize = require('../../config/sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('subject', {
     subjectID: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true
     },
     title: {
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     lastname: {
-      type: DataTypes.INTEGER(11),
+      type: DataTypes.TEXT,
       allowNull: false
     },
     firstname: {
