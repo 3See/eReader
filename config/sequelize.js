@@ -17,7 +17,11 @@ var sequelize = new Sequelize(config.db.name, config.db.username, config.db.pass
   port: config.db.port,
   dialect: 'mysql',
   storage: config.db.storage,
-  logging: config.enableSequelizeLog === 'true' ? winston.verbose : false
+  logging: config.enableSequelizeLog === 'true' ? winston.verbose : false,
+  define: {
+      timestamps: false,
+      freezeTableName: true
+  }
 });
 
 // loop through all files in models directory ignoring hidden files and this file
@@ -39,17 +43,25 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
-// Synchronizing any model changes with database. 
+// Synchronizing any model changes with database.
 // WARNING: this will DROP your database everytime you re-run your application
 sequelize
-  .sync({force: config.FORCE_DB_SYNC==='true', logging:config.enableSequelizeLog==='true' ? winston.verbose : false})
-  .then(function(){
+  .query('SET FOREIGN_KEY_CHECKS = 0', {raw: true})
+  .then(function() {
+    sequelize.sync({force: config.FORCE_DB_SYNC==='true', logging:config.enableSequelizeLog==='true' ? winston.verbose : false});
+  })
+  .then(function() {
         winston.info("Database "+(config.FORCE_DB_SYNC==='true'?"*DROPPED* and ":"")+ "synchronized");
     }).catch(function(err){
         winston.error("An error occured: %j",err);
-    });
- 
-// assign the sequelize variables to the db object and returning the db. 
+    }, function(){
+      sequelize
+    .query('SET FOREIGN_KEY_CHECKS = 1');
+  });
+
+
+
+// assign the sequelize variables to the db object and returning the db.
 module.exports = _.extend({
   sequelize: sequelize,
   Sequelize: Sequelize

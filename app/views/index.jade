@@ -1,6 +1,7 @@
 extends layouts/default
 
 block content
-    section#view-window(data-ui-view)
-
-block sidebar
+    include ./includes/sidebar
+    section.container-fluid
+      include ./includes/breadcrumb
+      section#view-window(data-ui-view)
