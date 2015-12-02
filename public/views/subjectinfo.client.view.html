@@ -1,6 +1,4 @@
 <div id="todo" class="container-fluid" data-ng-controller="SubjectInfoController" class="content">
-  
-
     <h1 class="text-center">{{info.fullName}}</h1>
 
     <!-- Display Non-editing info page -->
@@ -76,7 +74,14 @@
       <!-- Display editing info page -->
     <div ng-show="editBool">
       <!-- Patient  ID -->
-      <p>Patient ID: {{info.patientID}}</p>
+      <div class="row">
+        <div class="col-sm-2">
+          <p>Patient ID: </p>
+        </div>
+        <div class="col-sm-3">
+          <input type="text" ng-model="patientID" class="form-control"></input>
+        </div>
+      </div>
 
       <div class="row">
         <div class="col-sm-2">

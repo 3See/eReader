@@ -26,6 +26,7 @@ angular.module('mean').controller('SubjectInfoController', ['$scope', 'Authentic
   $scope.toggleEdit = function(index) {
     //Fil the input boxes with the current data
     console.log('toggled edit display.');
+    $scope.patientID = $scope.info.patientID;
     $scope.fullName = $scope.info.fullName;
     $scope.groupsDrop = $scope.groups[0];
     $scope.readersDrop = $scope.readers[0];
@@ -86,6 +87,7 @@ angular.module('mean').controller('SubjectInfoController', ['$scope', 'Authentic
     
   //Function that save the data when the save button is pressed in the editing mode
   $scope.saveEdit = function() {
+    $scope.info.patientID = $scope.patientID;
     $scope.info.fullName = $scope.fullName;
     $scope.info.group = $scope.tempGroup;
     $scope.info.readerID = $scope.tempReader;
