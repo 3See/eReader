@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     addressType: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     displayOrder: {
       type: DataTypes.INTEGER(11),

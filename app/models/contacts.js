@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     gender: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     }
   });
 };
