@@ -64,10 +64,10 @@
           <div class="row">
             <!--Street Address-->
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-              <input name="Street_Address" required="" type="text" placeholder="Address 1" autocomplete="off" ng-model="streetaddress1" class="form-control"/>
+              <input name="Street_Address" required="" type="text" onkeypress='return event.charCode === 32 || event.charCode >= 48 && event.charCode <= 57 || event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="Address 1" autocomplete="off" ng-model="streetaddress1" class="form-control"/>
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-              <input name="Street_Address" required="" type="text" placeholder="Address 2" autocomplete="off" ng-model="streetaddress2" class="form-control"/>
+              <input name="Street_Address" required="" type="text" onkeypress='return event.charCode === 32 || event.charCode >= 48 && event.charCode <= 57 || event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="Address 2" autocomplete="off" ng-model="streetaddress2" class="form-control"/>
             </div>
             <!--City-->
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
