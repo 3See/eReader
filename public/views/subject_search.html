@@ -1,0 +1,23 @@
+
+<section data-ng-controller="Subject_Search-Controller">
+  <form id="subject_select-form">
+    <div class="row">
+      <h4>Subject ID:</h4>
+      <input type="text" ng-model="subject_id" class="form-control"/>
+      <h4>Group ID:</h4>
+      <input type="text" ng-model="gid" class="form-control"/>
+    </div>
+    <div class="row">
+      <h4>First Name:</h4>
+      <input type="text" ng-model="fname" class="form-control"/>
+      <h4>Last Name:</h4>
+      <input type="text" ng-model="lname" class="form-control"/>
+    </div>
+    <input type="submit" value="Search" ng-click="search()" class="btn"/>
+  </form>
+  <div>
+    <ul>
+      <li ng-repeat="result in results" class="row">{{result.sid}} {{result.fname}} {{result.lname}}</li>
+    </ul>
+  </div>
+</section>
