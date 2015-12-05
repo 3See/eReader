@@ -71,8 +71,9 @@ button.studypage {
 }
 
 #content {
-  margin: 0px auto;
-
+  margin: 0;
+  float: left;
+  width: 100%;
 }
 
 #view-window {

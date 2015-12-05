@@ -52,6 +52,9 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             .state('reports', {
                 url: '/reports',
                 templateUrl: 'views/reports.client.view.html'
+            }).state('search', {
+                url: '/search',
+                templateUrl: 'views/subject_search.html'
             });
     }
 ]);

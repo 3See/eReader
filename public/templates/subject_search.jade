@@ -1,0 +1,21 @@
+section(data-ng-controller="Subject_Search-Controller")
+    form#subject_select-form
+        div.row
+            h4 Subject ID:
+            input.form-control(type="text", ng-model="subject_id")
+            h4 Group ID:
+            input.form-control(type="text", ng-model="gid")
+        div.row
+            h4 First Name:
+            input.form-control(type="text", ng-model="fname")
+            h4 Last Name:
+            input.form-control(type="text", ng-model="lname")
+        input.btn(type="submit", value="Search", ng-click="search()")
+    div
+        ul
+            li.row(ng-repeat="result in results")
+                | {{result.sid}} {{result.fname}} {{result.lname}}
+
+
+
+
