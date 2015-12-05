@@ -1,4 +1,7 @@
-'use strict';/* jshint indent: 2 */
+'use strict';
+/* jshint indent: 2 */
+
+var sequelize = require('../../config/sequelize');
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('subject', {
