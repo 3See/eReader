@@ -1,14 +1,14 @@
 'use strict';
 
-angular.module('mean').controller('SubjectInfoController', ['$scope', 'Authentication', '$state',
-    function ($scope, Authentication, $state) {
+angular.module('mean').controller('SubjectInfoController', ['$scope', 'Authentication', '$state', '$http',
+    function ($scope, Authentication, $state, $http) {
 
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
-    if (!Authentication.user) {
-        $state.go('sign-in');
-    }
+    //if (!Authentication.user) {
+    //    $state.go('sign-in');
+    //}
 
     //scope variables
   $scope.info = {fullName: 'John Doe', group:'Group 1', patientID:'123456789', readerID:'123456789', startDate:'01/02/03', endDate:'02/03/04', address1:'123 S Main St', city1:'Gainesville', state1:'FL', zip1:'21601', address2:'5050 W University Ave. PO Box 90909', city2:'Gainesville', state2:'FL', zip2:'32607', phone1:'813-555-1234', phone2:'813-555-4321', emergencyContact1:{name:'Jane Doe', relationship:'Wife', phone:'352-555-5678'}, emergencyContact2:{name:'Jack Doe', relationship:'Brother', phone:'813-555-3636'}};
