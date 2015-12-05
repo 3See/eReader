@@ -10,7 +10,7 @@
           <!--Name-->
           <div class="row">
             <!--Title-->
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
               <select name="Title" ng-model="information.title" class="form-control">
                 <option value="">Title</option>
                 <option value=""></option>
@@ -23,15 +23,15 @@
             </div>
             <!--First Name-->
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="First_Name" required="" type="text" placeholder="First Name" autocomplete="off" ng-model="information.firstname" class="form-control"/>
+              <input name="First_Name" required="required" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="First Name" autocomplete="off" ng-model="information.firstname" class="form-control"/>
             </div>
             <!--Middle Initial-->
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="Middle_Initial" required="" type="text" placeholder="MI" autocomplete="off" ng-model="information.middlename" class="form-control"/>
+              <input name="Middle_Initial" required="required" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="MI" autocomplete="off" ng-model="information.middlename" class="form-control"/>
             </div>
             <!--Last Name-->
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 ">
-              <input name="Last_Name" required="" type="text" placeholder="Last name" autocomplete="off" ng-model="information.lastname" class="form-control"/>
+              <input name="Last_Name" required="required" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="Last name" autocomplete="off" ng-model="information.lastname" class="form-control"/>
             </div>
             <!--Suffix-->
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -45,29 +45,33 @@
               <option value="III">III</option>
               </select>
             </div>
-          </div><br>
-          <!--Gender-->
-          <div class="radio">
-            <label>
-              <input type="radio" name="optionsRadios" id="optionsRadios1" value="M" ng-model="information.gender" >
-              M
-            </label>
+            <br>
+            <!--Gender-->
+            <div class="radio">
+              <label>
+                <input type="radio" required="required" name="optionsRadios" id="optionsRadios1" value="M" ng-model="information.gender" >
+                M
+              </label>
+              
+              <label>
+                <input type="radio" required="required" name="optionsRadios" id="optionsRadios2" value="F" ng-model="information.gender" >
+                F
+              </label>
+            </div>
           </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="optionsRadios" id="optionsRadios2" value="f" ng-model="information.gender" >
-              F
-            </label>
-          </div><br>
+          <br>
           <!--Address-->
           <div class="row">
             <!--Street Address-->
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
-              <input name="Street_Address" required="" type="text" placeholder="Street Address" autocomplete="off" ng-model="streetaddress1" class="form-control"/>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <input name="Street_Address" required="" type="text" placeholder="Address 1" autocomplete="off" ng-model="streetaddress1" class="form-control"/>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <input name="Street_Address" required="" type="text" placeholder="Address 2" autocomplete="off" ng-model="streetaddress2" class="form-control"/>
             </div>
             <!--City-->
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-              <input name="City" required="" type="text" placeholder="City" autocomplete="off" ng-model="city1" class="form-control"/>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <input name="City" required="" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="City" autocomplete="off" ng-model="city1" class="form-control"/>
             </div>
             <!--State-->
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
@@ -127,109 +131,45 @@
               </select>
             </div>
             <!--Zipcode-->
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="Zipcode" required="" type="number" placeholder="Zipcode" autocomplete="off" ng-model="zipcode1" class="form-control"/>
-            </div>
-          </div><br>
-          <div class="row">
-            <!--Street Address-->
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
-              <input name="Street_Address2" type="text" placeholder="Street Address" autocomplete="off" ng-model="streetaddress2" class="form-control"/>
-            </div>
-            <!--City-->
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-              <input name="City2" type="text" placeholder="City" autocomplete="off" ng-model="city2" class="form-control"/>
-            </div>
-            <!--State-->
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-              <select name="State2" ng-model="state2" class="form-control">
-              <option value="">St</option>
-              <option value="AL">AL</option>
-              <option value="AK">AK</option>
-              <option value="AZ">AZ</option>
-              <option value="AR">AR</option>
-              <option value="CA">CA</option>
-              <option value="CO">CO</option>
-              <option value="CT">CT</option>
-              <option value="DE">DE</option>
-              <option value="DC">DC</option>
-              <option value="FL">FL</option>
-              <option value="GA">GA</option>
-              <option value="HI">HI</option>
-              <option value="ID">ID</option>
-              <option value="IL">IL</option>
-              <option value="IN">IN</option>
-              <option value="IA">IA</option>
-              <option value="KS">KS</option>
-              <option value="KY">KY</option>
-              <option value="LA">LA</option>
-              <option value="ME">ME</option>
-              <option value="MD">MD</option>
-              <option value="MA">MA</option>
-              <option value="MI">MI</option>
-              <option value="MN">MN</option>
-              <option value="MS">MS</option>
-              <option value="MO">MO</option>
-              <option value="MT">MT</option>
-              <option value="NE">NE</option>
-              <option value="NV">NV</option>
-              <option value="NH">NH</option>
-              <option value="NJ">NJ</option>
-              <option value="NM">NM</option>
-              <option value="NY">NY</option>
-              <option value="NC">NC</option>
-              <option value="ND">ND</option>
-              <option value="OH">OH</option>
-              <option value="OK">OK</option>
-              <option value="OR">OR</option>
-              <option value="PA">PA</option>
-              <option value="RI">RI</option>
-              <option value="SC">SC</option>
-              <option value="SD">SD</option>
-              <option value="TN">TN</option>
-              <option value="TX">TX</option>
-              <option value="UT">UT</option>
-              <option value="VT">VT</option>
-              <option value="VA">VA</option>
-              <option value="WA">WA</option>
-              <option value="WV">WV</option>
-              <option value="WI">WI</option>
-              <option value="WY">WY</option>
-              </select>
-            </div>
-            <!--Zipcode-->
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="Zipcode2" type="number" placeholder="Zipcode" autocomplete="off" ng-model="zipcode2" class="form-control"/>
+              <input name="Zipcode" required="" type="text" pattern=".{5}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="Zipcode" autocomplete="off" ng-model="zipcode1" class="form-control"/>
             </div>
           </div><br>
+          
           <!--Personal Contact-->
           <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
               <div class="row">
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:left">
                   <t style="font-weight:bold">Primary Phone:</t>
                 </div>
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                  <input name="Primary_Phone" required="" type="text" placeholder="##########" autocomplete="off" ng-model="phone1" class="form-control"/>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                  <input name="Area_Code1" required="" type="text" pattern=".{3}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="###" autocomplete="off" ng-model="areacode1" class="form-control"/>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                  <input name="Primary_Phone" required="" type="text" pattern=".{7}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="#######" autocomplete="off" ng-model="phone1" class="form-control"/>
                 </div>
               </div>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
               <input name="Primary_Email" required="" type="email" placeholder="Primary Email" autocomplete="off" ng-model="email1" class="form-control"/>
             </div>
           </div><br>
           <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
               <div class="row">
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="text-align:left">
                   <t style="font-weight:bold">Secondary Phone:</t>
                 </div>
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                  <input name="Secondary_Phone" required="" type="text" placeholder="##########" autocomplete="off" ng-model="phone2" class="form-control"/>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                  <input name="Area_Code2" required="" type="text" pattern=".{3}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="###" autocomplete="off" ng-model="areacode2" class="form-control"/>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                  <input name="Secondary_Phone" required="" type="text" pattern=".{7}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="#######" autocomplete="off" ng-model="phone2" class="form-control"/>
                 </div>
               </div>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
               <input name="Secondary_Email" required="" type="email" placeholder="Primary Email" autocomplete="off" ng-model="email2" class="form-control"/>
             </div>
           </div><br>
@@ -239,7 +179,7 @@
           </h1>
           <div class="row">
             <!--Relationship-->
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
               <select name="Relationship1" required="" ng-model="relation1" class="form-control">
               <option value="">Relationship</option>
               <option value="Mother">Mother</option>
@@ -250,28 +190,31 @@
               </select>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="R1_First_Name" required="" type="text" placeholder="First name" autocomplete="off" ng-model="r1firstname" class="form-control"/>
+              <input name="R1_First_Name" required="" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="First name" autocomplete="off" ng-model="r1firstname" class="form-control"/>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="R1_Middle_Initial" required="" type="text" placeholder="MI" autocomplete="off" ng-model="r1middleinitial" class="form-control"/>
+              <input name="R1_Middle_Initial" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="MI" autocomplete="off" ng-model="r1middleinitial" class="form-control"/>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="R1_Last_Name" required="" type="text" placeholder="Last name" autocomplete="off" ng-model="r1lastname" class="form-control"/>
+              <input name="R1_Last_Name" required="" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="Last name" autocomplete="off" ng-model="r1lastname" class="form-control"/>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
               <div class="row">
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                   <t style="font-weight:bold">Phone:</t>
                 </div>
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                  <input name="R1_Phone" required="" type="text" placeholder="##########" autocomplete="off" ng-model="r1phone" class="form-control"/>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                  <input name="Contact_Area_Code2" required="" type="text" pattern=".{3}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="###" autocomplete="off" ng-model="contact_areacode1" class="form-control"/>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                  <input name="R1_Phone" required="" type="text" pattern=".{7}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="#######" autocomplete="off" ng-model="r1phone" class="form-control"/>
                 </div>
               </div>
             </div>
           </div><br>
           <div class="row">
             <!--Relationship-->
-            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
               <select name="Relationship2" required="" ng-model="relation2" class="form-control">
               <option value="">Relationship</option>
               <option value="Mother">Mother</option>
@@ -282,21 +225,24 @@
               </select>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="R2_First_Name" required="" type="text" placeholder="First name" autocomplete="off" ng-model="r2firstname" class="form-control"/>
+              <input name="R2_First_Name" required="" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="First name" autocomplete="off" ng-model="r2firstname" class="form-control"/>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="R2_Middle_Initial" required="" type="text" placeholder="MI" autocomplete="off" ng-model="r2middleinitial" class="form-control"/>
+              <input name="R2_Middle_Initial" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="MI" autocomplete="off" ng-model="r2middleinitial" class="form-control"/>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="R2_Last_Name" required="" type="text" placeholder="Last name" autocomplete="off" ng-model="r2lastname" class="form-control"/>
+              <input name="R2_Last_Name" required="" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="Last name" autocomplete="off" ng-model="r2lastname" class="form-control"/>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
               <div class="row">
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                   <t style="font-weight:bold">Phone:</t>
                 </div>
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                  <input name="R2_Phone" required="" type="text" placeholder="##########" autocomplete="off" ng-model="r2phone" class="form-control"/>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                  <input name="Contact_Area_Code2" required="" type="text" pattern=".{3}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="###" autocomplete="off" ng-model="contact_areacode2" class="form-control"/>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                  <input name="R2_Phone" required="" type="text" pattern=".{7}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="#######" autocomplete="off" ng-model="r2phone" class="form-control"/>
                 </div>
               </div>
             </div>

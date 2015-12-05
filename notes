@@ -1,0 +1,10 @@
+Changes Values:
+
+addressType in app > models > subjectAddress
+	allowNull changed from false to true
+
+zipPlus in app > models > address
+	allowNull changed from false to true
+
+gender in app > models > contact
+	allowNull changed from false to true

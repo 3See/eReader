@@ -30,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     zipplus: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     }
   });
 };
