@@ -27,7 +27,7 @@
             </div>
             <!--Middle Initial-->
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="Middle_Initial" required="required" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="MI" autocomplete="off" ng-model="information.middlename" class="form-control"/>
+              <input name="Middle_Initial" required="required" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' pattern=".{1}" placeholder="MI" autocomplete="off" ng-model="information.middlename" class="form-control"/>
             </div>
             <!--Last Name-->
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 ">
@@ -64,10 +64,10 @@
           <div class="row">
             <!--Street Address-->
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-              <input name="Street_Address" required="" type="text" placeholder="Address 1" autocomplete="off" ng-model="streetaddress1" class="form-control"/>
+              <input name="Street_Address" required="" type="text" onkeypress='return event.charCode === 32 || event.charCode >= 48 && event.charCode <= 57 || event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="Address 1" autocomplete="off" ng-model="streetaddress1" class="form-control"/>
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-              <input name="Street_Address" required="" type="text" placeholder="Address 2" autocomplete="off" ng-model="streetaddress2" class="form-control"/>
+              <input name="Street_Address" required="" type="text" onkeypress='return event.charCode === 32 || event.charCode >= 48 && event.charCode <= 57 || event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="Address 2" autocomplete="off" ng-model="streetaddress2" class="form-control"/>
             </div>
             <!--City-->
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -193,7 +193,7 @@
               <input name="R1_First_Name" required="" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="First name" autocomplete="off" ng-model="r1firstname" class="form-control"/>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="R1_Middle_Initial" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="MI" autocomplete="off" ng-model="r1middleinitial" class="form-control"/>
+              <input name="R1_Middle_Initial" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' pattern=".{1}" placeholder="MI" autocomplete="off" ng-model="r1middleinitial" class="form-control"/>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
               <input name="R1_Last_Name" required="" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="Last name" autocomplete="off" ng-model="r1lastname" class="form-control"/>
@@ -228,7 +228,7 @@
               <input name="R2_First_Name" required="" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="First name" autocomplete="off" ng-model="r2firstname" class="form-control"/>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-              <input name="R2_Middle_Initial" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="MI" autocomplete="off" ng-model="r2middleinitial" class="form-control"/>
+              <input name="R2_Middle_Initial" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' pattern=".{1}" placeholder="MI" autocomplete="off" ng-model="r2middleinitial" class="form-control"/>
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
               <input name="R2_Last_Name" required="" type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' placeholder="Last name" autocomplete="off" ng-model="r2lastname" class="form-control"/>
