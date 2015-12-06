@@ -18,6 +18,6 @@ angular.module('mean').controller('Subject_Search-Controller', ['$scope', 'Authe
                 results = data;
                 console.log(data);
             })
-            .error(function() {results = 'There was an error in the search'});
-        } // end search
+            .error(function() {results = 'There was an error in the search';});
+        }; // end search
 }]);
