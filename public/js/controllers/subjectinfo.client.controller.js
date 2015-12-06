@@ -11,7 +11,7 @@ angular.module('mean').controller('SubjectInfoController', ['$scope', 'Authentic
     //}
 
     //scope variables
-  $scope.info = {fullName: 'John Doe', group:'Group 1', patientID:'123456789', readerID:'123456789', startDate:'01/02/03', endDate:'02/03/04', address1:'123 S Main St', city1:'Gainesville', state1:'FL', zip1:'21601', address2:'5050 W University Ave. PO Box 90909', city2:'Gainesville', state2:'FL', zip2:'32607', phone1:'813-555-1234', phone2:'813-555-4321', emergencyContact1:{name:'Jane Doe', relationship:'Wife', phone:'352-555-5678'}, emergencyContact2:{name:'Jack Doe', relationship:'Brother', phone:'813-555-3636'}};
+  $scope.info = {firstName: 'John', middleName: 'A', lastName:'Doe', group:'Group 1', patientID:'123456789', readerID:'123456789', startDate:'01/02/03', endDate:'02/03/04', address1:'123 S Main St', city1:'Gainesville', state1:'FL', zip1:'21601', address2:'Apt 1410', city2:'Gainesville', state2:'FL', zip2:'32607', areacode1: '813', phone1:'5551234', areacode2:'853', phone2:'5554321', emergencyContact1:{firstName:'Jane', middleName: 'A', lastName:'Doe', relationship:'Wife', Areacode:'352', phone:'5555678'}, emergencyContact2:{firstName:'Jack', middleName:'A', lastName:'Doe', relationship:'Brother', Areacode:'813', phone:'5553636'}};
   $scope.groups = [{name:'Group 1'}, {name:'Group 2'}, {name:'Group 3'}];
   $scope.readers = [{name:'R15'}, {name:'R17'}, {name:'R18'}];
   $scope.states = [{name:'FL'},{name:'CA'},{name:'NH'}];
@@ -27,7 +27,9 @@ angular.module('mean').controller('SubjectInfoController', ['$scope', 'Authentic
     //Fil the input boxes with the current data
     console.log('toggled edit display.');
     $scope.patientID = $scope.info.patientID;
-    $scope.fullName = $scope.info.fullName;
+    $scope.firstName = $scope.info.firstName;
+    $scope.middleName = $scope.info.middleName;
+    $scope.lastName = $scope.info.lastName;
     $scope.groupsDrop = $scope.groups[0];
     $scope.readersDrop = $scope.readers[0];
     $scope.startDate = $scope.info.startDate;
@@ -43,13 +45,21 @@ angular.module('mean').controller('SubjectInfoController', ['$scope', 'Authentic
     $scope.statesDrop2 = $scope.states[0];
     $scope.zip2 = $scope.info.zip2;
     
+    $scope.areacode1 = $scope.info.areacode1;    
+    $scope.areacode2 = $scope.info.areacode2;
     $scope.phone1 = $scope.info.phone1;    
     $scope.phone2 = $scope.info.phone2;
 
-    $scope.emergencyContact1Name = $scope.info.emergencyContact1.name;    
-    $scope.emergencyContact2Name = $scope.info.emergencyContact2.name; 
+    $scope.emergencyContact1FirstName = $scope.info.emergencyContact1.firstName;    
+    $scope.emergencyContact2FirstName = $scope.info.emergencyContact2.firstName; 
+    $scope.emergencyContact1MiddleName = $scope.info.emergencyContact1.middleName;    
+    $scope.emergencyContact2MiddleName = $scope.info.emergencyContact2.middleName; 
+    $scope.emergencyContact1LastName = $scope.info.emergencyContact1.lastName;    
+    $scope.emergencyContact2LastName = $scope.info.emergencyContact2.lastName; 
     $scope.emergencyContact1Relationship = $scope.info.emergencyContact1.relationship;
     $scope.emergencyContact2Relationship = $scope.info.emergencyContact2.relationship;
+    $scope.emergencyContact1Areacode = $scope.info.emergencyContact1.Areacode;
+    $scope.emergencyContact2Areacode = $scope.info.emergencyContact2.Areacode;
     $scope.emergencyContact1Phone = $scope.info.emergencyContact1.phone;
     $scope.emergencyContact2Phone = $scope.info.emergencyContact2.phone;
 
@@ -108,16 +118,26 @@ angular.module('mean').controller('SubjectInfoController', ['$scope', 'Authentic
     $scope.info.phone1 = $scope.phone1;    
     $scope.info.phone2 = $scope.phone2;
 
-    $scope.info.emergencyContact1.name = $scope.emergencyContact1Name;    
-    $scope.info.emergencyContact2.name = $scope.emergencyContact2Name; 
+    $scope.info.emergencyContact1FirstName = $scope.emergencyContact1.firstName;    
+    $scope.info.emergencyContact2FirstName = $scope.emergencyContact2.firstName; 
+    $scope.info.emergencyContact1MiddleName = $scope.emergencyContact1.middleName;    
+    $scope.info.emergencyContact2MiddleName = $scope.emergencyContact2.middleName; 
+    $scope.info.emergencyContact1LastName = $scope.emergencyContact1.lastName;    
+    $scope.info.emergencyContact2LastName = $scope.emergencyContact2.lastName; 
     $scope.info.emergencyContact1.relationship = $scope.emergencyContact1Relationship;
     $scope.info.emergencyContact2.relationship = $scope.emergencyContact2Relationship;
+    $scope.info.emergencyContact1Areacode = $scope.emergencyContact1Areacode;
+    $scope.info.emergencyContact2Areacode = $scope.emergencyContact2Areacode;
     $scope.info.emergencyContact1.phone = $scope.emergencyContact1Phone;
     $scope.info.emergencyContact2.phone = $scope.emergencyContact2Phone;
 
     //Change the boolen value to toggle the html elements
     $scope.editBool = false;
   };
+
+  $scope.addDashes = function(f){
+    f.value = f.value.slice(0,3)+"-"+f.value.slice(3,6);
+  } 
 
 
 }]);
