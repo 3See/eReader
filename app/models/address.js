@@ -1,11 +1,13 @@
 /* jshint indent: 2 */
 'use strict';
 
+var sequelize = require('../../config/sequelize');
+
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('address', {
     addressID: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true
     },
     addressLine1: {
@@ -14,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     addressLine2: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     },
     city: {
       type: DataTypes.TEXT,

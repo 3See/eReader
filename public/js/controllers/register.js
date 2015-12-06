@@ -10,8 +10,10 @@ angular.module('mean').controller('RegisterController', ['$scope', 'Authenticati
     // }
 
     $scope.submit = function () {
-      console.log($scope.information);
-      $http.post('/subject/register', $scope.information);
+      $scope.$watch('register.$valid', function(newVal) {
+        console.log($scope.information);
+        $http.post('/subject/register', $scope.information);
+      });
     };
 
 
