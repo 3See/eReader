@@ -6,9 +6,9 @@ angular.module('mean').controller('subjectSetupController', ['$scope', 'Authenti
     $scope.authentication = Authentication;
 
     // If auth not set goto login
-    if(!Authentication.user) {
-      $state.go('sign-in');
-    }
+    //if(!Authentication.user) {
+    //  $state.go('sign-in');
+    //}
 
     $scope.subjectID = '105';
     $scope.phone = '813-555-1234';
