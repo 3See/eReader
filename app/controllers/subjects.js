@@ -34,6 +34,7 @@ exports.register = function(req, res, next) {
     subject.save()
     //synchronize
     .then(function() {
+
         console.log('New Subject (local) : {' +
             'id: ' + subject.subjectID +
             ' firstname: ' + subject.firstname +
@@ -56,7 +57,6 @@ exports.register = function(req, res, next) {
             emailtype: 'Secondary',
             emailaddress: req.body.email2
         };
-
 
         address = db.address.build(address);
         subjectemail = db.subjectemail.build(subjectemail);
@@ -96,6 +96,7 @@ exports.register = function(req, res, next) {
         .catch(function(err){
             console.log("address error : " + err);
         });
+        
     })
     .catch(function(err){
         //should do something here.....
