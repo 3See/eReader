@@ -45,8 +45,25 @@
               <option value="III">III</option>
               </select>
             </div>
-            <br>
+            
+          </div>
+          <br>
+          <!--Address-->
+          <div class="row">
+            <!--Street Address-->
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <input name="Height" required="" type="text" placeholder="Height" autocomplete="off" ng-model="height" class="form-control"/>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <input name="Weight" required="" type="text" placeholder="Weight" autocomplete="off" ng-model="Weight" class="form-control"/>
+            </div>
+            <!--City-->
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <input name="Age" required="" type="text" placeholder="Age" autocomplete="off" ng-model="Age" class="form-control"/>
+            </div>
             <!--Gender-->
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <span class="pull-left">
             <div class="radio">
               <label>
                 <input type="radio" required="required" name="optionsRadios" id="optionsRadios1" value="M" ng-model="information.gender" >
@@ -58,6 +75,8 @@
                 F
               </label>
             </div>
+          </span>
+          </div>
           </div>
           <br>
           <!--Address-->
