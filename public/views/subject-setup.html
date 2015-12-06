@@ -1,69 +1,89 @@
 <section data-ng-controller="subjectSetupController" class="content">
     
-    <table>
-        <tr>
-            <td>Subject ID</td>
-            <td>{{subjectID}}</td>
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-xs-offset-2 col-md-offset-2 col-lg-offset-2">
+            Subject ID :
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            {{subjectID}}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-xs-offset-2 col-md-offset-2 col-lg-offset-2">
+            Subject Group :
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div>
+               <select name="Title" ng-model="currentItem" class="form-control">
+                <option value="">Unassigned</option>
+                <option ng-repeat= "item in items" value="{{item}}">{{item}}</option>
+              </select>
+            </div>
+        </div>
         </tr>
-        <tr>
-            <td>Subject Group</td>
-            <td>
-                <div>
-                   <select name="Title" ng-model="currentItem" class="form-control">
-                    
-                    <option value="">Unassigned</option>
-                    <option ng-repeat= "item in items" value="{{item}}">{{item}}</option>
-                  </select>
-                </div>
-
-            </td>
-        </tr>
-        <tr>
-            <td>Phone Number</td>
-            <td>
-                <div class="input-group">
-                    <!--<span class="input-group-addon" id="basic-addon1">@</span>-->
-                    <input type="text" class="form-control" placeholder="XXX-XXX-XXXX" aria-describedby="basic-addon1">
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>Reader ID</td>
-            <td>
-                   <select ng-model="selectedReader" class="form-control">
-                    <option ng-repeat= "reader in readers" value="{{reader}}">{{reader}}</option>
-                  </select>
-            </td>
-        </tr>  
-        <tr>
-            <td>Start Date</td>
-            <td>                
-                <div>
-                    <p class="input-group">
-                      <input type="date" class="form-control" uib-datepicker-popup ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="false" close-text="Close" />
-                      <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                      </span>
-                    </p>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>End Date</td>
-            <td>
-                <div>
-                    <p class="input-group">
-                      <input type="date" class="form-control" uib-datepicker-popup ng-model="end" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" />
-                      <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                      </span>
-                    </p>
-                </div>
-            </td>
-        </tr>
-        <tr ng-repeat = "ingestion in ingestions">
-            <td>Ingestion {{ingestion.num}}</td>
-            <td>{{ingestion.date}}</td>
-        </tr>
-    </table>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-xs-offset-2 col-md-offset-2 col-lg-offset-2">
+            Phone Number :
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <input name="Area_Code1" required="" type="text" pattern=".{3}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="###" autocomplete="off" ng-model="areacode1" class="form-control"/>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <input name="Primary_Phone" required="" type="text" pattern=".{7}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="#######" autocomplete="off" ng-model="phone1" class="form-control"/>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-xs-offset-2 col-md-offset-2 col-lg-offset-2">
+            Reader ID :
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <select ng-model="selectedReader" class="form-control">
+                <option ng-repeat= "reader in readers" value="{{reader}}">{{reader}}</option>
+            </select>
+        </div>
+    </div>
+    <br>
+    <div class="row"> 
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-xs-offset-2 col-md-offset-2 col-lg-offset-2">
+            Start Date :
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">                
+            <div>
+                <input type="date" class="form-control" uib-datepicker-popup ng-model="dt" ng-required="true" />
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-xs-offset-2 col-md-offset-2 col-lg-offset-2">
+            End Date :
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div>
+                  <input type="date" class="form-control" uib-datepicker-popup ng-model="end" ng-required="false" />
+            </div>        
+        </div>
+    </div>
+    <br>
+<!--NOT SURE IF NEED
+    <div class="well col-xs-6 col-sm-6 col-md-6 col-lg-6 col-sm-offset-2 col-xs-offset-2 col-md-offset-2 col-lg-offset-2" style="height:25vh; overflow-y:scroll">
+        <table class="table table-striped">
+            <thead><tr><th>Ingestion #</th><th>Ingestion Dates</th></tr></thead>
+            <tbody>
+                <tr ng-repeat="ingestion in ingestions">
+                    <td>
+                        Ingestion {{ingestion.num}}
+                    </td>
+                    <td>
+                        {{ingestion.date}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>    
+    </div>
+-->
 </section>
