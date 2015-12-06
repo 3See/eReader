@@ -12,7 +12,6 @@ var db = require('../../config/sequelize');
 exports.register = function(req, res, next) {
     var message = null;
     var subject = db.subject.build(req.body);
-
     subject.provider = 'local';
     console.log('New Subject (local) : {' +
         'id: ' + subject.subjectID +

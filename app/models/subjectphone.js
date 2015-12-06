@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     phoneType: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     },
     areaCode: {
       type: DataTypes.INTEGER(11),
