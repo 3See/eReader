@@ -6,9 +6,9 @@ angular.module('mean').controller('HomeController', ['$scope', 'Authentication',
     $scope.authentication = Authentication;
 
     // If auth not set goto login
-    if(!Authentication.user) {
-      $state.go('sign-in');
-    }
+    //if(!Authentication.user) {
+    //  $state.go('sign-in');
+    //}
 
     $scope.studies = [
       { name: 'Study 1' }, 
