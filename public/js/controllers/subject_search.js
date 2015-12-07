@@ -14,6 +14,7 @@ angular.module('mean').controller('Subject_Search-Controller', ['$scope', 'Authe
                 }
             })
             .success(function(data) {
+                console.log(data);
                 $scope.results = data;
             })
             .error(function(err) {
