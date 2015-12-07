@@ -29,10 +29,10 @@
             Phone Number :
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-            <input name="Area_Code1" required="" type="text" pattern=".{3}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="###" autocomplete="off" ng-model="areacode1" class="form-control"/>
+            <input name="Area_Code1" ngRequired type="number" pattern=".{3}" placeholder="###" autocomplete="off" ng-model="areacode1" class="form-control"/>
         </div>
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            <input name="Primary_Phone" required="" type="text" pattern=".{7}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' placeholder="#######" autocomplete="off" ng-model="phone1" class="form-control"/>
+            <input name="Primary_Phone" ngRequired="" type="number" pattern=".{7}" placeholder="#######" autocomplete="off" ng-model="phone1" class="form-control"/>
         </div>
     </div>
     <br>
