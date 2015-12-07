@@ -27,6 +27,6 @@ exports.search = function(req, res, next) {
     db.subject.findAll({where: [query]}).then(function(data) {
         data.forEach(log);
         if(data === {} ) { res.send("No results found"); } 
-        else { res.send("Data received"); }
+        else { res.send(data); }
     });
 };

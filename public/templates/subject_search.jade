@@ -11,8 +11,8 @@ section(data-ng-controller="Subject_Search-Controller")
         input.btn(type="submit", value="Search", ng-click="search()")
     div
         ul
-            li.row {{results}}
-
-
-
+            li(ng-repeat="result in results").row
+                span.col SubjectID: {{result.subjectID}} 
+                span.col First Name: {{result.firstname}} 
+                span.col Last Name: {{result.lastname}}
 

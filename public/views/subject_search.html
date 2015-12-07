@@ -15,7 +15,7 @@
   </form>
   <div>
     <ul>
-      <li class="row">{{results}}</li>
+      <li ng-repeat="result in results" class="row"><span class="col">SubjectID: {{result.subjectID}} </span><span class="col">First Name: {{result.firstname}} </span><span class="col">Last Name: {{result.lastname}}</span></li>
     </ul>
   </div>
 </section>
