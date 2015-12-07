@@ -137,7 +137,7 @@ angular.module('mean').controller('SubjectInfoController', ['$scope', 'Authentic
 
   $scope.addDashes = function(f){
     f.value = f.value.slice(0,3)+"-"+f.value.slice(3,6);
-  } 
+  };
 
 
 }]);
