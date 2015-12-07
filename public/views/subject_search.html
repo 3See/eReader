@@ -4,8 +4,6 @@
     <div class="row">
       <h4>Subject ID:</h4>
       <input type="text" ng-model="subject_id" class="form-control"/>
-      <h4>Group ID:</h4>
-      <input type="text" ng-model="gid" class="form-control"/>
     </div>
     <div class="row">
       <h4>First Name:</h4>
@@ -17,7 +15,7 @@
   </form>
   <div>
     <ul>
-      <li ng-repeat="result in results" class="row">{{result.sid}} {{result.fname}} {{result.lname}}</li>
+      <li ng-repeat="result in results" class="row"><span class="col">SubjectID: {{result.subjectID}} </span><span class="col">First Name: {{result.firstname}} </span><span class="col">Last Name: {{result.lastname}}</span></li>
     </ul>
   </div>
 </section>
