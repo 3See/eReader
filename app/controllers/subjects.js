@@ -29,6 +29,18 @@ exports.register = function(req, res, next) {
         zip: req.body.zipcode
     };
 
+    var contact1 = {
+        lastname: req.body.r1lastname,
+        firstname: req.body.r1firstname,
+        middlename: req.body.r1middleinitial
+    };
+
+    var contact2 = {
+        lastname: req.body.r2lastname,
+        firstname: req.body.r2firstname,
+        middlename: req.body.r2middleinitial
+    };
+
     var message = null;
     subject = db.subject.build(subject);
     subject.save()
@@ -57,18 +69,46 @@ exports.register = function(req, res, next) {
             emailtype: 'Secondary',
             emailaddress: req.body.email2
         };
+        var subjectphone1 = {
+            subjectID: subject.subjectID,
+            phoneType: 'Primary',
+            areaCode: req.body.areacode1,
+            phonenumber: req.body.phone1,
+            displayorder: 1
+        };
+        var subjectphone2 = {
+            subjectID: subject.subjectID,
+            phoneType: 'Secondary',
+            areaCode: req.body.areacode2,
+            phonenumber: req.body.phone2,
+            displayorder: 2
+        };
 
         address = db.address.build(address);
         subjectemail = db.subjectemail.build(subjectemail);
-
+        subjectphone1 = db.subjectphone.build(subjectphone1);
         //special cases
-        if(req.body.email2 !== undefined) {
+        if(subjectemail2.emailaddress !== undefined) {
             console.log('subjectemail2: ' + subjectemail2.subjectID);
             subjectemail2 = db.subjectemail.build(subjectemail2);
             subjectemail2.save();
         }
+        if(subjectphone2.phonenumber !== undefined && subjectphone2.areacode !== undefined) {
+            subjectphone2 = db.subjectphone.build(subjectphone2);
+            subjectphone2.save()
+            .catch(function(err){
+                console.log('subjectphone2 error : ' + err);
+            });
+        }
 
-        subjectemail.save();
+        subjectemail.save()
+        .catch(function(err){
+            console.log('subjectemail error : ' + err);
+        });
+        subjectphone1.save()
+        .catch(function(err){
+            console.log('subjectphone1 error : ' + err);
+        });
         address.save()    
         //synchronize
         .then(function() {
@@ -90,13 +130,81 @@ exports.register = function(req, res, next) {
             SubjectAddress = db.SubjectAddress.build(SubjectAddress);
 
             //save
-            SubjectAddress.save();
+            SubjectAddress.save()
+            .catch(function(err){
+                console.log('SubjectAddress error : ' + err);
+            });
 
         })
         .catch(function(err){
-            console.log("address error : " + err);
+            console.log('address error : ' + err);
         });
-        
+
+        contact1 = db.contacts.build(contact1);
+        contact1.save()
+        .then(function() {
+
+            var contactphone1 = {
+                contactID: contact1.contactID,
+                phonetype: 'Primary',
+                areacode:  req.body.contact_areacode1,
+                phonenumber: req.body.r1phone
+            };
+
+            var subjectcontact1 = {
+                subjectID: subject.subjectID,
+                contactID: contact1.contactID,
+                contactOrder: 1,
+                relationship: req.body.relation1
+            };
+
+            contactphone1 = db.contactphone.build(contactphone1);
+            subjectcontact1 = db.SubjectContact.build(subjectcontact1);
+            contactphone1.save()
+            .catch(function(err){
+                console.log('contactphone1 error : ' + err);
+            });
+            subjectcontact1.save()
+            .catch(function(err){
+                console.log('subjectcontact1 error : ' + err);
+            });
+        })
+        .catch(function(err){
+            console.log('contact1 error : ' + err);
+        });
+        contact2 = db.contacts.build(contact2);
+        contact2.save()
+        .then(function() {
+
+            var contactphone2 = {
+                contactID: contact2.contactID,
+                phonetype: 'Primary',
+                areacode:  req.body.contact_areacode2,
+                phonenumber: req.body.r2phone
+            };
+
+            var subjectcontact2 = {
+                subjectID: subject.subjectID,
+                contactID: contact2.contactID,
+                contactOrder: 2,
+                relationship: req.body.relation2
+            };
+
+            contactphone2 = db.contactphone.build(contactphone2);
+            subjectcontact2 = db.SubjectContact.build(subjectcontact2);
+            contactphone2.save()
+            .catch(function(err){
+                console.log('contactphone2 error : ' + err);
+            });
+            subjectcontact2.save()
+            .catch(function(err){
+                console.log('subjectcontact2 error : ' + err);
+            });
+        })
+        .catch(function(err){
+            console.log('contact2 error : ' + err);
+        });
+
     })
     .catch(function(err){
         //should do something here.....
