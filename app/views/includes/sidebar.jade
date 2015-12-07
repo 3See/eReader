@@ -1,0 +1,54 @@
+nav#sidebar(data-ng-controller="sidebarCtrl")
+	div
+		nav
+			ul(class="section-tabs")
+				li
+					button(class="btn btn-transparent btn-block" ui-sref="home")
+						div(class="row")
+							div(class="col-xs-1 col-sm-1 col-md-1 col-lg-1")
+								span(class="glyphicon glyphicon-menu-hamburger")
+							div(class="col-xs-10 col-sm-10 col-md-10 col-lg-10")
+								span(class="pull-left") Dashboard
+				li
+					button(class="btn btn-transparent btn-block" ui-sref="subject-status")
+						div(class="row")
+							div(class="col-xs-1 col-sm-1 col-md-1 col-lg-1")
+								span(class="glyphicon glyphicon-stats")
+							div(class="col-xs-10 col-sm-10 col-md-10 col-lg-10")
+								span(class="pull-left") Record Status
+				li
+					button(class="btn btn-transparent btn-block" ui-sref="subject-register") 
+						div(class="row")
+							div(class="col-xs-1 col-sm-1 col-md-1 col-lg-1")
+								span(class="glyphicon glyphicon-ok")
+							div(class="col-xs-10 col-sm-10 col-md-10 col-lg-10")
+								span(class="pull-left") Subject Registration
+				li 
+					button(class="btn btn-transparent btn-block" ui-sref="subject-setup") 
+						div(class="row")
+							div(class="col-xs-1 col-sm-1 col-md-1 col-lg-1")
+								span(class="glyphicon glyphicon-plus")
+							div(class="col-xs-10 col-sm-10 col-md-10 col-lg-10")
+								span(class="pull-left") Subject Enrollment
+				li
+					button(class="btn btn-transparent btn-block" ui-sref="subject-select") 
+						div(class="row")
+							div(class="col-xs-1 col-sm-1 col-md-1 col-lg-1")
+								span(class="glyphicon glyphicon-search")
+							div(class="col-xs-10 col-sm-10 col-md-10 col-lg-10")
+								span(class="pull-left") Search Records
+				li
+					button(class="btn btn-transparent btn-block" ui-sref="calendar") 
+						div(class="row")
+							div(class="col-xs-1 col-sm-1 col-md-1 col-lg-1")
+								span(class="glyphicon glyphicon-calendar")
+							div(class="col-xs-10 col-sm-10 col-md-10 col-lg-10")
+								span(class="pull-left") Calendar
+				li
+					button(class="btn btn-transparent btn-block" ui-sref="reports") 
+						div(class="row")
+							div(class="col-xs-1 col-sm-1 col-md-1 col-lg-1")
+								span(class="glyphicon glyphicon-book")
+							div(class="col-xs-10 col-sm-10 col-md-10 col-lg-10")
+								span(class="pull-left") Reports
+
