@@ -9,7 +9,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     contactID: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      primaryKey: true,
     },
     contactOrder: {
       type: DataTypes.INTEGER(11),

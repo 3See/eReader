@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     displayOrder: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: true
     }
   });
 };
