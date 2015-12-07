@@ -89,7 +89,7 @@
           <p>First Name: </p>
         </div>
         <div class="col-sm-3">
-          <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' required="" ng-model="information.firstname" class="form-control"></input>
+          <input type="text" ngRequired ng-model="information.firstname" class="form-control"></input>
         </div>
       </div>
 
@@ -98,7 +98,7 @@
           <p>Middle Initial: </p>
         </div>
         <div class="col-sm-3">
-          <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' pattern=".{1}" required="" ng-model="information.middlename" class="form-control"></input>
+          <input type="text" pattern=".{1}" ngRequired ng-model="information.middlename" class="form-control"></input>
         </div>
       </div>
 
@@ -107,7 +107,7 @@
           <p>Last Name: </p>
         </div>
         <div class="col-sm-3">
-          <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' required="" ng-model="information.lastname" class="form-control"></input>
+          <input type="text" ngRequired ng-model="information.lastname" class="form-control"></input>
         </div>
       </div>
 
@@ -156,7 +156,7 @@
         </div>
         <div class="col-sm-3">
           <!--<input type="text" ng-model="endDate" class="form-control"></input>-->
-          <input type="date" class="form-control" uib-datepicker-popup ng-model="endDate" ng-required="false" />
+          <input type="date" class="form-control" uib-datepicker-popup ng-model="endDate"/>
         </div>
       </div>
       </br>
@@ -167,10 +167,10 @@
           <p>Phone:</p>
         </div>
         <div class="col-sm-1">
-          <input type="text" pattern=".{3}"  onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="information.areacode1" required="" class="form-control"></input>
+          <input type="number" pattern=".{3}" ngRequired class="form-control"></input>
         </div>
         <div class="col-sm-2">
-          <input type="text" pattern=".{7}" onBlur='addDashes(this)' onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="information.phone1" required="" class="form-control"></input>
+          <input type="number" pattern=".{7}" ng-model="information.phone1" ngRequired class="form-control"></input>
         </div>
       </div>
 
@@ -181,10 +181,10 @@
           </p>
         </div>
         <div class="col-sm-1">
-          <input type="text" pattern=".{3}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="information.areacode2" class="form-control"></input>
+          <input type="number" pattern=".{3}" ng-model="information.areacode2" class="form-control"></input>
         </div>
         <div class="col-sm-2">
-          <input type="text" pattern=".{7}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="information.phone2" class="form-control"></input>
+          <input type="number" pattern=".{7}" ng-model="information.phone2" class="form-control"></input>
         </div>
       </div>
       <br>
@@ -192,22 +192,22 @@
       <div class="row">
         <div class="col-sm-2">
           <p> Address: </p>
-          <input type="text" onkeypress='return event.charCode === 32 || event.charCode >= 48 && event.charCode <= 57 || event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' required="" ng-model="information.addressLine1" class="form-control"></input>
+          <input type="text" ngRequired ng-model="information.addressLine1" class="form-control"></input>
           
         </div>
         <div class="col-sm-2">
           <p>Address 2:</p>
-          <input type="text" onkeypress='return event.charCode === 32 || event.charCode >= 48 && event.charCode <= 57 || event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' required="" ng-model="information.addressLine2" class="form-control"></input>
+          <input type="text" ngRequired ng-model="information.addressLine2" class="form-control"></input>
           
         </div>
         <div class="col-sm-3">
           <p> City: </p>
-          <input type="text" onkeypress='return event.charCode === 32 || event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' ng-model="information.city" required="" class="form-control"></input>
+          <input type="text" ngRequired class="form-control"></input>
           
         </div>
         <div class="col-sm-2">
           <p> State: </p>
-          <select name="State" required="" ng-model="information.state" class="form-control">
+          <select name="State" ngRequired ng-model="information.state" class="form-control">
               <option value="">St</option>
               <option value="AL">AL</option>
               <option value="AK">AK</option>
@@ -265,7 +265,7 @@
         </div>
         <div class="col-sm-2">
           <p> Zip Code: </p>
-          <input type="text" pattern=".{5}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="information.zip"  required="" class="form-control"></input>
+          <input type="number" pattern=".{5}" ng-model="information.zip"  ngRequired class="form-control"></input>
           
         </div>
       </div>
@@ -280,29 +280,29 @@
       <!-- Display the contact information -->
         <div class="row">
             <div class="col-sm-2"> 
-              <p>First Name: <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' required="" ng-model="information.r1firstname" class="form-control"></input></p>
-              <p>First Name: <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' required="" ng-model="information.r2firstname" class="form-control"></input></p>
+              <p>First Name: <input type="text" ngRequired ng-model="information.r1firstname" class="form-control"></input></p>
+              <p>First Name: <input type="text" ngRequired ng-model="information.r2firstname" class="form-control"></input></p>
             </div>
             
             <div class="col-sm-1"> 
-              <p>M.I.: <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' pattern=".{1}" required="" ng-model="information.r1middleinitial" class="form-control"></input></p>
-              <p> M.I.: <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' pattern=".{1}" required="" ng-model="information.r2middleinitial" class="form-control"></input></p>
+              <p>M.I.: <input type="text" pattern=".{1}" ng-model="information.r1middleinitial" class="form-control"></input></p>
+              <p> M.I.: <input type="text" pattern=".{1}" ng-model="information.r2middleinitial" class="form-control"></input></p>
             </div>
 
             <div class="col-sm-2"> 
-              <p>Last Name: <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' required="" ng-model="information.r1lastname" class="form-control"></input></p>
-              <p>Last Name: <input type="text" onkeypress='return event.charCode >= 65 && event.charCode <= 90 || event.charCode >= 97 && event.charCode <= 122' required="" ng-model="information.r2lastname" class="form-control"></input></p>
+              <p>Last Name: <input type="text" ngRequired ng-model="information.r1lastname" class="form-control"></input></p>
+              <p>Last Name: <input type="text" ngRequired ng-model="information.r2lastname" class="form-control"></input></p>
             </div>
 
             <div class="col-sm-2"> 
-              <p>Relationship:<select name="Relationship" required="" ng-model="information.relation1" class="form-control">
+              <p>Relationship:<select name="Relationship" ngRequired ng-model="information.relation1" class="form-control">
               <option value="Mother">Mother</option>
               <option value="Father">Father</option>
               <option value="Sibling">Sibling</option>
               <option value="Spouse">Spouse</option>
               <option value="Other">Other</option>
               </select></p>
-              <p>Relationship:<select name="Relationship2" required="" ng-model="information.relation2" class="form-control">
+              <p>Relationship:<select name="Relationship2" ngRequired ng-model="information.relation2" class="form-control">
               <option value="Mother">Mother</option>
               <option value="Father">Father</option>
               <option value="Sibling">Sibling</option>
@@ -311,14 +311,14 @@
               </select></p>
             </div>
             <div class="col-sm-1"> 
-              <p>Phone: <input type="text" pattern=".{3}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="information.contact_areacode1" required="" class="form-control"></input></p>
-              <p>Phone: <input type="text" pattern=".{3}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="information.contact_areacode2" required="" class="form-control"></input></p>
+              <p>Phone: <input type="number" pattern=".{3}" ng-model="information.contact_areacode1" ngRequired class="form-control"></input></p>
+              <p>Phone: <input type="number" pattern=".{3}" ng-model="information.contact_areacode2" ngRequired class="form-control"></input></p>
             </div>
             <div class="col-sm-2"> 
               <br>
-              <p><input type="text" pattern=".{7}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="information.r1phone" required="" class="form-control"></input></p>
+              <p><input type="number" pattern=".{7}" ng-model="information.r1phone" ngRequired class="form-control"></input></p>
               <br>
-              <p><input type="text" pattern=".{7}" onkeypress='return event.charCode >= 48 && event.charCode <= 57' ng-model="information.r2phone" required="" class="form-control"></input></p>
+              <p><input type="number" pattern=".{7}" ng-model="information.r2phone" ngRequired class="form-control"></input></p>
             </div>
         </div>
 
