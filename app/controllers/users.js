@@ -3,6 +3,7 @@
 /**
  * Module dependencies.
  */
+var _ = require('lodash');
 var db = require('../../config/sequelize');
 
 /**

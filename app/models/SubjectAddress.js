@@ -1,4 +1,4 @@
-/* jshint indent: 2 */
+'use strict';/* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('SubjectAddress', {
@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     addressType: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     displayOrder: {
       type: DataTypes.INTEGER(11),

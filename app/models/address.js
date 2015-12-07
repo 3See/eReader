@@ -1,4 +1,5 @@
 /* jshint indent: 2 */
+'use strict';
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('address', {
@@ -29,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     zipplus: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     }
   });
 };

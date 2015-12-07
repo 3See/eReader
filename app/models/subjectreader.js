@@ -1,7 +1,7 @@
-/* jshint indent: 2 */
+'use strict';/* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('subjectreader', {
+  return sequelize.define('SubjectReader', {
     studyID: {
       type: DataTypes.INTEGER(11),
       allowNull: false,

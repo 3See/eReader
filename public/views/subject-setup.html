@@ -1,6 +1,6 @@
 <section data-ng-controller="subjectSetupController" class="content">
     
-    <table ng-controller="DatepickerDemoCtrl">
+    <table>
         <tr>
             <td>Subject ID</td>
             <td>{{subjectID}}</td>
@@ -51,7 +51,7 @@
         <tr>
             <td>End Date</td>
             <td>
-                <div ng-controller="DatepickerDemoCtrl">
+                <div>
                     <p class="input-group">
                       <input type="date" class="form-control" uib-datepicker-popup ng-model="end" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="false" close-text="Close" />
                       <span class="input-group-btn">

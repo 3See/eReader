@@ -30,9 +30,22 @@ button.studypage {
 /* ******* */
 
 #sidebar {
-    float: left;
+    /*float: left;
+    position: absolute;
+    background-color: #c0c0c0;
+    top: 20%;
+    bottom: 0;
     width: 15%;
-    margin-right: 5%;
+    margin-right: 5%;*/
+  position: absolute;
+  top: 150px;
+  bottom: 0;
+  left: 0;
+  width: 15%;
+  background: #A0A0A0;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding-top: 0px;
 }
 
 #sidebar button {
@@ -53,15 +66,20 @@ button.studypage {
 
 #breadcrumb {
     display: inline-block;
+    width: 100%;
+    padding-left: 15%;
 }
 
 #content {
-  margin: 0px auto;
+  margin: 0;
+  float: left;
+  width: 100%;
 }
 
 #view-window {
-    width: 80%;
+    width: 100%;
     float: right;
+    padding-left: 15%;
 }
 
 .section-tabs {

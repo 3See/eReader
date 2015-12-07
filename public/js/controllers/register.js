@@ -10,20 +10,13 @@ angular.module('mean').controller('RegisterController', ['$scope', 'Authenticati
     // }
 
     $scope.submit = function () {
-      $http.post('/subject/register', $scope.credentials).success(function (response) {
-        // If successful we assign the response to the global user model
-        $scope.authentication.user = response;
-
-        // And redirect to the previous or home page
-        $state.go($state.previous.state.name || 'home', $state.previous.params);
-      }).error(function (response) {
-        $scope.error = response.message;
-      });
+      console.log($scope.information);
+      $http.post('/subject/register', $scope.information);
     };
 
 
     $scope.cancel = function () {
-      $state.go($state.previous.state.name || 'home', $state.previous.params);
+      $state.go('home');
     };
   }
 ]);

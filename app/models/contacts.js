@@ -1,4 +1,4 @@
-/* jshint indent: 2 */
+'use strict';/* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('contacts', {
@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     gender: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     }
   });
 };
