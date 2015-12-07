@@ -10,15 +10,23 @@ var log = function(inst) {
 };
 
 exports.search = function(req, res, next) {
-    // set query parameter to wildcard if not supplied
-    for (var i in req.query) {
-        if (req.query[i] === '' || req.query[i] == null) {
-            req.query[i] = '%'; 
+    // set query parameter to wildcard if field not supplied
+    var params = [req.query.sid, req.query.fname, req.query.lname];
+    for (var i = 0, l = params.length; i < l; i++) {
+        if( params[i] === undefined || params[i] === '') {
+            params[i] = '%';
         }
     }
 
-    db.subject.findAll({ where: ["subjectID LIKE '" + req.query.sid + "' AND firstname LIKE '"+req.query.fname+"'"]
-    }).then(function(posts) {
-        posts.forEach(log);
+    var query_sid = "subjectID LIKE '" + params[0]+ "' AND ";
+    var query_fname = "firstname LIKE '" + params[1] + "' AND ";
+    var query_lname = "lastname LIKE '" + params[2] + "'";
+
+    var query = query_sid + query_fname + query_lname;
+
+    db.subject.findAll({where: [query]}).then(function(data) {
+        data.forEach(log);
+        if(data === {} ) { res.send("No results found"); } 
+        else { res.send(data); }
     });
 };

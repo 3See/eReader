@@ -58,5 +58,9 @@ angular.module('mean').controller('subjectSetupController', ['$scope', 'Authenti
       '10005',
       '10006'
     ];
+
+    $scope.save = function() {
+      
+    };
   }
 ]);
