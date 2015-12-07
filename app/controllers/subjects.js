@@ -103,6 +103,42 @@ exports.register = function(req, res, next) {
 };
 
 /**
+ * Update Subject
+ */
+exports.update = function(req, res, next) {
+
+    db.address.find({ where: {addressID: req.body.addressID} }).then(function(result) {
+    if (result) { // if the record exists in the db
+        result.updateAttributes({
+        addressLine1: req.body.addressLine1,    
+        addressLine2: req.body.addressLine2,
+        city: req.body.city,
+        stateCode: req.body.state,
+        zip: req.body.zip
+            });
+        }
+    })
+    .catch(function(err){
+        console.log('address error : ' + err);
+    });
+
+    db.subject.find({ where: {subjectID: req.body.subjectID} }).then(function(result) {
+    if (result) { // if the record exists in the db
+        result.updateAttributes({
+        title: req.body.title,
+        lastname: req.body.lastname,
+        firstname: req.body.firstname,
+        middlename: req.body.middlename
+            });
+        console.log('subject update complete.');
+        }
+    })
+    .catch(function(err){
+        console.log('subject error : ' + err);
+    });
+};
+
+/**
  * Auth callback
  */
 exports.registerCallback = function(req, res, next) {
