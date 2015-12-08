@@ -8,3 +8,6 @@ zipPlus in app > models > address
 
 gender in app > models > contact
 	allowNull changed from false to true
+
+phonetype in app > models > subjectphone
+	allowNull changed from false to true

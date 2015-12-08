@@ -89,6 +89,7 @@
           <p>First Name: </p>
         </div>
         <div class="col-sm-3">
+
           <input type="text" ng-required="true" ng-model="information.firstname" class="form-control"></input>
         </div>
       </div>
@@ -98,7 +99,9 @@
           <p>Middle Initial: </p>
         </div>
         <div class="col-sm-3">
+
           <input type="text" pattern=".{1}" ng-required="true" ng-model="information.middlename" class="form-control"></input>
+
         </div>
       </div>
 
@@ -107,7 +110,9 @@
           <p>Last Name: </p>
         </div>
         <div class="col-sm-3">
+
           <input type="text" ng-required="true" ng-model="information.lastname" class="form-control"></input>
+
         </div>
       </div>
 
@@ -145,7 +150,7 @@
         </div>
         <div class="col-sm-3">
           <!--<input type="text" ng-model="startDate" class="form-control"></input>-->
-          <input type="date" class="form-control" uib-datepicker-popup ng-model="startDate" ng-required="false"  />
+          <input type="date" class="form-control" uib-datepicker-popup ng-model="startDate" ngRequired="false"  />
         </div>
       </div>
 
@@ -156,7 +161,9 @@
         </div>
         <div class="col-sm-3">
           <!--<input type="text" ng-model="endDate" class="form-control"></input>-->
+
           <input type="date" class="form-control" uib-datepicker-popup ng-model="endDate"/>
+
         </div>
       </div>
       </br>
@@ -167,10 +174,12 @@
           <p>Phone:</p>
         </div>
         <div class="col-sm-1">
+
           <input type="number" pattern=".{3}" ng-required="true" class="form-control"></input>
         </div>
         <div class="col-sm-2">
           <input type="number" pattern=".{7}" ng-model="information.phone1" ng-required="true" class="form-control"></input>
+
         </div>
       </div>
 
@@ -192,17 +201,23 @@
       <div class="row">
         <div class="col-sm-2">
           <p> Address: </p>
+
           <input type="text" ng-required="true" ng-model="information.addressLine1" class="form-control"></input>
+
           
         </div>
         <div class="col-sm-2">
           <p>Address 2:</p>
+
           <input type="text" ng-required="true" ng-model="information.addressLine2" class="form-control"></input>
+
           
         </div>
         <div class="col-sm-3">
           <p> City: </p>
+
           <input type="text" ng-required="true" class="form-control"></input>
+
           
         </div>
         <div class="col-sm-2">
@@ -265,6 +280,7 @@
         </div>
         <div class="col-sm-2">
           <p> Zip Code: </p>
+
           <input type="number" pattern=".{5}" ng-model="information.zip"  ng-required="true" class="form-control"></input>
           
         </div>
@@ -280,6 +296,7 @@
       <!-- Display the contact information -->
         <div class="row">
             <div class="col-sm-2"> 
+
               <p>First Name: <input type="text" ng-required="true" ng-model="information.r1firstname" class="form-control"></input></p>
               <p>First Name: <input type="text" ng-required="true" ng-model="information.r2firstname" class="form-control"></input></p>
             </div>
@@ -296,12 +313,14 @@
 
             <div class="col-sm-2"> 
               <p>Relationship:<select name="Relationship" ng-required="true" ng-model="information.relation1" class="form-control">
+
               <option value="Mother">Mother</option>
               <option value="Father">Father</option>
               <option value="Sibling">Sibling</option>
               <option value="Spouse">Spouse</option>
               <option value="Other">Other</option>
               </select></p>
+
               <p>Relationship:<select name="Relationship2" ng-required="true" ng-model="information.relation2" class="form-control">
               <option value="Mother">Mother</option>
               <option value="Father">Father</option>
