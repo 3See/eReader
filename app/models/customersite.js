@@ -12,5 +12,13 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     }
+  }, {
+    classMethods: {
+      // Creates an association function that is run AFTER all the models are loaded into sequelize.
+      associate: function (models) {
+        models.customersite.belongsTo(models.customer, {foreignKey: "customerID"});
+        models.customersite.belongsTo(models.site, {foreignKey: "siteID"});
+      }
+    }
   });
 };
