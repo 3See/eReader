@@ -11,13 +11,28 @@
     <br>
     <div class="row">
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-sm-offset-3 col-xs-offset-3 col-md-offset-3 col-lg-offset-3">
+            Subject Study :
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div>
+               <select name="Title" ng-model="currentItem" class="form-control">
+                <option value="">Unassigned</option>
+                <option ng-repeat= "study in studies" value="{{study}}">{{study}}</option>
+              </select>
+            </div>
+        </div>
+        </tr>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-sm-offset-3 col-xs-offset-3 col-md-offset-3 col-lg-offset-3">
             Subject Group :
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             <div>
                <select name="Title" ng-model="currentItem" class="form-control">
                 <option value="">Unassigned</option>
-                <option ng-repeat= "item in items" value="{{item}}">{{item}}</option>
+                <option ng-repeat= "group in groups" value="{{group}}">{{group}}</option>
               </select>
             </div>
         </div>
