@@ -20,7 +20,6 @@ module.exports = function(sequelize, DataTypes) {
     reminderTime: {
       type: DataTypes.STRING,
       allowNull: false,
-      primaryKey: true
     },
     reminderType: {
       type: DataTypes.TEXT,
@@ -32,7 +31,17 @@ module.exports = function(sequelize, DataTypes) {
     },
     messageID: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
+    }
+  }, {
+    classMethods: {
+      // Creates an association function that is run AFTER all the models are loaded into sequelize.
+      associate: function (models) {
+        models.groupmedicationreminder.belongsTo(models.study, {foreignKey: "studyID"});
+        models.groupmedicationreminder.belongsTo(models.studygroup, {foreignKey: "groupID"});
+        models.groupmedicationreminder.belongsTo(models.message, {foreignKey: "messageID"});
+      }
     }
   });
 };
