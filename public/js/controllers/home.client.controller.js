@@ -9,25 +9,13 @@ angular.module('mean').controller('HomeController', ['$scope', 'Authentication',
     //if(!Authentication.user) {
     //  $state.go('sign-in');
     //}
-/*
-          $http.post('/study/getStudy', 1)
-          .success(function(data) {
-            console.log('the data is' + data);
-          });
-  */  
 
-    $scope.studies = [];
-    /*$http.get('/study/getStudy')
-    .success(function(data){
-      $scope.studies = data;
-      console.log('the data is ' + data);
-    });
+/*    $scope.studies = [
       { name: 'Study 1' }, 
       { name: 'Study 2' },
       { name: 'Study 3' }
     ];
   */  
-
 
     
     $http.post('/study/getStudy')
@@ -38,14 +26,12 @@ angular.module('mean').controller('HomeController', ['$scope', 'Authentication',
       console.log(data);
 //      console.log('the above is the json result');
       //console.log(data);
-//>>>>>>> c2a68df59b0a68346d9cbf5167c56ef896877cc8
     })
     .error(function() {results = 'There was an error in the search';}
     );
 /*
     function mapDOM(element, json) {
     var treeObject = {};
-
     // If string convert to document Node
     if (typeof element === "string") {
         if (window.DOMParser) {
@@ -58,7 +44,6 @@ angular.module('mean').controller('HomeController', ['$scope', 'Authentication',
         } 
         element = docNode.firstChild;
     }
-
     //Recursively loop through DOM elements and assign properties to object
     function treeHTML(element, object) {
         object.type = element.nodeName;
