@@ -17,42 +17,32 @@ angular.module('mean').controller('HomeController', ['$scope', 'Authentication',
   */  
 
     $scope.studies = [];
-    $http.get('/study/getStudy')
+    /*$http.get('/study/getStudy')
     .success(function(data){
       $scope.studies = data;
       console.log('the data is ' + data);
     });
-/*      { name: 'Study 1' }, 
+      { name: 'Study 1' }, 
       { name: 'Study 2' },
       { name: 'Study 3' }
     ];
   */  
-    //$http({method: 'GET', url: '/study/getStudy', data: {term: '1'} })
-    //.then(function() {
-      //console.log(data);
-    //});
-    /*$http.get('/study/getStudy', getStudy(res));/* {
-      console.log('------------GOT RESPONSE------------' + res.statuscode);
-    }).on('error', function(e) {
-      console.log('GOT ERROR: ' + e.message);
-    });
-*/
-    $http.get('/study/getStudy', {
-      params: {
-        customerID: 1,
-      }
-    })
+
+
+    
+    $http.post('/study/getStudy')
     .success(function(data) {
       //$scope.studies = data;
-      var json = mapDOM(data, true);
-      $scope.studies = json;
-      console.log(json);
-      console.log('the above is the json result');
+//      var json = mapDOM(data, true);
+      $scope.studies = data;
       console.log(data);
+//      console.log('the above is the json result');
+      //console.log(data);
+//>>>>>>> c2a68df59b0a68346d9cbf5167c56ef896877cc8
     })
     .error(function() {results = 'There was an error in the search';}
     );
-
+/*
     function mapDOM(element, json) {
     var treeObject = {};
 
@@ -96,9 +86,9 @@ angular.module('mean').controller('HomeController', ['$scope', 'Authentication',
         }
     }
     treeHTML(element, treeObject);
-
+*/
     //console.log((json) ? JSON.stringify(treeObject) : treeObject);
-}
+//}
 
 
 

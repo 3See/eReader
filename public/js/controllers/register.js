@@ -34,7 +34,10 @@ angular.module('mean').controller('RegisterController', ['$scope', 'Authenticati
         $scope.information.contact_areacode2 !== undefined &&
         $scope.information.r2phone !== undefined 
       ){
-        $http.post('/subject/register', $scope.information);
+        $http.post('/subject/register', $scope.information)
+        .catch(function(err){
+            console.log(err);
+        });
       }
     };
 

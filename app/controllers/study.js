@@ -45,19 +45,3 @@ exports.getStudy = function(req, res) {
 /**
  * Register Subject
  */
-/*
-exports.getStudy = function(req, res) {
-    console.log('------------GETTING THE CONSOLE LOG TO WORK---------');
-    var study = db.study.find({
-        where: ["customerID = " + req.query.customerID]
-    })
-    .then(function(){
-        console.log(JSON.stringify(study));
-        res.send(JSON.stringify(study));
-    })
-    .catch(function(err){
-        console.log('getstudy error : ' + err);
-    });
-   // res.send(study);
-};
-*/
