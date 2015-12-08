@@ -18,22 +18,18 @@ angular.module('mean').controller('HomeController', ['$scope', 'Authentication',
   */  
 
     
-    $http.get('/study/getStudy', {
-      params: {
-        customerID: 1,
-      }
-    })
+    $http.post('/study/getStudy')
     .success(function(data) {
       //$scope.studies = data;
-      var json = mapDOM(data, true);
-      $scope.studies = json;
-      console.log(json);
-      console.log('the above is the json result');
+//      var json = mapDOM(data, true);
+      $scope.studies = data;
+      console.log(data);
+//      console.log('the above is the json result');
       //console.log(data);
     })
     .error(function() {results = 'There was an error in the search';}
     );
-
+/*
     function mapDOM(element, json) {
     var treeObject = {};
 
@@ -77,9 +73,9 @@ angular.module('mean').controller('HomeController', ['$scope', 'Authentication',
         }
     }
     treeHTML(element, treeObject);
-
+*/
     //console.log((json) ? JSON.stringify(treeObject) : treeObject);
-}
+//}
 
 
 
