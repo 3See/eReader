@@ -20,5 +20,12 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(11),
       allowNull: true
     }
+  }, {
+    classMethods: {
+      // Creates an association function that is run AFTER all the models are loaded into sequelize.
+      associate: function (models) {
+        models.subjectemail.belongsTo(models.subject, {foreignKey: "subjectID"});
+      }
+    }
   });
 };
