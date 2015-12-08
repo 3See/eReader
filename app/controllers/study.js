@@ -11,7 +11,7 @@ var db = require('../../config/sequelize');
  */
 var f_result = [];
 //callback function parses the results from the db
-function Parse(value, index, ar) {
+function ParsegetStudy(value, index, ar) {
     var r = JSON.stringify(value).split("\"");
     f_result[index] = r[3];
 }
@@ -26,7 +26,7 @@ exports.getStudy = function(req, res, next) {
     })
     .then(function(result){
         console.log(JSON.stringify(result));
-        result.forEach(Parse);
+        result.forEach(ParsegetStudy);
         res.send(f_result);
     })
     .catch(function(err){

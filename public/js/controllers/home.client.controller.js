@@ -27,8 +27,9 @@ angular.module('mean').controller('HomeController', ['$scope', 'Authentication',
 //      console.log('the above is the json result');
       //console.log(data);
     })
-    .error(function() {results = 'There was an error in the search';}
-    );
+    .error(function(err) {
+      console.log('GetStudy Error : ' + err);
+    });
 /*
     function mapDOM(element, json) {
     var treeObject = {};

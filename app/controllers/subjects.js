@@ -301,21 +301,32 @@ exports.subject = function(req, res, next, lastName, firstName, email) {
 
 
 
-exports.getStudy = function(req, res, next) {
+//groupinfo.client.view=====================================================
 
-    console.log('------------GETTING THE CONSOLE LOG TO WORK---------');
-    db.study.find({ 
+var f_result = [];
+
+function ParsegetSubjects(value, index, ar) {
+    var r = JSON.stringify(value).split(":");
+    r = r[1].split("}");
+    f_result[index] = r[0];
+    console.log(r);
+}
+
+exports.getSubjects = function(req, res, next) {
+    db.studysubject.findAll({
         where: {
-            customerID: 1
-        }
+            studyID: '1',
+            groupID: '1'
+        },
+        attributes: ['subjectID']
     })
     .then(function(result){
-        res.send(JSON.stringify(data));
-        
+        console.log(JSON.stringify(result));
+        result.forEach(ParsegetSubjects);
+        res.send(f_result);
     })
     .catch(function(err){
-        console.log('subject search error : ' + err);
+        console.log('GetSubject error : ' + err);
     });
-
-
+>>>>>>> 10fda92b8a354939450c22b3c74d6468072ea426
 };
