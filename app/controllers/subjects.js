@@ -298,3 +298,24 @@ exports.subject = function(req, res, next, lastName, firstName, email) {
         next(err);
     });
 };
+
+
+
+exports.getStudy = function(req, res, next) {
+
+    console.log('------------GETTING THE CONSOLE LOG TO WORK---------');
+    db.study.find({ 
+        where: {
+            customerID: 1
+        }
+    })
+    .then(function(result){
+        res.send(JSON.stringify(data));
+        
+    })
+    .catch(function(err){
+        console.log('subject search error : ' + err);
+    });
+
+
+};

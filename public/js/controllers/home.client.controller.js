@@ -9,15 +9,34 @@ angular.module('mean').controller('HomeController', ['$scope', 'Authentication',
     //if(!Authentication.user) {
     //  $state.go('sign-in');
     //}
+/*
+          $http.post('/study/getStudy', 1)
+          .success(function(data) {
+            console.log('the data is' + data);
+          });
+  */  
 
-/*    $scope.studies = [
-      { name: 'Study 1' }, 
+    $scope.studies = [];
+    $http.get('/study/getStudy')
+    .success(function(data){
+      $scope.studies = data;
+      console.log('the data is ' + data);
+    });
+/*      { name: 'Study 1' }, 
       { name: 'Study 2' },
       { name: 'Study 3' }
     ];
   */  
-
-    
+    //$http({method: 'GET', url: '/study/getStudy', data: {term: '1'} })
+    //.then(function() {
+      //console.log(data);
+    //});
+    /*$http.get('/study/getStudy', getStudy(res));/* {
+      console.log('------------GOT RESPONSE------------' + res.statuscode);
+    }).on('error', function(e) {
+      console.log('GOT ERROR: ' + e.message);
+    });
+*/
     $http.get('/study/getStudy', {
       params: {
         customerID: 1,
@@ -29,7 +48,7 @@ angular.module('mean').controller('HomeController', ['$scope', 'Authentication',
       $scope.studies = json;
       console.log(json);
       console.log('the above is the json result');
-      //console.log(data);
+      console.log(data);
     })
     .error(function() {results = 'There was an error in the search';}
     );
