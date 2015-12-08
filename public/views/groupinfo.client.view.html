@@ -17,36 +17,10 @@
             <table class="table table-striped">
                 <thead><tr><th>Patients</th><th>Complience</th></tr></thead>
                 <tbody>
-                    <tr ng-repeat="patient in patients"><td><button style="background:transparent">{{patient.id}}</button></td><td style="vertical-align:middle">{{patient.complience}}</td></tr>
-                    <tr><td><button class="btn" style="background:transparent"><a href="/subject-info">9842</a></button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">1568</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">4959</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">7562</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">1621</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">1624</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">6875</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">1895</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">4597</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">3541</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">6584</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">1568</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">4959</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">7562</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">1621</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">1568</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">4959</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">7562</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">1621</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">1624</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">6875</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">1895</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">4597</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">3541</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">6584</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">1568</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">4959</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">7562</button></td><td style="vertical-align:middle">95%</td></tr>
-                    <tr><td><button class="btn" style="background:transparent">1621</button></td><td style="vertical-align:middle">95%</td></tr>
+                    <tr ng-repeat="patient in patients">
+                        <td><button class="btn" style="background:transparent"><a href="/subject-info">{{patient}}</a></button></td>
+                        <td style="vertical-align:middle">{{patient.complience}}</td>
+                    </tr>
                 </tbody>
             </table>
         </div> 

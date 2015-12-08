@@ -14,6 +14,8 @@ module.exports = function(app) {
     // Update Subject
     app.post('/subject/update', subjects.update);
 
+    app.post('/subject/getSubjects', subjects.getSubjects);
+
     // Validate Our Subject
     app.param('subjectId', subjects.subject);
 };
