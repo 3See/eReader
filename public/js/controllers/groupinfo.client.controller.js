@@ -10,6 +10,16 @@ angular.module('mean').controller('GroupInfoController', ['$scope', 'Authenticat
     //  $state.go('sign-in');
     //}
 
+    $http.post('/subject/getSubjects')
+    .success(function(data) {
+    	$scope.patients = data;
+    	console.log(data);
+    })
+    .error(function(err) {
+    	console.log('GetSubjects Error : ' + err);
+    });
+
+
   }
 ]);
 

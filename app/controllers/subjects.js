@@ -298,3 +298,33 @@ exports.subject = function(req, res, next, lastName, firstName, email) {
         next(err);
     });
 };
+
+
+//groupinfo.client.view=====================================================
+
+var f_result = [];
+
+function ParsegetSubjects(value, index, ar) {
+    var r = JSON.stringify(value).split(":");
+    r = r[1].split("}");
+    f_result[index] = r[0];
+    console.log(r);
+}
+
+exports.getSubjects = function(req, res, next) {
+    db.studysubject.findAll({
+        where: {
+            studyID: '1',
+            groupID: '1'
+        },
+        attributes: ['subjectID']
+    })
+    .then(function(result){
+        console.log(JSON.stringify(result));
+        result.forEach(ParsegetSubjects);
+        res.send(f_result);
+    })
+    .catch(function(err){
+        console.log('GetSubject error : ' + err);
+    });
+};
