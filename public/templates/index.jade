@@ -1,7 +1,9 @@
 section.content(data-ng-controller="HomeController")
-    .row
-        .well(class="col-md-8 col-sm-8 col-xs-8 col-lg-8 col-sm-offset-2 col-xs-offset-2 col-md-offset-2 col-lg-offset-2") 
-            button.btn.btn-default.btn-block(ng-repeat="study in studies", ui-sref="study-info") {{study.name}}
-    .row
-        ul
-            li Current Study: {{AppState.current_study}}
+	.row
+		h4 Current Values
+		ul(ng-repeat="(key,value) in states")
+			li Current {{key}} : {{value}}
+	.row
+		h4 Set Values
+		input(type="text", name="newStudy", ng-model="newStudy")
+		button.btn.btn-default(ng-click="Current.set_study(newStudy)") Set Current Study
