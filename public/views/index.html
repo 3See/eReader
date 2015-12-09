@@ -1,9 +1,13 @@
+
 <section data-ng-controller="HomeController" class="content">
-    <div class="row">
-        <div class="well col-md-8 col-sm-8 col-xs-8 col-lg-8 col-sm-offset-2 col-xs-offset-2 col-md-offset-2 col-lg-offset-2">
-            <button ng-repeat="study in studies" class="btn btn-default btn-block" ui-sref="study-info">
-                {{study.name}}
-            </button>
-        </div>
+  <div class="row">
+    <div class="well col-md-8 col-sm-8 col-xs-8 col-lg-8 col-sm-offset-2 col-xs-offset-2 col-md-offset-2 col-lg-offset-2"> 
+      <button ng-repeat="study in studies" ui-sref="study-info" class="btn btn-default btn-block">{{study.name}}</button>
     </div>
+  </div>
+  <div class="row">
+    <ul>
+      <li>Current Study: {{AppState.current_study}}</li>
+    </ul>
+  </div>
 </section>

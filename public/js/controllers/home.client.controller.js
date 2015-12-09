@@ -1,14 +1,9 @@
 'use strict';
 
-angular.module('mean').controller('HomeController', ['$scope', 'Authentication', '$state', '$http',
-  function ($scope, Authentication, $state, $http) {
+angular.module('mean').controller('HomeController', ['Authentication','AppState','$scope', '$state', '$http',
+  function ($scope, AppState, $state, $http) {
     // This provides Authentication context.
-    $scope.authentication = Authentication;
-
-    // If auth not set goto login
-    //if(!Authentication.user) {
-    //  $state.go('sign-in');
-    //}
+    $scope.AppState = AppState;
 
     $scope.studies = [
       { name: 'Study 1' }, 
