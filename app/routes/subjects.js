@@ -14,7 +14,14 @@ module.exports = function(app) {
     // Update Subject
     app.post('/subject/update', subjects.update);
 
+    // GET subjects ID
     app.post('/subject/getSubjects', subjects.getSubjects);
+
+    // GET all unassigned subjects
+    app.post('/subject/unassignedSearch', subjects.unassignedSearch);
+
+    // Enroll subjest in study
+    app.post('/subject/enroll', subjects.enroll);
 
     // Validate Our Subject
     app.param('subjectId', subjects.subject);
