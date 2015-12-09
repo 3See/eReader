@@ -1,10 +1,22 @@
 'use strict';
 
-angular.module('mean').controller('HomeController', ['$scope', '$state', '$http', 'Current',
-	function ($scope, $state, $http, Current) {
-		$scope.Current = Current;
-		$scope.states = Current.get_state();
+angular.module('mean').controller('HomeController', ['$scope', '$state', '$http', 'Authentication',
+	'Current', function ($scope, $state, $http, Authentication, Current) {
+    // This provides Authentication context.
+    $scope.authentication = Authentication;
+    var results;
+    
+    $http.post('/study/getStudy').success(function(data) {
+    	$scope.studies = data;
+    	console.log(data);
+    }).error(function(err) {
+    	console.log('GetStudy Error : ' + err);
+    });
 
-		$scope.newStudy = "";
-	}
-]);
+    $scope.Current = Current;
+    $scope.states = Current.get_state();
+
+    $scope.newStudy = "";
+
+
+}]); // end search

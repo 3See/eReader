@@ -27,7 +27,7 @@ var sequelize = new Sequelize(config.db.name, config.db.username, config.db.pass
 // loop through all files in models directory ignoring hidden files and this file
 fs.readdirSync(config.modelsDir)
   .filter(function(file) {
-    return (file.indexOf('.') !== 0) && (file !== 'index.js')
+    return (file.indexOf('.') !== 0) && (file !== 'index.js');
   })
   // import model files and save model names
   .forEach(function(file) {
@@ -38,10 +38,12 @@ fs.readdirSync(config.modelsDir)
 
 // invoke associations on each of the models
 Object.keys(db).forEach(function(modelName) {
-  if (db[modelName].options.hasOwnProperty('associate')) {
-    db[modelName].options.associate(db)
-  }
+  if ("associate" in db[modelName]) {
+     db[modelName].associate(db);
+ }
 });
+
+
 
 // Synchronizing any model changes with database.
 // WARNING: this will DROP your database everytime you re-run your application

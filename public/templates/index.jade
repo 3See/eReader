@@ -1,5 +1,8 @@
 section.content(data-ng-controller="HomeController")
 	.row
+		div(class="well col-md-8 col-sm-8 col-xs-8 col-lg-8 col-sm-offset-2 col-xs-offset-2 col-md-offset-2 col-lg-offset-2")
+			button.btn.btn-default(ng-repeat="study in studies", ui-sref="study-info") {{study}}
+	.row
 		h4 Current Values
 		ul(ng-repeat="(key,value) in states")
 			li Current {{key}} : {{value}}

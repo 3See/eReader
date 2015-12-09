@@ -1,6 +1,11 @@
 
 <section data-ng-controller="HomeController" class="content">
   <div class="row">
+    <div class="well col-md-8 col-sm-8 col-xs-8 col-lg-8 col-sm-offset-2 col-xs-offset-2 col-md-offset-2 col-lg-offset-2">
+      <button ng-repeat="study in studies" ui-sref="study-info" class="btn btn-default">{{study}}</button>
+    </div>
+  </div>
+  <div class="row">
     <h4>Current Values</h4>
     <ul ng-repeat="(key,value) in states">
       <li>Current {{key}} : {{value}}</li>
