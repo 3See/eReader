@@ -17,7 +17,7 @@
                 <thead><tr><th>Groups</th><th>Complience</th></tr></thead>
                 <tbody>
                     <tr ng-repeat="group in groups">
-                        <td><button class="btn" style="background:transparent"><a href="/study-group">{{group}}</a></button></td>
+                        <td><button class="btn" style="background:transparent"><a href="/study-group">{{group.studyGroupName}}</a></button></td>
                         <td>{{group.complience}}</td>
                     </tr>
                 </tbody>

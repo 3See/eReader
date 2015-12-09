@@ -49,6 +49,18 @@ module.exports = function(sequelize, DataTypes) {
     age: {
       type: DataTypes.TEXT,
       allowNull: true
+    },
+    customerID: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false
+    }
+  }, {
+    classMethods: {
+      // Creates an association function that is run AFTER all the models are loaded into sequelize.
+      associate: function (models) {
+        models.subject.belongsTo(models.customer, {foreignKey: "customerID"});
+      }
     }
   });
 };

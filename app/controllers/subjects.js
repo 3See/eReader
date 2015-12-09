@@ -29,7 +29,8 @@ exports.register = function(req, res, next) {
                 middlename: req.body.middlename,
                 suffix: req.body.suffix,
                 maidenname: req.body.maidenname,
-                gender: req.body.gender
+                gender: req.body.gender,
+                customerID: 1
             };
 
             var address = {
@@ -299,8 +300,6 @@ exports.subject = function(req, res, next, lastName, firstName, email) {
     });
 };
 
-
-
 //groupinfo.client.view=====================================================
 
 exports.getSubjects = function(req, res, next) {
@@ -318,5 +317,88 @@ exports.getSubjects = function(req, res, next) {
     .catch(function(err){
         console.log('GetSubject error : ' + err);
     });
+};
 
+exports.unassignedSearch = function(req, res, next) {
+    var string = "SELECT subjectID FROM etect_dev.subject WHERE customerID = " + 1 + " AND etect_dev.subject.subjectID NOT IN (SELECT subjectID FROM etect_dev.studysubject)";
+    db.sequelize.query(string, { type: db.sequelize.QueryTypes.SELECT})
+    .then(function(result){
+        console.log("UnassignedSearch : " + JSON.stringify(result));
+        res.send(JSON.stringify(result));
+    })
+    .catch(function(err) {
+        console.log('UnassignedSearch error : ' + err);
+    });
+};
+
+exports.enroll = function(req, res, next) {
+    console.log(req.body);
+
+    var d = new Date();
+
+    var studysubject = {
+        studyID: req.body.study,
+        subjectID: req.body.subject,
+        groupID: req.body.group
+    };
+
+    var studyReader = {
+        studyID: req.body.study,
+        readerID: req.body.reader,
+        allocatedDate: d
+    };
+
+    var subjectreader = {
+        studyID: req.body.study,
+        groupID: req.body.group,
+        readerID: req.body.reader,
+        subjectID: req.body.subject,
+        startDate: req.body.start,
+        endDate: req.body.end
+    };
+
+    studysubject = db.studysubject.build(studysubject);
+
+    studyReader = db.StudyReader.build(studyReader);
+
+    subjectreader = db.SubjectReader.build(subjectreader);
+
+    studysubject.save()
+    .catch(function(err) {
+        console.log('studysubject save error : ' + err);
+    });
+
+    studyReader.save()
+    .catch(function(err) {
+        console.log('StudyReader save error : ' + err);
+    });
+
+    subjectreader.save()
+    .catch(function(err) {
+        console.log('subjectreader save error : ' + err);
+    });
+
+    db.reader.find({
+        where: {
+            readerID: req.body.reader
+        }
+    })
+    .then(function(result){
+        if(result) {
+            result.updateAttributes({
+                studyID: req.body.study,
+                starttime: req.body.start,
+                endtime: req.body.end,
+                areaCode: req.body.areacode,
+                phonenumber: req.body.phone
+            })
+            .then(function(data) {
+                console.log('reader updated');
+                res.send("Finished");
+            })
+            .catch(function(err){
+                console.log('reader update error : ' + err);
+            });
+        }
+    });
 };

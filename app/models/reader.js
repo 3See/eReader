@@ -9,27 +9,23 @@ module.exports = function(sequelize, DataTypes) {
     },
     externalID: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
-    },
-    phoneNumber: {
-      type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     swVersion: {
       type: 'DOUBLE',
-      allowNull: false
+      allowNull: true
     },
     readerType: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: true
     },
     readerStatus: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     },
     studyID: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: true
     },
     starttime: {
       type: DataTypes.TEXT,
@@ -38,6 +34,14 @@ module.exports = function(sequelize, DataTypes) {
     endtime: {
       type: DataTypes.TEXT,
       allowNull: true
+    },
+    areaCode: {
+      type: DataTypes.INTEGER(11),
+      allowNull: false
+    },
+    phonenumber: {
+      type: DataTypes.INTEGER(11),
+      allowNull: false
     }
   });
 };
