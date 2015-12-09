@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean').controller('subjectSetupController', ['$scope', 'Authentication', '$state', '$http',
-  function ($scope, Authentication, $state, $http) {
+angular.module('mean').controller('subjectSetupController', ['$scope', '$http', '$state', 'Authentication',
+  function ($scope, $http, $state, Authentication) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
@@ -10,57 +10,65 @@ angular.module('mean').controller('subjectSetupController', ['$scope', 'Authenti
     //  $state.go('sign-in');
     //}
 
-    $scope.subjectID = '105';
-    $scope.phone = '813-555-1234';
-    $scope.ReaderID = '10005';
-    $scope.startdate = '01/01/1990';
-    $scope.enddate = '01/01/2020';
+    var request = "SELECT * FROM subject LEFT JOIN studysubject ON studysubject.subjectID = subject.subjectID WHERE studyID IS NULL";
+    $http.post('/subject/unassignedSearch')
+    .success(function(data) {
+      $scope.subjects = data;
+      console.log(data);
+    })
+    .error(function(err) {
+      console.log('UnassignedSearch Error : ' + err);
+    });
 
-    $scope.ingestions = [
-      {
-        num: '01',
-        date: '01/01/2010 8:06pm'
-      },
-      {
-        num: '02',
-        date: '01/02/2010 8:31pm'
-      },
-      {
-        num: '03',
-        date: '01/03/2010 8:45pm'
-      },
-      {
-        num: '04',
-        date: '01/04/2010 8:12pm'
-      },
-      {
-        num: '05',
-        date: '01/05/2010 8:23pm'
-      },
+    $http.post('/study/getStudy')
+    .success(function(data) {
+      $scope.studies = data;
+      console.log(data);
+    })
+    .error(function(err) {
+      console.log('GetStudy Error : ' + err);
+    });
 
-      {
-        num: '06',
-        date: ''
-      },
-      {
-        num: '07',
-        date: ''
-      }
+    $http.post('/reader/getunassignedReaders')
+    .success(function(data) {
+      $scope.readers = data;
+      console.log(data);
+    })
+    .error(function(err){
+      console.log('GetReaders Error : ' + err);
+    });
 
-    ];
-    
-
-    $scope.readers = [
-      '10001',
-      '10002',
-      '10003',
-      '10004',
-      '10005',
-      '10006'
-    ];
+    $scope.setGroups = function() {
+      $http.post('/group/getGroups')
+      .success(function(data) {
+        $scope.groups = data;
+        console.log(data);
+      })
+      .error(function(err) {
+        console.log('GetStudy Error : ' + err);
+      });
+    };
 
     $scope.save = function() {
-      
+      if(
+        $scope.info.subject !== undefined &&
+        $scope.info.study !== undefined &&
+        $scope.info.group !== undefined &&
+        $scope.info.reader !== undefined &&
+        $scope.info.areacode !== undefined &&
+        $scope.info.phone !== undefined &&
+        $scope.info.start !== undefined) 
+      {
+        $http.post('/subject/enroll', $scope.info)
+        .success(function(data){
+          console.log('Subject enrolled in study');
+          alert("Subject enrolled in study");
+          $state.go('subject-setup');
+        })
+        .catch(function(err) {
+          console.log('Subject enroll error : ' + err);
+        });
+      }
     };
   }
 ]);
