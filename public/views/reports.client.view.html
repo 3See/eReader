@@ -6,8 +6,8 @@
     	<thead>
     		<tr>
     			<th>Subject ID</th>
-    			<th>Study ID</th>
-    			<th>Group ID</th>
+    			<th>Study Name</th>
+    			<th>Group Name</th>
     			<th>Phone Number</th>
           <th>Reader ID</th>
           <th>Start Date</th>
@@ -17,13 +17,13 @@
     	</thead>
     	<tbody>
     		<tr ng-repeat="subject in subjects">
-    			<td><button class="btn" style="background:transparent" ui-sref="subject-info">{{subject.id}}</button></td>
-    			<td>{{subject.study_id}}</td>
-    			<td>{{subject.group_id}}</td>
-    			<td>{{subject.phone_number}}</td>
-          <td>{{subject.reader_id}}</td>
-          <td>{{subject.start_date}}</td>
-          <td>{{subject.end_date}}</td>
+    			<td><button class="btn" style="background:transparent" ui-sref="subject-info">{{subject.subjectID}}</button></td>
+    			<td>{{subject.studyName}}</td>
+    			<td>{{subject.studyGroupName}}</td>
+    			<td>{{subject.areaCode}}-{{subject.phonenumber}}</td>
+          <td>{{subject.readerID}}</td>
+          <td>{{subject.startDate}}</td>
+          <td>{{subject.endDate}}</td>
           <td>{{subject.ingestion1}}</td>
           <td>{{subject.ingestion2}}</td>
           <td>{{subject.ingestion3}}</td>

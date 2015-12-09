@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean').controller('reportController', ['$scope', 'Authentication', '$state', '$http',
-  function ($scope, Authentication, $state, $http) {
+angular.module('mean').controller('reportController', ['$scope', '$state', '$http', 'Authentication',
+  function ($scope, $state, $http, Authentication) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
@@ -9,108 +9,26 @@ angular.module('mean').controller('reportController', ['$scope', 'Authentication
     //if(!Authentication.user) {
     //  $state.go('sign-in');
     //}
+    var f_result = [];
+    var dataOne = [];
+    var dataTwo = [];
 
-    $scope.study_name = 'Study 1';
+    $http.post('/subject/getreports')
+    .success(function(data) {
+      //$scope.studies = data;
+//      var json = mapDOM(data, true);
+        //console.log("DATAONE : " + data);
+        $scope.subjects = data;
+      console.log(data);
+    })
+    .error(function(err) {
+      console.log('GetStudy Error : ' + err);
+    });
 
-	$scope.ingestions = [
-      'Ingestion 1',
-      'Ingestion 2',
-      'Ingestion 3',
-      'Ingestion 4',
-      'Ingestion 5',
-      'Ingestion 6'
-    ];
+    
+    
 
-    $scope.subjects = [
-    	{
-    		id : '007',
-    		study_id : '01',
-    		group_id : '04',
-    		phone_number : '813-555-1234',
-    		reader_id : '10005',
-    		start_date : 'Jun 07, 2012',
-    		end_date : 'Oct 08, 2012',
-    		ingestion1 : 'xxx',
-    		ingestion2 : 'yyy',
-    		ingestion3 : 'zzz',
-    		ingestion4 : 'xxx',
-    		ingestion5 : 'yyy',
-    		ingestion6 : 'zzz'
-    	},
-    	{
-    		id : '007',
-    		study_id : '01',
-    		group_id : '04',
-    		phone_number : '813-555-1234',
-    		reader_id : '10005',
-    		start_date : 'Jun 07, 2012',
-    		end_date : 'Oct 08, 2012',
-    		ingestion1 : 'xxx',
-    		ingestion2 : 'yyy',
-    		ingestion3 : '',
-    		ingestion4 : 'xxx',
-    		ingestion5 : 'yyy',
-    		ingestion6 : 'zzz'
-    	},
-    	{
-    		id : '007',
-    		study_id : '01',
-    		group_id : '04',
-    		phone_number : '813-555-1234',
-    		reader_id : '10005',
-    		start_date : 'Jun 07, 2012',
-    		end_date : 'Oct 08, 2012',
-    		ingestion1 : '',
-    		ingestion2 : 'yyy',
-    		ingestion3 : 'zzz',
-    		ingestion4 : 'xxx',
-    		ingestion5 : 'yyy',
-    		ingestion6 : 'zzz'
-    	},
-    	{
-    		id : '007',
-    		study_id : '01',
-    		group_id : '04',
-    		phone_number : '813-555-1234',
-    		reader_id : '10005',
-    		start_date : 'Jun 07, 2012',
-    		end_date : 'Oct 08, 2012',
-    		ingestion1 : 'xxx',
-    		ingestion2 : 'yyy',
-    		ingestion3 : 'zzz',
-    		ingestion4 : 'xxx',
-    		ingestion5 : 'yyy',
-    		ingestion6 : ''
-    	},
-    	{
-    		id : '007',
-    		study_id : '01',
-    		group_id : '04',
-    		phone_number : '813-555-1234',
-    		reader_id : '10005',
-    		start_date : 'Jun 07, 2012',
-    		end_date : 'Oct 08, 2012',
-    		ingestion1 : 'xxx',
-    		ingestion2 : '',
-    		ingestion3 : 'zzz',
-    		ingestion4 : 'xxx',
-    		ingestion5 : '',
-    		ingestion6 : 'zzz'
-    	},
-    	{
-    		id : '105',
-    		study_id : '01',
-    		group_id : '04',
-    		phone_number : '813-555-1234',
-    		reader_id : '10005',
-    		start_date : 'Jun 07, 2012',
-    		end_date : 'Oct 08, 2012',
-    		ingestion1 : 'xxx',
-    		ingestion2 : 'yyy',
-    		ingestion3 : '',
-    		ingestion4 : 'xxx',
-    		ingestion5 : 'yyy',
-    		ingestion6 : 'zzz'
-    	}
-    ];
 }]);
+
+
+
