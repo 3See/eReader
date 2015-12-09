@@ -300,7 +300,6 @@ exports.subject = function(req, res, next, lastName, firstName, email) {
     });
 };
 
-
 //groupinfo.client.view=====================================================
 
 exports.getSubjects = function(req, res, next) {
