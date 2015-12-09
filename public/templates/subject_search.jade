@@ -3,8 +3,6 @@ section(data-ng-controller="Subject_Search-Controller")
         div.row
             h4 Subject ID:
             input.form-control(type="text", ng-model="subject_id")
-            h4 Group ID:
-            input.form-control(type="text", ng-model="gid")
         div.row
             h4 First Name:
             input.form-control(type="text", ng-model="fname")
@@ -13,9 +11,8 @@ section(data-ng-controller="Subject_Search-Controller")
         input.btn(type="submit", value="Search", ng-click="search()")
     div
         ul
-            li.row(ng-repeat="result in results")
-                | {{result.sid}} {{result.fname}} {{result.lname}}
-
-
-
+            li(ng-repeat="result in results").row
+                span.col SubjectID: {{result.subjectID}} 
+                span.col First Name: {{result.firstname}} 
+                span.col Last Name: {{result.lastname}}
 

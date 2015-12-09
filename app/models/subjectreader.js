@@ -27,7 +27,15 @@ module.exports = function(sequelize, DataTypes) {
     },
     endDate: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
+    }
+  }, {
+    classMethods: {
+      // Creates an association function that is run AFTER all the models are loaded into sequelize.
+      associate: function (models) {
+        models.SubjectReader.belongsTo(models.subject, {foreignKey: "subjectID"});
+        models.SubjectReader.belongsTo(models.reader, {foreignKey: "readerID"});
+      }
     }
   });
 };
