@@ -63,7 +63,8 @@ angular.module('mean').controller('subjectSetupController', ['$scope', '$http', 
         .success(function(data){
           console.log('Subject enrolled in study');
           alert("Subject enrolled in study");
-          $state.go('subject-setup');
+          //location.reload(true);
+          $state.go('home');
         })
         .catch(function(err) {
           console.log('Subject enroll error : ' + err);
