@@ -31,11 +31,21 @@ module.exports = function(sequelize, DataTypes) {
     },
     messageID: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     messageDelay: {
       type: DataTypes.INTEGER(11),
       allowNull: false
+    }
+  }, {
+    classMethods: {
+      // Creates an association function that is run AFTER all the models are loaded into sequelize.
+      associate: function (models) {
+        models.groupmedicationresponse.belongsTo(models.study, {foreignKey: "studyID"});
+        models.groupmedicationresponse.belongsTo(models.studygroup, {foreignKey: "groupID"});
+        models.groupmedicationresponse.belongsTo(models.message, {foreignKey: "messageID"});
+      }
     }
   });
 };

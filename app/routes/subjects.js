@@ -11,6 +11,18 @@ module.exports = function(app) {
     // Register New Subjects
     app.post('/subject/register', subjects.register);
 
+    // Update Subject
+    app.post('/subject/update', subjects.update);
+
+    // GET subjects ID
+    app.post('/subject/getSubjects', subjects.getSubjects);
+
+    // GET all unassigned subjects
+    app.post('/subject/unassignedSearch', subjects.unassignedSearch);
+
+    // Enroll subjest in study
+    app.post('/subject/enroll', subjects.enroll);
+
     // Validate Our Subject
     app.param('subjectId', subjects.subject);
 };

@@ -10,6 +10,12 @@ angular.module('mean').controller('StudyInfoController', ['$scope', 'Authenticat
     //  $state.go('sign-in');
     //}
 
+    $http.post('/group/getGroups')
+    .success(function(data) {
+    	$scope.groups = data;
+    	console.log(data);
+    });
+
   }
 ]);
 
