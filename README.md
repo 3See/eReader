@@ -46,3 +46,15 @@
 
 ###Standardized Header
 > A consistent header has been added to every page for better UI look and feel.
+
+## Running the Project
+* Copy the git repository into the directory of your choice using "git clone (git repo link)"
+* Run "npm install" in the main directory (you may have to run it twice to get it to install corectly.)
+* After the database is ready, type "grunt" in the main folder.
+
+## Updating the Database
+* Place the developement.json5 file in the config/env folder to connect to the database.
+
+## Resources Used
+* Mean Stack Relational - https://github.com/jpotts18/mean-stack-relational
+* Bootstrap - http://getbootstrap.com/
