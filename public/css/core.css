@@ -41,7 +41,7 @@ button.studypage {
   top: 150px;
   bottom: 0;
   left: 0;
-  width: 15%;
+  width: 220px;
   background: #A0A0A0;
   border-right: 1px solid #000;
   border-bottom: 1px solid #000;
@@ -62,16 +62,18 @@ button.studypage {
 /***********/
 .container {
   text-align: auto;
+
 }
 
 #breadcrumb {
     display: inline-block;
     width: 100%;
-    padding-left: 15%;
+    padding-left: 220px;
 }
 
 #content {
   margin: 0;
+
   float: left;
   width: 100%;
 }
@@ -79,7 +81,7 @@ button.studypage {
 #view-window {
     width: 100%;
     float: right;
-    padding-left: 15%;
+    padding-left: 220px;
 }
 
 .section-tabs {

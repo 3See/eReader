@@ -28,7 +28,70 @@ angular.module('mean').controller('SubjectStatusController', ['$scope', '$state'
      // console.log(data);
     })
     .error(function(err) {
-      //console.log('GetStatus Error : ' + err);
+      console.log('GetStatus Error : ' + err);
     });
+
+    $scope.filterAll = function() {
+    	$http.post('/subject/getstatus')
+	    .success(function(data) {
+	        data.forEach(function(element, index, array) {
+	        	if(element.studyGroupName === null || element.readerID === null) {
+		            element[element.size] = 'Incomplete';
+		        }
+		        else {
+		        	element[element.size] = 'Complete';
+		        }
+	        });
+	        $scope.subjects = data;
+	        
+	     // console.log(data);
+	    })
+	    .error(function(err) {
+	      console.log('GetStatus Error : ' + err);
+	    });
+  	};
+
+  	$scope.filterComplete = function() {
+    	$http.post('/subject/getstatuscomplete')
+	    .success(function(data) {
+	        data.forEach(function(element, index, array) {
+	        	if(element.studyGroupName === null || element.readerID === null) {
+		            element[element.size] = 'Incomplete';
+		        }
+		        else {
+		        	element[element.size] = 'Complete';
+		        }
+	        });
+	        $scope.subjects = data;
+	        
+	     // console.log(data);
+	    })
+	    .error(function(err) {
+	      console.log('GetStatus Error : ' + err);
+	    });
+  	};
+
+  	$scope.filterIncomplete = function() {
+    	$http.post('/subject/getstatusincomplete')
+	    .success(function(data) {
+	        data.forEach(function(element, index, array) {
+	        	if(element.studyGroupName === null || element.readerID === null) {
+		            element[element.size] = 'Incomplete';
+		        }
+		        else {
+		        	element[element.size] = 'Complete';
+		        }
+	        });
+	        $scope.subjects = data;
+	        
+	     // console.log(data);
+	    })
+	    .error(function(err) {
+	      console.log('GetStatus Error : ' + err);
+	    });
+  	};
+
+
+
   }
 ]);
