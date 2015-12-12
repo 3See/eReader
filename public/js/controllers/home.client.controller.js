@@ -16,7 +16,5 @@ angular.module('mean').controller('HomeController', ['$scope', '$state', '$http'
     $scope.Current = Current;
     $scope.states = Current.get_state();
 
-    $scope.newStudy = "";
-
 
 }]); // end search

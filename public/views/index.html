@@ -2,7 +2,7 @@
 <section data-ng-controller="HomeController" class="content">
   <div class="row">
     <div class="well col-md-8 col-sm-8 col-xs-8 col-lg-8 col-sm-offset-2 col-xs-offset-2 col-md-offset-2 col-lg-offset-2">
-      <button ng-repeat="study in studies" ui-sref="study-info" class="btn btn-default">{{study}}</button>
+      <button ng-repeat="study in studies" ng-click="Current.set_study(2,study)" ui-sref="study-info" class="btn btn-default btn-block">{{study}}</button>
     </div>
   </div>
   <div class="row">
@@ -13,7 +13,8 @@
   </div>
   <div class="row">
     <h4>Set Values</h4>
-    <input type="text" name="newStudy" ng-model="newStudy"/>
-    <button ng-click="Current.set_study(newStudy)" class="btn btn-default">Set Current Study</button>
+    <input type="text" name="newStudy.name" ng-model="newStudy.name"/>
+    <input type="text" name="newStudy.id" ng-model="newStudy.id"/>
+    <button ng-click="Current.set_study(newStudy.id, newStudy.name)" class="btn btn-default">Set Current Study</button>
   </div>
 </section>
