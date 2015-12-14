@@ -30,6 +30,9 @@ exports.register = function(req, res, next) {
                 suffix: req.body.suffix,
                 maidenname: req.body.maidenname,
                 gender: req.body.gender,
+                height: req.body.height,
+                weight: req.body.weight,
+                age: req.body.age,
                 customerID: 1
             };
 
@@ -235,14 +238,19 @@ exports.register = function(req, res, next) {
  */
 exports.update = function(req, res, next) {
 
-    db.address.find({ where: {addressID: req.body.addressID} }).then(function(result) {
+    db.address.find({ 
+        where: {
+            addressID: req.body.address.addressID
+        } 
+    })
+    .then(function(result) {
     if (result) { // if the record exists in the db
         result.updateAttributes({
-        addressLine1: req.body.addressLine1,    
-        addressLine2: req.body.addressLine2,
-        city: req.body.city,
-        stateCode: req.body.state,
-        zip: req.body.zip
+        addressLine1: req.body.address.street1,    
+        addressLine2: req.body.address.street2,
+        city: req.body.address.city,
+        stateCode: req.body.address.state,
+        zip: req.body.address.zip
             });
         }
     })
@@ -250,13 +258,18 @@ exports.update = function(req, res, next) {
         console.log('address error : ' + err);
     });
 
-    db.subject.find({ where: {subjectID: req.body.subjectID} }).then(function(result) {
+    db.subject.find({ where: {subjectID: req.body.id} }).then(function(result) {
     if (result) { // if the record exists in the db
         result.updateAttributes({
         title: req.body.title,
         lastname: req.body.lastname,
         firstname: req.body.firstname,
-        middlename: req.body.middlename
+        middlename: req.body.middlename,
+        suffix: req.body.suffix,
+        gender: req.body.gender,
+        height: req.body.height,
+        weight: req.body.weight,
+        age: req.body.age
             });
         console.log('subject update complete.');
         }
@@ -264,6 +277,225 @@ exports.update = function(req, res, next) {
     .catch(function(err){
         console.log('subject error : ' + err);
     });
+
+    db.SubjectReader.find({
+        where: {
+            subjectID: req.body.id,
+            studyID: req.body.studyID,
+            groupID: req.body.groupID
+        }
+    })
+    .then(function(result) {
+        if(result) {
+            result.updateAttributes({
+                readerID: req.body.readerID,
+                startDate: req.body.start,
+                endDate: req.body.end
+            });
+        }
+    })
+    .catch(function(err) {
+        console.log('update subjectreader err : ' + err);
+    });
+
+    db.subjectphone.find({ 
+        where: {
+            subjectID: req.body.id,
+            phoneType: 'Primary'
+        }
+    })
+    .then(function(result) {
+        if (result) {
+            result.updateAttributes({
+                areaCode: req.body.phone1.areacode,
+                phonenumber: req.body.phone1.phone
+            });
+        }
+    })
+    .catch(function(err) {
+        console.log("update primary subjectphone err : " + err);
+    });
+
+    db.subjectphone.find({ 
+        where: {
+            subjectID: req.body.id,
+            phoneType: 'Secondary'
+        }
+    })
+    .then(function(result) {
+        if (result) {
+            result.updateAttributes({
+                areaCode: req.body.phone2.areacode,
+                phonenumber: req.body.phone2.phone
+            });
+        }
+        else if(req.body.phone2.phone !== null && req.body.phone2.areacode !== null){
+            var subjectphone = {
+                subjectID: req.body.id,
+                phoneType: 'Secondary',
+                areaCode: req.body.phone2.areacode,
+                phonenumber: req.body.phone2.phone,
+                displayorder: 2
+            };
+            subjectphone = db.subjectphone.build(subjectphone);
+            subjectphone.save()
+            .catch(function(err) {
+                console.log('add second phone err : ' + err);
+            });
+        }
+    })
+    .catch(function(err) {
+        console.log("update secondary subjectphone err : " + err);
+    });
+
+    db.subjectemail.find({
+        where: {
+            subjectID: req.body.id,
+            emailtype: 'Primary'
+        }
+    })
+    .then(function(result) {
+        if (result) {
+            result.updateAttributes({
+                emailaddress: req.body.email1
+            });
+        }
+    })
+    .catch(function(err) {
+        console.log("update primary subjectemail err : " + err);
+    });
+
+    db.subjectemail.find({
+        where: {
+            subjectID: req.body.subjectID,
+            emailtype: 'Secondary'
+        }
+    })
+    .then(function(result) {
+        if (result) {
+            result.updateAttributes({
+                emailaddress: req.body.email2
+            });
+        }
+    })
+    .catch(function(err) {
+        console.log("update Secondary subjectemail err : " + err);
+    });
+
+    db.SubjectContact.find({
+        where: {
+            contactID: req.body.contact1.contactID
+        }
+    })
+    .then(function(result) {
+        if(result) {
+            result.updateAttributes({
+                relationship: req.body.contact1.relationship
+            });
+        }
+        else if(req.body.email2 !== null){
+            var subjectemail = {
+                subjectID: req.body.id,
+                emailtype: 'Primary',
+                emailaddress: req.body.email2
+            };
+            subjectemail = db.subjectemail.build(subjectemail);
+            subjectemail.save()
+            .catch(function(err){
+                console.log('add secondary email err : ' + err);
+            });
+        }
+    })
+    .catch(function(err) {
+        console.log('update primary subjectcontact err : ' + err);
+    });
+
+    db.SubjectContact.find({
+        where: {
+            contactID: req.body.contact2.contactID
+        }
+    })
+    .then(function(result) {
+        if(result) {
+            result.updateAttributes({
+                relationship: req.body.contact2.relationship
+            });
+        }
+    })
+    .catch(function(err) {
+        console.log('update secondary subjectcontact err : ' + err);
+    });
+
+    db.contacts.find({
+        where: {
+            contactID: req.body.contact1.contactID
+        }
+    })
+    .then(function(result) {
+        if(result) {
+            result.updateAttributes({
+                lastname: req.body.contact1.lastname,
+                firstname: req.body.contact1.firstname,
+                middlename: req.body.contact1.middlename
+            });
+        }
+    })
+    .catch(function(err) {
+        console.log('update primary contact err : ' + err);
+    });
+
+    db.contacts.find({
+        where: {
+            contactID: req.body.contact2.contactID
+        }
+    })
+    .then(function(result) {
+        if(result) {
+            result.updateAttributes({
+                lastname: req.body.contact2.lastname,
+                firstname: req.body.contact2.firstname,
+                middlename: req.body.contact2.middlename
+            });
+        }
+    })
+    .catch(function(err) {
+        console.log('update secondary contact err : ' + err);
+    });
+
+    db.contactphone.find({
+        where: {
+            contactID: req.body.contact1.contactID
+        }
+    })
+    .then(function(result) {
+        if(result) {
+            result.updateAttributes({
+                areacode: req.body.contact1.areacode,
+                phonenumber: req.body.contact1.phone
+            });
+        }
+    })
+    .catch(function(err) {
+        console.log('update primary contactphone err : ' + err);
+    });
+
+    db.contactphone.find({
+        where: {
+            contactID: req.body.contact2.contactID
+        }
+    })
+    .then(function(result) {
+        if(result) {
+            result.updateAttributes({
+                areacode: req.body.contact2.areacode,
+                phonenumber: req.body.contact2.phone
+            });
+        }
+    })
+    .catch(function(err) {
+        console.log('update secondary contactphone err : ' + err);
+    });
+
 };
 
 /**
@@ -303,13 +535,8 @@ exports.subject = function(req, res, next, lastName, firstName, email) {
 //groupinfo.client.view=====================================================
 
 exports.getSubjects = function(req, res, next) {
-    db.studysubject.findAll({
-        where: {
-            studyID: req.body.study.id,
-            groupID: req.body.group.id
-        },
-        attributes: ['subjectID', 'firstname', 'lastname']
-    })
+    var string = "SELECT subjectID, firstname, lastname FROM etect_dev.subject where etect_dev.subject.subjectID in (select subjectID from etect_dev.studysubject where etect_dev.studysubject.studyID = " + req.body.study.id + " and etect_dev.studysubject.groupID = " + req.body.group.id + ")";
+    db.sequelize.query(string, { type: db.sequelize.QueryTypes.SELECT})
     .then(function(result){
         console.log(JSON.stringify(result));
         res.send(JSON.stringify(result));
@@ -401,4 +628,282 @@ exports.enroll = function(req, res, next) {
             });
         }
     });
+};
+
+exports.getfullsubject = function(req, res, next) {
+    var count = 0;
+    var subject = {
+        id: req.body.patient.id,
+        title: null,
+        firstname: null,
+        middlename: null,
+        lastname: null,
+        suffix: null,
+        gender: null,
+        height: null,
+        weight: null,
+        age: null,
+        readerID: null,
+        studyID: req.body.study.id,
+        groupID: req.body.group.id,
+        start: null,
+        end: null,
+        address: {
+            addressID: null,
+            street1: null,
+            street2: null,
+            city: null,
+            state: null,
+            zip: null
+        },
+        phone1: {
+            areacode: null,
+            phone: null
+        },
+        phone2: {
+            areacode: null,
+            phone: null
+        },
+        email1: null,
+        email2: null,
+        contact1: {
+            contactID: null,
+            relationship: null,
+            firstname: null,
+            middlename: null,
+            lastname: null,
+            areacode: null,
+            phone: null
+        },
+        contact2: {
+            contactID: null,
+            relationship: null,
+            firstname: null,
+            middlename: null,
+            lastname: null,
+            areacode: null,
+            phone: null
+        }
+    };
+
+    db.subject.find({
+        where: {
+            subjectID: req.body.patient.id
+        }
+    })
+    .then(function(result){
+        subject.title = result.title;
+        subject.firstname = result.firstname;
+        subject.middlename = result.middlename;
+        subject.lastname = result.lastname;
+        subject.suffix = result.suffix;
+        subject.gender = result.gender;
+        subject.height = result.height;
+        subject.weight = result.weight;
+        subject.age = result.age;
+        count++;
+        if(count === 11) {
+            res.send(subject);
+        }
+       
+    })
+    .catch(function(err){
+        console.log('Full subject info err : ' + err);
+    });
+
+    db.SubjectReader.find({
+        where: {
+            subjectID: req.body.patient.id,
+            studyID: req.body.study.id,
+            groupID: req.body.group.id
+        }
+    })
+    .then(function(result){
+        if(result !== null) {
+            subject.readerID = result.readerID;
+            subject.start = result.startDate;
+            subject.end = result.endDate;
+        }
+        count++;
+        if(count === 11) {
+            res.send(subject);
+        }
+
+    })
+    .catch(function(err){
+        console.log('Full subject reader err : ' + err);
+    });
+
+    var string1 = "SELECT * FROM etect_dev.address where etect_dev.address.addressID in (select addressID from etect_dev.SubjectAddress where etect_dev.SubjectAddress.subjectID = " + req.body.patient.id + ")";
+    db.sequelize.query(string1,  { type: db.sequelize.QueryTypes.SELECT})
+    .then(function(result) {
+        result = result[0];
+        subject.address.addressID = result.addressID;
+        subject.address.street1 = result.addressLine1;
+        subject.address.street2 = result.addressLine2;
+        subject.address.city = result.city;
+        subject.address.state = result.stateCode;
+        subject.address.zip = result.zip;
+        count++;
+        if(count === 11) {
+            res.send(subject);
+        }
+        
+    })
+    .catch(function(err) {
+        console.log('Full subject address err : ' + err);
+    });
+
+    db.subjectphone.find({
+        where: {
+            subjectID: req.body.patient.id,
+            phoneType: 'Primary'
+        }
+    })
+    .then(function(result) {
+        subject.phone1.areacode = result.areaCode;
+        subject.phone1.phone = result.phonenumber;
+        count++;
+        if(count === 11) {
+            res.send(subject);
+        }
+        
+    })
+    .catch(function(err) {
+        console.log('Full suject primary phone err : ' + err);
+    });
+
+    db.subjectphone.find({
+        where: {
+            subjectID: req.body.patient.id,
+            phoneType: 'Secondary'
+        }
+    })
+    .then(function(result) {
+        if (result !== null) {
+            subject.phone2.areacode = result.areaCode;
+            subject.phone2.phone = result.phonenumber;
+        }   
+        count++;
+        if(count === 11) {
+            res.send(subject);
+        }
+        
+    })
+    .catch(function(err) {
+        console.log('Full suject secondary phone err : ' + err);
+    });
+
+    db.subjectemail.find({
+        where: {
+            subjectID: req.body.patient.id,
+            emailtype: 'Primary'
+        }
+    })
+    .then(function(result) {
+        subject.email1 = result.emailaddress;
+        count++;
+        if(count === 11) {
+            res.send(subject);
+        }
+        
+    })
+    .catch(function(err) {
+        console.log('Full suject primary email err : ' + err);
+    });
+
+    db.subjectemail.find({
+        where: {
+            subjectID: req.body.patient.id,
+            emailtype: 'Secondary'
+        }
+    })
+    .then(function(result) {
+        if (result !== null) {
+            subject.email2 = result.emailaddress;
+        }
+        count++;
+        if(count === 11) {
+            res.send(subject);
+        }
+
+        
+    })
+    .catch(function(err) {
+        console.log('Full subject secondary email err : ' + err);
+    });
+
+    db.SubjectContact.find({
+        where: {
+            subjectID: req.body.patient.id,
+            contactOrder: 1
+        }
+    })
+    .then(function(result) {
+        subject.contact1.relationship = result.relationship;
+        subject.contact1.contactID = result.contactID;
+        var string2 = "SELECT * FROM etect_dev.contacts, etect_dev.contactphone where etect_dev.contacts.contactID = " + result.contactID + " and etect_dev.contactphone.contactID = " + result.contactID + ";";
+        db.sequelize.query(string2, { type: db.sequelize.QueryTypes.SELECT})
+        .then(function(result){
+            result = result[0];
+            subject.contact1.firstname = result.firstname;
+            subject.contact1.middlename = result.middlename;
+            subject.contact1.lastname = result.lastname;
+            subject.contact1.areacode = result.areacode;
+            subject.contact1.phone = result.phonenumber;
+            count++;
+            if(count === 11) {
+                res.send(subject);
+            }
+
+        })
+        .catch(function(err) {
+            console.log('Full subject primary contact inner err : ' + err);
+        });
+        count++;
+        if(count === 11) {
+            res.send(subject);
+        }
+
+    })
+    .catch(function(err) {
+        console.log('Full subject primary contact outer err : ' + err);
+    });
+
+    db.SubjectContact.find({
+        where: {
+            subjectID: req.body.patient.id,
+            contactOrder: 2
+        }
+    })
+    .then(function(result) {
+        subject.contact2.relationship = result.relationship;
+        subject.contact2.contactID = result.contactID;
+        var string2 = "SELECT * FROM etect_dev.contacts, etect_dev.contactphone where etect_dev.contacts.contactID = " + result.contactID + " and etect_dev.contactphone.contactID = " + result.contactID + ";";
+        db.sequelize.query(string2, { type: db.sequelize.QueryTypes.SELECT})
+        .then(function(result){
+            result = result[0];
+            subject.contact2.firstname = result.firstname;
+            subject.contact2.middlename = result.middlename;
+            subject.contact2.lastname = result.lastname;
+            subject.contact2.areacode = result.areacode;
+            subject.contact2.phone = result.phonenumber;
+            count++;
+            if(count === 11) {
+                res.send(subject);
+            }
+
+        })
+        .catch(function(err) {
+            console.log('Full subject secondary contact inner err : ' + err);
+        });
+        count++;
+        if(count === 11) {
+            res.send(subject);
+        }
+    })
+    .catch(function(err) {
+        console.log('Full subject secondary contact outer err : ' + err);
+    });
+
 };

@@ -17,7 +17,7 @@
                 <thead><tr><th>Groups</th><th>Complience</th></tr></thead>
                 <tbody>
                     <tr ng-repeat="group in groups">
-                        <td><button class="btn" style="background:transparent" ng-click="Current.set_group(group.groupID, group.studyGroupName)" ui-sref="group-info">{{group.studyGroupName}}</button></td>
+                        <td><button ng-click="Current.set_group(group.groupID, group.studyGroupName)" ui-sref="group-info" class="btn" style="background:transparent">{{group.studyGroupName}}</button></td>
                         <td>{{group.complience}}</td>
                     </tr>
                 </tbody>

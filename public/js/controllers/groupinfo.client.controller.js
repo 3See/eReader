@@ -19,7 +19,7 @@ angular.module('mean').controller('GroupInfoController', ['$scope', 'Authenticat
     	console.log('GetSubjects Error : ' + err);
     });
 
-
+    $scope.Current = Current;
   }
 ]);
 

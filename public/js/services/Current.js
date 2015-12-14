@@ -83,6 +83,7 @@ angular.module('mean').factory('Current', ['$http', function($http) {
 		Current.populate();
 	};
 	Current.set_patient = function(pid, fname, lname) {
+		console.log('Setting current patient');
 		states.patient.id = pid;
 		states.patient.firstname = fname;
 		states.patient.lastname = lname;

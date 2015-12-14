@@ -15,5 +15,7 @@ angular.module('mean').controller('StudyInfoController', ['$scope', 'Authenticat
     	console.log(data);
     });
 
+    $scope.Current = Current;
+
   }
 ]);
