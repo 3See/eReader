@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     endDate: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     }
   }, {
     classMethods: {
