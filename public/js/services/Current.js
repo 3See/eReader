@@ -74,6 +74,7 @@ angular.module('mean').factory('Current', ['$http', function($http) {
 		Current.populate();
 	};
 	Current.set_group = function(gid, gname) {
+		console.log('Setting current group');
 		states.group.id = gid;
 		states.group.name = gname;
 

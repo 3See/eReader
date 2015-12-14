@@ -305,10 +305,10 @@ exports.subject = function(req, res, next, lastName, firstName, email) {
 exports.getSubjects = function(req, res, next) {
     db.studysubject.findAll({
         where: {
-            studyID: '1',
-            groupID: '1'
+            studyID: req.body.study.id,
+            groupID: req.body.group.id
         },
-        attributes: ['subjectID']
+        attributes: ['subjectID', 'firstname', 'lastname']
     })
     .then(function(result){
         console.log(JSON.stringify(result));

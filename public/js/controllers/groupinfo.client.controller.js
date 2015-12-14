@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean').controller('GroupInfoController', ['$scope', 'Authentication', '$state', '$http',
-  function ($scope, Authentication, $state, $http) {
+angular.module('mean').controller('GroupInfoController', ['$scope', 'Authentication', '$state', '$http', 'Current',
+  function ($scope, Authentication, $state, $http, Current) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
@@ -10,7 +10,7 @@ angular.module('mean').controller('GroupInfoController', ['$scope', 'Authenticat
     //  $state.go('sign-in');
     //}
 
-    $http.post('/subject/getSubjects')
+    $http.post('/subject/getSubjects', Current.get_state())
     .success(function(data) {
     	$scope.patients = data;
     	console.log(data);
