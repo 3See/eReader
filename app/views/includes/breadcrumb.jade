@@ -1,15 +1,15 @@
 nav#breadcrumb(data-ng-controller="breadcrumbController")
-    div(class="well")
+    div(class="well", ng-hide="state.study.id === null")
         div(class="row")
             div(class="col-xs-4 col-sm-4 col-md-4 col-lg-4")
-                select.form-control(name="Study", ng-model="current_study")
-                    option(value="") Current Study
-                    option(data-ng-repeat="study in studies", value="{{study}}") {{study}}
+                select.form-control(name="Study", ng-model="usr_study")
+                    option(value="") Current Study: 
+                    option(data-ng-repeat="study in studies", ng-click="Current.set_study(usr_study.id, usr_study.name)", value="{{study.id}}", ui-sref="study-info") {{study.name}}
             div(class="col-xs-4 col-sm-4 col-md-4 col-lg-4")
                 select.form-control(name="Group", ng-model="current_group")
                     option(value="") Current Group
-                    option(ng-repeat="group in groups", value="{{group}}") {{group}}
+                    option(data-ng-repeat="group in groups", value="{{group.id}}") {{group.name}}
             div(class="col-xs-4 col-sm-4 col-md-4 col-lg-4")
                 select.form-control(name="Patient", ng-model="current_patient")
                     option(value="") Current Patient
-                    option(ng-repeat="patient in patients", value="{{patient}}") {{patient}}
+                    option(data-ng-repeat="patient in patients", value="{{patient.id}}") {{patient.firstname}} {{patient.lastname}}
