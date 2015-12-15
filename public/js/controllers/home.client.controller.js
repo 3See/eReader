@@ -10,7 +10,6 @@ angular.module('mean').controller('HomeController', ['$scope', '$state', '$http'
     
     $http.post('/study/getStudy', Current.get_state()).success(function(data) {
     	$scope.studies = data;
-    	console.log(data);
     }).error(function(err) {
     	console.log('GetStudy Error : ' + err);
     });
