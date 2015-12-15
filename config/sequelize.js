@@ -12,6 +12,8 @@ var db        = {};
 winston.info('Initializing Sequelize...');
 
 // create your instance of sequelize
+
+// If you are running anything but a MYSQL DB you must edit from here
 var sequelize = new Sequelize(config.db.name, config.db.username, config.db.password, {
   host: config.db.host,
   port: config.db.port,
@@ -39,7 +41,7 @@ fs.readdirSync(config.modelsDir)
 // invoke associations on each of the models
 Object.keys(db).forEach(function(modelName) {
   if ("associate" in db[modelName]) {
-     db[modelName].associate(db);
+     db[modelName].associate(db); // For all models that have 'associate' method for class methods, run the key association
  }
 });
 
@@ -48,17 +50,17 @@ Object.keys(db).forEach(function(modelName) {
 // Synchronizing any model changes with database.
 // WARNING: this will DROP your database everytime you re-run your application
 sequelize
-  .query('SET FOREIGN_KEY_CHECKS = 0', {raw: true})
+  .query('SET FOREIGN_KEY_CHECKS = 0', {raw: true}) // Removes key constraints on DB allowing for DROP
   .then(function() {
     sequelize.sync({force: config.FORCE_DB_SYNC==='true', logging:config.enableSequelizeLog==='true' ? winston.verbose : false});
   })
   .then(function() {
-        winston.info("Database "+(config.FORCE_DB_SYNC==='true'?"*DROPPED* and ":"")+ "synchronized");
+        winston.info("Database "+(config.FORCE_DB_SYNC==='true'?"*DROPPED* and ":"")+ "synchronized"); // Log the process
     }).catch(function(err){
         winston.error("An error occured: %j",err);
     }, function(){
       sequelize
-    .query('SET FOREIGN_KEY_CHECKS = 1');
+    .query('SET FOREIGN_KEY_CHECKS = 1'); // Re-init all keys on the DB
   });
 
 
