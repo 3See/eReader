@@ -2,6 +2,7 @@
 
 angular.module('mean').controller('breadcrumbController', ['$scope', '$state', 'Authentication',
 	'Current', function($scope, $state, Authentication, Current) {
+    Current.populate();
     $scope.state = Current.get_state();
     var state_lists = Current.get_state_lists();
     $scope.studies = state_lists.study_list;

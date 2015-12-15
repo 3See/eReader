@@ -3,12 +3,13 @@
 //Global authentication service 
 angular.module('mean').factory('Current', ['$http', function($http) {
 	var states = {
+		uid: 2,
 		study: {id: null, name: null},
 		group: {id: null, name: null},
 		patient: {id: null, firstname: null, lastname: null}
 	};
 
-	var uid = 1;
+	var uid = 2;
 
 	var state_lists = {
 		study_list: {},
@@ -27,6 +28,13 @@ angular.module('mean').factory('Current', ['$http', function($http) {
 	};
 
 	Current.populate = function () {
+		if(states.study === null) {
+			states.study = {
+				id: '%',
+				name: '%'
+			};
+		}
+
 		if(states.group === null) {
 			states.group = {
 				id: '%',
@@ -58,7 +66,7 @@ angular.module('mean').factory('Current', ['$http', function($http) {
     		console.log(data);
     	})
     	.error(function(err) {
-    		console.log('Populate Error : ' + err);
+    		console.log('Populate Error : ' + err); 
     	});
 	};
 

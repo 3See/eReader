@@ -3,11 +3,11 @@ nav#breadcrumb(data-ng-controller="breadcrumbController")
         div(class="row")
             div(class="col-xs-4 col-sm-4 col-md-4 col-lg-4")
                 select.form-control(name="Study", ng-model="usr_study")
-                    option(value="") Current Study: 
+                    option(value="") Current Study: {{state.study.name}} 
                     option(data-ng-repeat="study in studies", ng-click="Current.set_study(usr_study.id, usr_study.name)", value="{{study.id}}", ui-sref="study-info") {{study.name}}
             div(class="col-xs-4 col-sm-4 col-md-4 col-lg-4")
                 select.form-control(name="Group", ng-model="current_group")
-                    option(value="") Current Group
+                    option(value="") Current Group: {{state.group.name}}
                     option(data-ng-repeat="group in groups", value="{{group.id}}") {{group.name}}
             div(class="col-xs-4 col-sm-4 col-md-4 col-lg-4")
                 select.form-control(name="Patient", ng-model="current_patient")
