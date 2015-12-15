@@ -18,7 +18,7 @@ exports.search = function(req, res, next) {
         }
     }
 
-    var query_sid = "subjectID LIKE '" + params[0]+ "' AND ";
+    var query_sid = "subjectID LIKE '" + params[0] + "' AND ";
     var query_fname = "firstname LIKE '" + params[1] + "' AND ";
     var query_lname = "lastname LIKE '" + params[2] + "'";
 

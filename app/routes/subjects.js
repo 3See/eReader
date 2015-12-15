@@ -23,6 +23,9 @@ module.exports = function(app) {
     // Enroll subjest in study
     app.post('/subject/enroll', subjects.enroll);
 
+    // Get the full subject's information
+    app.post('/subject/getfullsubject', subjects.getfullsubject);
+
     // Validate Our Subject
     app.param('subjectId', subjects.subject);
 };

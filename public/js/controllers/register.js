@@ -32,7 +32,10 @@ angular.module('mean').controller('RegisterController', ['$scope', 'Authenticati
         $scope.information.r2firstname !== undefined &&
         $scope.information.r2lastname !== undefined &&
         $scope.information.contact_areacode2 !== undefined &&
-        $scope.information.r2phone !== undefined 
+        $scope.information.r2phone !== undefined &&
+        $scope.information.height !== undefined &&
+        $scope.information.weight !== undefined &&
+        $scope.information.age !== undefined
       ){
         $http.post('/subject/register', $scope.information)
         .catch(function(err){

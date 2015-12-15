@@ -1,53 +1,65 @@
 <div id="todo" class="container-fluid" data-ng-controller="SubjectInfoController" class="content">
-    <h1 class="text-center">{{information.firstname}} {{information.middlename}} {{information.lastname}}</h1>
+    <h1 class="text-center">{{information.title}} {{information.firstname}} {{information.middlename}} {{information.lastname}} {{information.suffix}}</h1>
 
-    <!-- Display Non-editing information page -->
+    <!-- Display Non-editing info page -->
     <div class="row" ng-show="!editBool">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 
           <!-- Subject  ID -->
-          <p>Subject ID: {{information.subjectID}}</p>
+          <p>Subject ID: {{information.id}}</p>
 
           <!-- Patients  Full Name -->
-          <p>Full Name: {{information.firstname}} {{information.middlename}} {{information.lastname}}</p>
+          <p>Full Name: {{information.title}} {{information.firstname}} {{information.middlename}} {{information.lastname}} {{information.suffix}}</p>
 
           <!-- Reader ID -->
           <p>Reader ID: {{information.readerID}}</p>
 
           <!-- Start Date -->
-          <p>Start Date: {{information.startDate}}</p>
+          <p>Start Date: {{information.start}}</p>
 
           <!-- End Date -->
-          <p>End Date: {{information.endDate}}</p>
+          <p>End Date: {{information.end}}</p>
+
+          <p>Gender: {{information.gender}}</p>
+
+          <p>Age: {{information.age}}</p>
+
+          <p>Height: {{information.height}}</p>
+
+          <p>Weight: {{information.weight}}</p>
 
           
           <!-- layout for addresses: -->
 
           <!-- Display Addresses -->
           <p class="smallBreak"> Address: </p>
-          <p>{{information.addressLine1}} {{information.addressLine2}}</p>
-          <p>{{information.city}} , {{information.state}}. {{information.zip}}</p>
+          <p>{{information.address.street1}}</p>
+          <p>{{information.address.street2}}</p>
+          <p>{{information.address.city}} , {{information.address.state}}. {{information.address.zip}}</p>
 
           
           <!-- layout for phone #'s: -->
 
           <!-- Display numbers -->
-          <p class="smallBreak"> Phone: {{information.areacode1}}-{{information.phone1}} </p>
-          <p> Phone 2: {{information.areacode2}}-{{information.phone2}} </p>
+          <p class="smallBreak"> Primary Phone: {{information.phone1.areacode}} {{information.phone1.phone}} </p>
+          <p> Secondary Phone: {{information.phone2.areacode}} {{information.phone2.phone}} </p>
+
+          <p> Primary email: {{information.email1}}</p>
+          <p> Secondary email: {{information.email2}}</p>
 
           <!-- layout for emergency contacts: -->
 
           <!-- Display header -->
-          <h3> Emergency Contact Information </h3>
+          <h3> Emergency Contact info </h3>
               
-          <!-- Display the contact information -->
-          <p>Name: {{information.r1firstname}} {{information.r1middleinitial}} {{information.r1lastname}}</p>
-          <p> Relationship: {{information.relation1}}</p>
-          <p> Phone: {{information.contact_areacode1}}-{{information.r1phone}}</p>
+          <!-- Display the contact info -->
+          <p>Name: {{information.contact1.firstname}} {{information.contact1middlename}} {{information.contact1lastname}}</p>
+          <p> Relationship: {{information.contact1.relationship}}</p>
+          <p> Phone: {{information.contact1.areacode}}-{{information.contact1.phone}}</p>
           
-          <p class="smallBreak">Name: {{information.r2firstname}} {{information.r2middleinitial}} {{information.r2lastname}}</p>
-          <p> Relationship: {{information.relation2}}</p>
-          <p> Phone: {{information.contact_areacode2}}-{{information.r2phone}}</p>
+          <p class="smallBreak">Name: {{information.contact2.firstname}} {{information.contact2.middlename}} {{information.contact2.lastname}}</p>
+          <p> Relationship: {{information.contact2.relationship}}</p>
+          <p> Phone: {{information.contact2.areacode}}-{{information.contact2.phone}}</p>
 
           <!-- Edit column -->
           <button class="btn btn-default" type="button" ng-click="toggleEdit()">Edit</button></p>
@@ -67,10 +79,6 @@
         </div>
     </div>
 
-
-
-
-
       <!-- Display editing information page -->
     <div ng-show="editBool">
       <!-- Patient  ID -->
@@ -80,7 +88,7 @@
           <p>Subject ID:</p>
         </div>
         <div class="col-sm-3">
-          {{information.subjectID}}
+          {{information.id}}
         </div>
       </div>
 
@@ -115,7 +123,7 @@
 
         </div>
       </div>
-
+<!--
       <div class="row">
         <div class="col-sm-2">
           <p>Group: </p>
@@ -129,17 +137,15 @@
           </select>
         </div>
       </div>
-
+-->
       <div class="row">
         <div class="col-sm-2">
           <p>Reader:</p>
         </div>
         <div class="col-sm-3">
           <select name="readers" ng-model="information.readerID" class="form-control">
-                <option value="Reader 1">Reader 1</option>
-                <option value="Reader 2">Reader 2</option>
-                <option value="Reader 3">Reader 3</option>
-                <option value="Reader 4">Reader 4</option>
+                <option value="{{information.readerID}}">{{information.readerID}}</option>
+                <option ng-repeat="reader in readers" value="{{reader.readerID}}">{{reader.readerID}}</option>
           </select>
         </div>
       </div>
@@ -150,7 +156,7 @@
         </div>
         <div class="col-sm-3">
           <!--<input type="text" ng-model="startDate" class="form-control"></input>-->
-          <input type="date" class="form-control" uib-datepicker-popup ng-model="startDate" ngRequired="false"  />
+          <input type="date" class="form-control" uib-datepicker-popup ng-model="information.start" ngRequired="false"  />
         </div>
       </div>
 
@@ -162,8 +168,32 @@
         <div class="col-sm-3">
           <!--<input type="text" ng-model="endDate" class="form-control"></input>-->
 
-          <input type="date" class="form-control" uib-datepicker-popup ng-model="endDate"/>
+          <input type="date" class="form-control" uib-datepicker-popup ng-model="information.end"/>
 
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          <p>Age: </p>
+        </div>
+        <div class="col-sm-3">
+          <input type="number" ng-required="true" ng-model="information.age" class="form-control"></input>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          <p>Height: </p>
+        </div>
+        <div class="col-sm-3">
+          <input type="number" ng-required="true" ng-model="information.height" class="form-control"></input>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2">
+          <p>Weight: </p>
+        </div>
+        <div class="col-sm-3">
+          <input type="number" ng-required="true" ng-model="information.weight" class="form-control"></input>
         </div>
       </div>
       </br>
@@ -175,10 +205,10 @@
         </div>
         <div class="col-sm-1">
 
-          <input type="number" pattern=".{3}" ng-required="true" class="form-control"></input>
+          <input type="number" pattern=".{3}" ng-model="information.phone1.areacode" ng-required="true" class="form-control"></input>
         </div>
         <div class="col-sm-2">
-          <input type="number" pattern=".{7}" ng-model="information.phone1" ng-required="true" class="form-control"></input>
+          <input type="number" pattern=".{7}" ng-model="information.phone1.phone" ng-required="true" class="form-control"></input>
 
         </div>
       </div>
@@ -190,10 +220,10 @@
           </p>
         </div>
         <div class="col-sm-1">
-          <input type="number" pattern=".{3}" ng-model="information.areacode2" class="form-control"></input>
+          <input type="number" pattern=".{3}" ng-model="information.phone2.areacode" class="form-control"></input>
         </div>
         <div class="col-sm-2">
-          <input type="number" pattern=".{7}" ng-model="information.phone2" class="form-control"></input>
+          <input type="number" pattern=".{7}" ng-model="information.phone2.phone" class="form-control"></input>
         </div>
       </div>
       <br>
@@ -202,27 +232,27 @@
         <div class="col-sm-2">
           <p> Address: </p>
 
-          <input type="text" ng-required="true" ng-model="information.addressLine1" class="form-control"></input>
+          <input type="text" ng-required="true" ng-model="information.address.street1" class="form-control"></input>
 
           
         </div>
         <div class="col-sm-2">
           <p>Address 2:</p>
 
-          <input type="text" ng-required="true" ng-model="information.addressLine2" class="form-control"></input>
+          <input type="text" ng-required="true" ng-model="information.address.street2" class="form-control"></input>
 
           
         </div>
         <div class="col-sm-3">
           <p> City: </p>
 
-          <input type="text" ng-required="true" class="form-control"></input>
+          <input type="text" ng-model="information.address.city" ng-required="true" class="form-control"></input>
 
           
         </div>
         <div class="col-sm-2">
           <p> State: </p>
-          <select name="State" ng-required="true" ng-model="information.state" class="form-control">
+          <select name="State" ng-required="true" ng-model="information.address.state" class="form-control">
               <option value="">St</option>
               <option value="AL">AL</option>
               <option value="AK">AK</option>
@@ -281,7 +311,7 @@
         <div class="col-sm-2">
           <p> Zip Code: </p>
 
-          <input type="number" pattern=".{5}" ng-model="information.zip"  ng-required="true" class="form-control"></input>
+          <input type="number" pattern=".{5}" ng-model="information.address.zip"  ng-required="true" class="form-control"></input>
           
         </div>
       </div>
@@ -297,22 +327,22 @@
         <div class="row">
             <div class="col-sm-2"> 
 
-              <p>First Name: <input type="text" ng-required="true" ng-model="information.r1firstname" class="form-control"></input></p>
-              <p>First Name: <input type="text" ng-required="true" ng-model="information.r2firstname" class="form-control"></input></p>
+              <p>First Name: <input type="text" ng-required="true" ng-model="information.contact1.firstname" class="form-control"></input></p>
+              <p>First Name: <input type="text" ng-required="true" ng-model="information.contact2.firstname" class="form-control"></input></p>
             </div>
             
             <div class="col-sm-1"> 
-              <p>M.I.: <input type="text" pattern=".{1}" ng-model="information.r1middleinitial" class="form-control"></input></p>
-              <p> M.I.: <input type="text" pattern=".{1}" ng-model="information.r2middleinitial" class="form-control"></input></p>
+              <p>M.I.: <input type="text" pattern=".{1}" ng-model="information.contact1.middlename" class="form-control"></input></p>
+              <p> M.I.: <input type="text" pattern=".{1}" ng-model="information.contact2.middlename" class="form-control"></input></p>
             </div>
 
             <div class="col-sm-2"> 
-              <p>Last Name: <input type="text" ng-required="true" ng-model="information.r1lastname" class="form-control"></input></p>
-              <p>Last Name: <input type="text" ng-required="true" ng-model="information.r2lastname" class="form-control"></input></p>
+              <p>Last Name: <input type="text" ng-required="true" ng-model="information.contact1.lastname" class="form-control"></input></p>
+              <p>Last Name: <input type="text" ng-required="true" ng-model="information.contact2.lastname" class="form-control"></input></p>
             </div>
 
             <div class="col-sm-2"> 
-              <p>Relationship:<select name="Relationship" ng-required="true" ng-model="information.relation1" class="form-control">
+              <p>Relationship:<select name="Relationship" ng-required="true" ng-model="information.contact1.relationship" class="form-control">
 
               <option value="Mother">Mother</option>
               <option value="Father">Father</option>
@@ -321,7 +351,7 @@
               <option value="Other">Other</option>
               </select></p>
 
-              <p>Relationship:<select name="Relationship2" ng-required="true" ng-model="information.relation2" class="form-control">
+              <p>Relationship:<select name="Relationship2" ng-required="true" ng-model="information.contact2.relation" class="form-control">
               <option value="Mother">Mother</option>
               <option value="Father">Father</option>
               <option value="Sibling">Sibling</option>
@@ -330,14 +360,14 @@
               </select></p>
             </div>
             <div class="col-sm-1"> 
-              <p>Phone: <input type="number" pattern=".{3}" ng-model="information.contact_areacode1" ng-required="true" class="form-control"></input></p>
-              <p>Phone: <input type="number" pattern=".{3}" ng-model="information.contact_areacode2" ng-required="true" class="form-control"></input></p>
+              <p>Phone: <input type="number" pattern=".{3}" ng-model="information.contact1.areacode" ng-required="true" class="form-control"></input></p>
+              <p>Phone: <input type="number" pattern=".{3}" ng-model="information.contact2.areacode" ng-required="true" class="form-control"></input></p>
             </div>
             <div class="col-sm-2"> 
               <br>
-              <p><input type="number" pattern=".{7}" ng-model="information.r1phone" ng-required="true" class="form-control"></input></p>
+              <p><input type="number" pattern=".{7}" ng-model="information.contact1.phone" ng-required="true" class="form-control"></input></p>
               <br>
-              <p><input type="number" pattern=".{7}" ng-model="information.r2phone" ng-required="true" class="form-control"></input></p>
+              <p><input type="number" pattern=".{7}" ng-model="information.contact2.phone" ng-required="true" class="form-control"></input></p>
             </div>
         </div>
 
@@ -346,3 +376,6 @@
     <!-- End of editing div -->
     </div>
 </div>
+
+
+
