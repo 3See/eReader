@@ -4,4 +4,6 @@ module.exports = function(app) {
 	var group = require('../controllers/group');
 
 	app.post('/group/getGroups', group.getGroups);
+
+	app.post('/group/getenrollGroups', group.getenrollGroups);
 };
