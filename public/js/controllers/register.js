@@ -38,7 +38,7 @@ angular.module('mean').controller('RegisterController', ['$scope', 'Authenticati
         $scope.information.age !== undefined
       ){
         $http.post('/subject/register', $scope.information)
-        .success(function() {
+        .success(function(data) {
             console.log("Subject registered");
             alert("Subject registered");
             //location.reload(true);
