@@ -15,7 +15,7 @@ exports.getStudy = function(req, res, next) {
 //    console.log(req);
     db.study.findAll({
         //when login is working, need to change hardcoded 1 to user's ID
-        where: {customerID: '2'},
+        where: {customerID: req.body.uid},
         attributes: [
             'studyName',
             'studyID'

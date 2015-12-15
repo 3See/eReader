@@ -19,7 +19,7 @@
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <div>
-                   <select name="Study" ng-model="info.study" class="form-control" ng-required="true" ng-change="setGroups()">
+                   <select name="Study" ng-model="info.study" class="form-control" ng-required="true" ng-change="setGroups(info)">
                     <option ng-repeat= "study in studies" value="{{study.studyID}}">{{study.studyName}}</option>
                   </select>
                 </div>

@@ -27,28 +27,30 @@ exports.populate = function(req, res, next) {
         attributes: ['studyID','studyName']
     })
     .then(function(result) {
-        state_list_pkg.study_list = JSON.stringify(result);
-        console.log(state_list_pkg.study_list);
+        state_list_pkg.study_list = result;
         // Populate Group List
-            db.studygroup.findAll({
-                where: { studyID: query_input_pkg.states.study.id },
-                attributes: ['groupID','studyGroupName']
-            })
+            if(query_input_pkg.states.study.id === null) {
+                query_input_pkg.states.study.id = '%';
+            }
+            
+            if(query_input_pkg.states.group.id === null) {
+                query_input_pkg.states.group.id = '%';
+            }         
+            var string = "select groupID, studyGroupName from etect_dev.studygroup where etect_dev.studygroup.studyID like '" + query_input_pkg.states.study.id + "'";
+            db.sequelize.query(string, {type: db.sequelize.QueryTypes.SELECT})
             .then(function(result){
                 // Set group list
-                state_list_pkg.group_list = JSON.stringify(result);
-                console.log(JSON.stringify(result));
+                state_list_pkg.group_list = result;
 
                 // Populate Patient List
                 var query = "SELECT subjectID, firstname, lastname FROM subject NATURAL JOIN studysubject" +
-                            " WHERE studyID = " + query_input_pkg.states.study.id +
-                            " AND groupID LIKE '" + query_input_pkg.states.group.id + "'";
+                            " WHERE studyID LIKE '" + query_input_pkg.states.study.id +
+                            "' AND groupID LIKE '" + query_input_pkg.states.group.id + "'";
 
                 db.sequelize.query(query, {type: db.sequelize.QueryTypes.SELECT})
                 .then(function(result){
                     // Set patient list
-                    state_list_pkg.patient_list = JSON.stringify(result);
-                    console.log(state_list_pkg.patient_list);
+                    state_list_pkg.patient_list = result;
 
 
                         console.log('Query sucessful***************************');

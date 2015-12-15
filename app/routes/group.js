@@ -5,4 +5,7 @@ module.exports = function(app) {
 
 	// Get the groups
 	app.post('/group/getGroups', group.getGroups);
+
+	app.post('/group/getenrollGroups', group.getenrollGroups);
 };
+

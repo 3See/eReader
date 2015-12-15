@@ -4,17 +4,14 @@ angular.module('mean').controller('HomeController', ['$scope', '$state', '$http'
 	'Current', function ($scope, $state, $http, Authentication, Current) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
-    var results;
-    
-    $http.post('/study/getStudy').success(function(data) {
-    	$scope.studies = data;
-    	console.log(data);
-    }).error(function(err) {
-    	console.log('GetStudy Error : ' + err);
-    });
 
     $scope.Current = Current;
     $scope.states = Current.get_state();
-
+    
+    $http.post('/study/getStudy', Current.get_state()).success(function(data) {
+    	$scope.studies = data;
+    }).error(function(err) {
+    	console.log('GetStudy Error : ' + err);
+    });
 
 }]); // end search

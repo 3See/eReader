@@ -212,6 +212,10 @@ exports.register = function(req, res, next) {
                         console.log('contactphone2 error : ' + err);
                     });
                     subjectcontact2.save()
+                    .then(function(data) {
+                        console.log("Finishing ==============================");
+                        res.send("Finished");
+                    })
                     .catch(function(err){
                         console.log('subjectcontact2 error : ' + err);
                     });

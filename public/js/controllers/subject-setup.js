@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean').controller('subjectSetupController', ['$scope', '$http', '$state', 'Authentication',
-  function ($scope, $http, $state, Authentication) {
+angular.module('mean').controller('subjectSetupController', ['$scope', '$http', '$state', 'Authentication', 'Current',
+  function ($scope, $http, $state, Authentication, Current) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
@@ -20,7 +20,7 @@ angular.module('mean').controller('subjectSetupController', ['$scope', '$http', 
       console.log('UnassignedSearch Error : ' + err);
     });
 
-    $http.post('/study/getStudy')
+    $http.post('/study/getStudy', Current.get_state())
     .success(function(data) {
       $scope.studies = data;
       console.log(data);
@@ -38,14 +38,15 @@ angular.module('mean').controller('subjectSetupController', ['$scope', '$http', 
       console.log('GetReaders Error : ' + err);
     });
 
-    $scope.setGroups = function() {
-      $http.post('/group/getGroups')
+    $scope.setGroups = function(info) {
+      console.log(info);
+      $http.post('/group/getenrollGroups', info)
       .success(function(data) {
         $scope.groups = data;
         console.log(data);
       })
       .error(function(err) {
-        console.log('GetStudy Error : ' + err);
+        console.log('GetGroup Error : ' + err);
       });
     };
 

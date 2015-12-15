@@ -4,8 +4,8 @@ var _ = require('lodash');
 var db = require('../../config/sequelize');
 
 exports.getGroups = function(req, res, next) {
-	console.log("GetGroup req ========================");
-	console.log(req.body);
+//	console.log("GetGroup req ========================");
+//	console.log(req.body);
 	db.studygroup.findAll({
 		where: {
 			studyID: req.body.study.id
@@ -13,10 +13,26 @@ exports.getGroups = function(req, res, next) {
 		attributes: ['studyGroupName', 'groupID']
 	})
 	.then(function(result){
-		console.log(JSON.stringify(result));
+//		console.log(JSON.stringify(result));
         res.send(JSON.stringify(result));		
 	})
 	.catch(function(err){
 		console.log('GetGroup error : ' + err);
 	});
+};
+
+exports.getenrollGroups = function(req, res, next) {
+	db.studygroup.findAll({
+		where: {
+			studyID: req.body.study
+		},
+		attributes: ['studyGroupName', 'groupID']
+	})
+	.then(function(result){
+//		console.log(JSON.stringify(result));
+        res.send(JSON.stringify(result));		
+	})
+	.catch(function(err){
+		console.log('GetGroup error : ' + err);
+	});	
 };
