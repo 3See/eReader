@@ -15,7 +15,7 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             })
             .state('not-found', {
                 url: '/not-found',
-                templateUrl: 'views/404.client.view.html'
+                templateUrl: 'views/404.html'
             })
             .state('sign-in', {
                 url: '/signin',
@@ -27,23 +27,23 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             })
             .state('subject-info', {
                 url: '/subject-info',
-                templateUrl: 'views/subjectinfo.client.view.html'
+                templateUrl: 'views/subject-info.html'
             })
             .state('subject-select', {
                 url: '/subject-select',
-                templateUrl: 'views/subjectselect.client.view.html'
+                templateUrl: 'views/subject-select.html'
             })
             .state('group-info', {
                 url: '/study-group',
-                templateUrl: 'views/groupinfo.client.view.html'
+                templateUrl: 'views/group-info.html'
             })
             .state('study-info', {
                 url: '/study-info',
-                templateUrl: 'views/studyinfo.client.view.html'
+                templateUrl: 'views/study-info.html'
             })
             .state('subject-status', {
                 url: '/subject-status',
-                templateUrl: 'views/subject.status.client.view.html'
+                templateUrl: 'views/subject-status.html'
             })
             .state('subject-setup', {
                 url: '/subject-setup',
@@ -51,10 +51,10 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             })
             .state('reports', {
                 url: '/reports',
-                templateUrl: 'views/reports.client.view.html'
+                templateUrl: 'views/reports.html'
             }).state('search', {
                 url: '/search',
-                templateUrl: 'views/subject_search.html'
+                templateUrl: 'views/subject-search.html'
             });
     }
 ]);

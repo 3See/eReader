@@ -46,7 +46,10 @@ angular.module('mean').controller('RegisterController', ['$scope', 'Authenticati
         })
         .catch(function(err){
             console.log(err);
+            alert('Subject already registered, cannot register again');
+            break;
         });
+        alert('Subject Registered');
       }
     };
 
