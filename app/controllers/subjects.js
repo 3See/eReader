@@ -213,6 +213,7 @@ exports.register = function(req, res, next) {
                     });
                     subjectcontact2.save()
                     .then(function(data) {
+                        console.log("Finishing ==============================");
                         res.send("Finished");
                     })
                     .catch(function(err){
