@@ -39,12 +39,14 @@ angular.module('mean').controller('RegisterController', ['$scope', 'Authenticati
       ){
         $http.post('/subject/register', $scope.information)
         .success(function(){
-            alert('Subject Registered');
+            //alert('Subject Registered');
         })
         .catch(function(err){
             console.log(err);
             alert('Subject already registered, cannot register again');
+            break;
         });
+        alert('Subject Registered');
       }
     };
 

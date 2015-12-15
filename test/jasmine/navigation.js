@@ -1,5 +1,5 @@
 describe('angularjs homepage todo list', function() {
-  it('should add a todo', function() {
+  it('should register a new subject', function() {
     browser.get('http://localhost:3000/');
 
     element(by.buttonText('Subject Registration')).click();
@@ -7,7 +7,7 @@ describe('angularjs homepage todo list', function() {
 
 
 
-    element(by.model('information.firstname')).sendKeys('Charles');
+    element(by.model('information.firstname')).sendKeys('Jon');
     element(by.model('information.middlename')).sendKeys('C');
     element(by.model('information.lastname')).sendKeys('Jones');
     element(by.model('information.height')).sendKeys('68');
@@ -24,7 +24,7 @@ describe('angularjs homepage todo list', function() {
     element(by.model('information.zipcode')).sendKeys('32607');
     element(by.model('information.areacode1')).sendKeys('813');
     element(by.model('information.phone1')).sendKeys('2141125');
-    element(by.model('information.email')).sendKeys('cjones@fakedata.com');
+    element(by.model('information.email')).sendKeys('cmjones@fakedata.com');
     element(by.model('information.areacode2')).sendKeys('214');
     element(by.model('information.phone2')).sendKeys('8530352');
     //skipping email2
@@ -47,11 +47,13 @@ describe('angularjs homepage todo list', function() {
     element(by.model('information.r2phone')).sendKeys('0236565');
     
     element(by.id('register')).click();
+    
     browser.sleep(20000);
+    browser.wait(protractor.ExpectedConditions.alertIsPresent(), 1000);
+    var alertDialog = browser.switchTo().alert();
+    expect(alertDialog.getText()).toEqual('Subject Registered');
 
-
-
-
+    browser.sleep(20000);
     //element(by.css('[value="add"]')).click();
 
     //var todoList = element.all(by.repeater('todo in todoList.todos'));
