@@ -1,8 +1,8 @@
 
-<section data-ng-controller="breadcrumbController" class="content">
+<section data-ng-controller="HomeController" class="content">
   <div class="row">
     <div class="well col-md-8 col-sm-8 col-xs-8 col-lg-8 col-sm-offset-2 col-xs-offset-2 col-md-offset-2 col-lg-offset-2">
-      <button ng-repeat="study in studies" ng-click="update_study(study.studyID, study.studyName)" ui-sref="study-info" class="btn btn-default btn-block">{{study.studyName}}</button>
+      <button ng-repeat="study in studies" ng-click="Current.set_study(study.studyID, study.studyName)" ui-sref="study-info" class="btn btn-default btn-block">{{study.studyName}}</button>
     </div>
   </div>
   <div class="row">
@@ -15,6 +15,6 @@
     <h4>Set Values</h4>
     <input type="text" name="newStudy.name" ng-model="newStudy.name"/>
     <input type="text" name="newStudy.id" ng-model="newStudy.id"/>
-    <button ng-click="update_study(newStudy.id, newStudy.name)" class="btn btn-default">Set Current Study</button>
+    <button ng-click="Current.set_study(newStudy.id, newStudy.name)" class="btn btn-default">Set Current Study</button>
   </div>
 </section>

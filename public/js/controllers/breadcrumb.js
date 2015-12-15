@@ -7,14 +7,11 @@ angular.module('mean').controller('breadcrumbController', ['$scope', '$state', '
     function set_scope () {
 
         $scope.state = Current.get_state();
-        console.log("State : ");
-        console.log($scope.state.study.id);
         var state_lists = Current.get_state_lists();
         $scope.studies = state_lists.study_list;
         $scope.groups = state_lists.group_list;
         $scope.patients = state_lists.patient_list;
-        var st = $scope.state.study.id;
-        $('#study1').val(st);
+
         if ($scope.state.study.id == null) {
             $state.go('home');
         }
@@ -45,10 +42,6 @@ angular.module('mean').controller('breadcrumbController', ['$scope', '$state', '
         var lastname = temp[3].split("\"")[1];
         console.log(firstname + " : " + lastname);
         Current.set_patient(patientID, firstname, lastname, set_scope);
-    };
-
-    $scope.update_study = function(id, name) {
-        Current.set_study(id, name, set_scope);
     };
 
 }]);
