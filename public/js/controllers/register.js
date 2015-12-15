@@ -38,6 +38,12 @@ angular.module('mean').controller('RegisterController', ['$scope', 'Authenticati
         $scope.information.age !== undefined
       ){
         $http.post('/subject/register', $scope.information)
+        .success(function() {
+            console.log("Subject registered");
+            alert("Subject registered");
+            //location.reload(true);
+            $state.go('home');
+        })
         .catch(function(err){
             console.log(err);
         });

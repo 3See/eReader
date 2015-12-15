@@ -13,7 +13,8 @@ angular.module('mean').controller('breadcrumbController', ['$scope', '$state', '
         $scope.studies = state_lists.study_list;
         $scope.groups = state_lists.group_list;
         $scope.patients = state_lists.patient_list;
-        getelementsbyName("Study").value = $scope.state.study.id;
+        var st = $scope.state.study.id;
+        $(#study1).val(st);
         if ($scope.state.study.id == null) {
             $state.go('home');
         }
