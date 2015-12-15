@@ -20,3 +20,7 @@ exports.getGroups = function(req, res, next) {
 		console.log('GetGroup error : ' + err);
 	});
 };
+
+exports.getenrollGroups = function(req, res, next) {
+	
+}
