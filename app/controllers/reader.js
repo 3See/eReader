@@ -3,6 +3,7 @@
 var _ = require('lodash');
 var db = require('../../config/sequelize');
 
+// Get Readers asscociated with Study
 exports.getStudyReaders = function(req, res, next) {
 	db.StudyReader.findAll({
 		where: {
@@ -12,13 +13,14 @@ exports.getStudyReaders = function(req, res, next) {
 	})
 	.then(function(result){
 		console.log(JSON.stringify(result));
-        res.send(JSON.stringify(result));		
+        res.send(JSON.stringify(result));
 	})
 	.catch(function(err){
 		console.log('GetStudyReaders error : ' + err);
 	});
 };
 
+// Get All Readers
 exports.getReaders = function(req, res, next) {
 	db.reader.findAll()
 	.then(function(result){
@@ -30,6 +32,7 @@ exports.getReaders = function(req, res, next) {
 	});
 };
 
+// Get Readers with no assigned Study
 exports.getunassignedReaders = function(req, res, next) {
 	var string = "SELECT readerID FROM etect_dev.reader WHERE etect_dev.reader.readerID NOT IN (SELECT readerID FROM etect_dev.StudyReader)";
 	db.sequelize.query(string, { type: db.sequelize.QueryTypes.SELECT})
