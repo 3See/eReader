@@ -41,7 +41,7 @@ exports.getReaders = function(req, res, next) {
 // Get Readers with no assigned Study
 // Called from: public\js\controllers\subject-setup.js
 exports.getunassignedReaders = function(req, res, next) {
-	var string = "SELECT readerID FROM etect_dev.reader WHERE etect_dev.reader.readerID NOT IN (SELECT readerID FROM etect_dev.StudyReader)";
+	var string = "SELECT readerID FROM etect_dev.StudyReader WHERE etect_dev.StudyReader.studyID = " + req.body.study + " AND etect_dev.StudyReader.readerID NOT IN (SELECT readerID FROM etect_dev.SubjectReader WHERE etect_dev.SubjectReader.studyID = " + req.body.study + ")";
 	db.sequelize.query(string, { type: db.sequelize.QueryTypes.SELECT})
 	.then(function(result){
 		console.log(JSON.stringify(result));

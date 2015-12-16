@@ -23,7 +23,7 @@
     	</thead>
     	<tbody>
     		<tr ng-repeat="subject in subjects">
-    			<td><button class="btn" style="background:transparent" ui-sref="subject-info">{{subject.subjectID}}</button></td>
+    			<td><button class="btn" style="background:transparent" id="subject-button" ng-click="Current.set_patient(subject.subjectID, subject.firstname, subject.lastname)" ui-sref="subject-info">{{subject.subjectID}}</button></td>
     			<td>{{subject.readerID}}</td>
     			<td>{{subject.studyGroupName}}</td>
     			<td>{{subject.undefined}}</td>

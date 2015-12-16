@@ -17,9 +17,9 @@
             <table class="table table-striped">
                 <thead><tr><th>Patients</th><th>Complience</th></tr></thead>
                 <tbody>
-                    <tr ng-repeat="patient in patients">
-                        <td><button class="btn" style="background:transparent" ng-click="Current.set_patient(patient.subjectID, patient.firstname, patient.lastname)" ui-sref="subject-info">{{patient.subjectID}}</a></button></td>
-                        <td style="vertical-align:middle">{{patient.complience}}</td>
+                    <tr ng-repeat="pat in patients">
+                        <td><button class="btn" style="background:transparent" id="patient-button" ng-click="Current.set_patient(pat.subjectID, pat.firstname, pat.lastname)" ui-sref="subject-info">{{pat.subjectID}}</a></button></td>
+                        <td style="vertical-align:middle">{{pat.complience}}</td>
                     </tr>
                 </tbody>
             </table>

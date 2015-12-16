@@ -24,6 +24,7 @@ angular.module('mean').controller('SubjectStatusController', ['$scope', '$state'
 	        }
         });
         $scope.subjects = data;
+        console.log(data);
         
      // console.log(data);
     })
@@ -91,7 +92,7 @@ angular.module('mean').controller('SubjectStatusController', ['$scope', '$state'
 	    });
   	};
 
-
+  	$scope.Current = Current;
 
   }
 ]);

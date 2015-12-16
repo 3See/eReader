@@ -8,9 +8,9 @@ angular.module('mean').controller('breadcrumbController', ['$scope', '$state', '
 
         $scope.state = Current.get_state();
         var state_lists = Current.get_state_lists();
-        $scope.studies = state_lists.study_list;
-        $scope.groups = state_lists.group_list;
-        $scope.patients = state_lists.patient_list;
+        $scope.studys = state_lists.study_list;
+        $scope.grps = state_lists.group_list;
+        $scope.patnts = state_lists.patient_list;
 
         if ($scope.state.study.id == null) {
             $state.go('home');
