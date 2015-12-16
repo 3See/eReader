@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean').controller('SubjectStatusController', ['$scope', '$state', '$http', 'Authentication',
-  function ($scope, $state, $http, Authentication) {
+angular.module('mean').controller('SubjectStatusController', ['$scope', '$state', '$http', 'Authentication', 'Current',
+  function ($scope, $state, $http, Authentication, Current) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
@@ -13,7 +13,7 @@ angular.module('mean').controller('SubjectStatusController', ['$scope', '$state'
     $scope.subjects = [];
     var stats = [];
 
-    $http.post('/subject/getstatus')
+    $http.post('/subject/getstatus', Current.get_state())
     .success(function(data) {
         data.forEach(function(element, index, array) {
         	if(element.studyGroupName === null || element.readerID === null) {
@@ -32,7 +32,7 @@ angular.module('mean').controller('SubjectStatusController', ['$scope', '$state'
     });
 
     $scope.filterAll = function() {
-    	$http.post('/subject/getstatus')
+    	$http.post('/subject/getstatus', Current.get_state())
 	    .success(function(data) {
 	        data.forEach(function(element, index, array) {
 	        	if(element.studyGroupName === null || element.readerID === null) {
@@ -52,7 +52,7 @@ angular.module('mean').controller('SubjectStatusController', ['$scope', '$state'
   	};
 
   	$scope.filterComplete = function() {
-    	$http.post('/subject/getstatuscomplete')
+    	$http.post('/subject/getstatuscomplete', Current.get_state())
 	    .success(function(data) {
 	        data.forEach(function(element, index, array) {
 	        	if(element.studyGroupName === null || element.readerID === null) {
@@ -72,7 +72,7 @@ angular.module('mean').controller('SubjectStatusController', ['$scope', '$state'
   	};
 
   	$scope.filterIncomplete = function() {
-    	$http.post('/subject/getstatusincomplete')
+    	$http.post('/subject/getstatusincomplete', Current.get_state())
 	    .success(function(data) {
 	        data.forEach(function(element, index, array) {
 	        	if(element.studyGroupName === null || element.readerID === null) {

@@ -10,6 +10,8 @@ var db = require('../../config/sequelize');
  * Register Subject
  */
 
+//called from: public\js\controllers\index.js
+//             public\js\controllers\subject-setup.js
 exports.getStudy = function(req, res, next) {
 //    console.log('------------GETTING THE CONSOLE LOG TO WORK---------');
 //    console.log(req);

@@ -1,16 +1,14 @@
 'use strict';
 
-angular.module('mean').controller('RegisterController', ['$scope', 'Authentication', '$state', '$http',
-  function ($scope, Authentication, $state, $http) {
+angular.module('mean').controller('RegisterController', ['$scope', 'Authentication', '$state', '$http', 'Current',
+  function ($scope, Authentication, $state, $http, Current) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
     // if(!Authentication.user) {
     // 	$state.go('sign-in');
     // }
-
     $scope.submit = function () {
-      console.log($scope.information);
       if(
         $scope.information.firstname !== undefined &&
         $scope.information.middlename !== undefined &&
@@ -37,6 +35,8 @@ angular.module('mean').controller('RegisterController', ['$scope', 'Authenticati
         $scope.information.weight !== undefined &&
         $scope.information.age !== undefined
       ){
+        $scope.information.uid = Current.get_state().uid;
+        console.log($scope.information);
         $http.post('/subject/register', $scope.information)
         .success(function(data) {
             console.log("Subject registered");
@@ -47,9 +47,7 @@ angular.module('mean').controller('RegisterController', ['$scope', 'Authenticati
         .catch(function(err){
             console.log(err);
             alert('Subject already registered, cannot register again');
-            break;
         });
-        alert('Subject Registered');
       }
     };
 
