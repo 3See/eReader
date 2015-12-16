@@ -4,12 +4,12 @@ nav#breadcrumb(data-ng-controller="breadcrumbController")
             div(class="col-xs-4 col-sm-4 col-md-4 col-lg-4")
                 select.form-control(name="Study" ng-model="current_study" ng-change="study_change(current_study)")
                     option(value="") {{state.study.name}}
-                    option(data-ng-repeat="study in studies", value="{{study}}", ui-sref="study-info") {{study.studyName}}
+                    option(data-ng-repeat="study in studys", value="{{study}}", ui-sref="study-info") {{study.studyName}}
             div(class="col-xs-4 col-sm-4 col-md-4 col-lg-4")
                 select.form-control(name="Group", ng-model="current_group" ng-change="group_change(current_group)")
                     option(value="") {{state.group.name}}
-                    option(data-ng-repeat="group in groups", value="{{group}}" ui-sref="group-info") {{group.studyGroupName}}
+                    option(data-ng-repeat="group in grps", value="{{group}}" ui-sref="group-info") {{group.studyGroupName}}
             div(class="col-xs-4 col-sm-4 col-md-4 col-lg-4")
                 select.form-control(name="Patient", ng-model="current_patient" ng-change="patient_change(current_patient)")
                     option(value="") {{state.patient.firstname}} {{state.patient.lastname}}
-                    option(data-ng-repeat="patient in patients", value="{{patient}}" ui-sref="subject-info") {{patient.firstname}} {{patient.lastname}}
+                    option(data-ng-repeat="patient in patnts", value="{{patient}}" ui-sref="subject-info") {{patient.firstname}} {{patient.lastname}}

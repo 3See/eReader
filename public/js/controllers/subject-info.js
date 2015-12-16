@@ -46,10 +46,16 @@ angular.module('mean').controller('SubjectInfoController', ['$scope', 'Authentic
     //
 
     //Change the boolen value to toggle the html elements
-    $scope.editBool = false;
     $scope.$watch('update.$valid', function(newVal) {
         console.log($scope.information);
-        $http.post('/subject/update', $scope.information);
+        $http.post('/subject/update', $scope.information)
+        .success(function(data) {
+          alert('Subject edited');
+          $scope.editBool = false;
+        })
+        .catch(function(data) {
+          alert('Err' + data);
+        });
       });
   };
 

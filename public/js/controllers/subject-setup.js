@@ -29,15 +29,6 @@ angular.module('mean').controller('subjectSetupController', ['$scope', '$http', 
       console.log('GetStudy Error : ' + err);
     });
 
-    $http.post('/reader/getunassignedReaders')
-    .success(function(data) {
-      $scope.readers = data;
-      console.log(data);
-    })
-    .error(function(err){
-      console.log('GetReaders Error : ' + err);
-    });
-
     $scope.setGroups = function(info) {
       console.log(info);
       $http.post('/group/getenrollGroups', info)
@@ -47,6 +38,15 @@ angular.module('mean').controller('subjectSetupController', ['$scope', '$http', 
       })
       .error(function(err) {
         console.log('GetGroup Error : ' + err);
+      });
+
+      $http.post('/reader/getunassignedReaders', info)
+      .success(function(data) {
+        $scope.readers = data;
+        console.log(data);
+      })
+      .error(function(err){
+        console.log('GetReaders Error : ' + err);
       });
     };
 
