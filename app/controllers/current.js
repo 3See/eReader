@@ -10,6 +10,7 @@ var db = require('../../config/sequelize');
  * Populate State Lists
  */
 
+// called from: public\js\services\Current.js
 exports.populate = function(req, res, next) {
     var query_input_pkg = req.body;
     console.log("Request Body*****************");

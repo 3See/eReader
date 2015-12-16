@@ -9,6 +9,7 @@ var db = require('../../config/sequelize');
 /**
  * Register Subject
  */
+ // called from: public\js\controllers\register.js
 exports.register = function(req, res, next) {
 
     db.subjectemail.find({ 
@@ -33,7 +34,7 @@ exports.register = function(req, res, next) {
                 height: req.body.height,
                 weight: req.body.weight,
                 age: req.body.age,
-                customerID: 1
+                customerID: req.body.uid
             };
 
             var address = {
@@ -240,6 +241,7 @@ exports.register = function(req, res, next) {
 /**
  * Update Subject
  */
+ // called from: public\js\controllers\subject-info.js
 exports.update = function(req, res, next) {
 
     db.address.find({ 
@@ -505,6 +507,7 @@ exports.update = function(req, res, next) {
 /**
  * Auth callback
  */
+// called from: Nowhere, no route established
 exports.registerCallback = function(req, res, next) {
     res.redirect('/');
 };
@@ -512,6 +515,7 @@ exports.registerCallback = function(req, res, next) {
 /**
  * Send Subject
  */
+// called from: Nowhere, no route established
 exports.me = function(req, res) {
     res.jsonp(req.subject || null);
 };
@@ -536,8 +540,7 @@ exports.subject = function(req, res, next, lastName, firstName, email) {
     });
 };
 
-//groupinfo.client.view=====================================================
-
+// called from: public\js\controllers\group-info.js
 exports.getSubjects = function(req, res, next) {
     var string = "SELECT subjectID, firstname, lastname FROM etect_dev.subject where etect_dev.subject.subjectID in (select subjectID from etect_dev.studysubject where etect_dev.studysubject.studyID = " + req.body.study.id + " and etect_dev.studysubject.groupID = " + req.body.group.id + ")";
     db.sequelize.query(string, { type: db.sequelize.QueryTypes.SELECT})
@@ -550,8 +553,9 @@ exports.getSubjects = function(req, res, next) {
     });
 };
 
+// called from: public\js\controllers\subject-setup.js
 exports.unassignedSearch = function(req, res, next) {
-    var string = "SELECT subjectID FROM etect_dev.subject WHERE customerID = " + 1 + " AND etect_dev.subject.subjectID NOT IN (SELECT subjectID FROM etect_dev.studysubject)";
+    var string = "SELECT subjectID FROM etect_dev.subject WHERE customerID = " + req.body.uid + " AND etect_dev.subject.subjectID NOT IN (SELECT subjectID FROM etect_dev.studysubject)";
     db.sequelize.query(string, { type: db.sequelize.QueryTypes.SELECT})
     .then(function(result){
         console.log("UnassignedSearch : " + JSON.stringify(result));
@@ -562,6 +566,7 @@ exports.unassignedSearch = function(req, res, next) {
     });
 };
 
+// called from: public\js\controllers\subject-setup.js
 exports.enroll = function(req, res, next) {
     console.log(req.body);
 
@@ -634,6 +639,7 @@ exports.enroll = function(req, res, next) {
     });
 };
 
+// called from: public\js\controllers\subject-info.js
 exports.getfullsubject = function(req, res, next) {
     var count = 0;
     var subject = {

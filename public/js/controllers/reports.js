@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean').controller('reportController', ['$scope', '$state', '$http', 'Authentication',
-  function ($scope, $state, $http, Authentication) {
+angular.module('mean').controller('reportController', ['$scope', '$state', '$http', 'Authentication', 'Current',
+  function ($scope, $state, $http, Authentication, Current) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
@@ -15,7 +15,7 @@ angular.module('mean').controller('reportController', ['$scope', '$state', '$htt
     var dataOne = [];
     var dataTwo = [];
 
-    $http.post('/subject/getreports')
+    $http.post('/subject/getreports', Current.get_state())
     .success(function(data) {
       //$scope.studies = data;
 //      var json = mapDOM(data, true);

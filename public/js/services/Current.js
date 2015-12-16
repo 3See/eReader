@@ -3,12 +3,13 @@
 //Global authentication service 
 angular.module('mean').factory('Current', ['$http', function($http) {
 	var states = {
+		//HARDCODED VALUE, NEEDS TO BE REPLACED ONCE USER SIGNIN IS WORKING
 		uid: 2,
 		study: {id: null, name: null},
 		group: {id: null, name: null},
 		patient: {id: null, firstname: null, lastname: null}
 	};
-
+	//HARDCODED VALUE, NEEDS TO BE REPLACED ONCE USER SIGNIN IS WORKING
 	var uid = 2;
 
 	var state_lists = {

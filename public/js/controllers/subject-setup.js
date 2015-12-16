@@ -11,7 +11,7 @@ angular.module('mean').controller('subjectSetupController', ['$scope', '$http', 
     //}
 
     var request = "SELECT * FROM subject LEFT JOIN studysubject ON studysubject.subjectID = subject.subjectID WHERE studyID IS NULL";
-    $http.post('/subject/unassignedSearch')
+    $http.post('/subject/unassignedSearch', Current.get_state())
     .success(function(data) {
       $scope.subjects = data;
       console.log(data);
